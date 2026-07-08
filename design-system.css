@@ -1,0 +1,653 @@
+/*
+ * ================================================================
+ * DESIGN SYSTEM — Christian Vieira Imóveis
+ * Tokens derivados de webflow-design.md v2.2
+ * Paleta: Navy #0D1B2A · Gold #B8962E
+ * ================================================================
+ */
+
+/* ── 1. TOKENS ─────────────────────────────────────────────── */
+:root {
+
+  /* --- Brand colors (mantidos do projeto) */
+  --color-gold:          #B8962E;
+  --color-gold-light:    #D4AE4A;
+  --color-gold-pale:     #F5EDD3;
+  --color-navy:          #0D1B2A;
+  --color-navy-mid:      #1A2E40;
+  --color-navy-dark:     #060B14;
+
+  /* --- Semantic surface (mapeados de webflow-design.md) */
+  --color-surface:       #FFFFFF;   /* webflow: surface */
+  --color-stone:         #F8F6F1;   /* surface-container-low adaptado */
+  --color-stone-dark:    #EDE9E0;   /* surface-container-high adaptado */
+  --color-ink:           #0A0A0A;   /* webflow: near-black #080808 */
+  --color-ink-soft:      #4A4540;   /* webflow: ink-soft adaptado */
+  --color-ink-muted:     #9A9590;   /* webflow: text-muted adaptado */
+  --color-border:        #E5E0D5;   /* webflow: border #d8d8d8 adaptado */
+
+  /* --- Typography (webflow-design.md: fonts) */
+  --font-sans:  'Plus Jakarta Sans', Arial, sans-serif;
+  --font-mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* --- Type scale (webflow-design.md: typography) */
+  --text-h1-size:    clamp(36px, 5vw, 48px);
+  --text-h2-size:    clamp(26px, 3.5vw, 36px);
+  --text-h3-size:    24px;
+  --text-body-size:  16px;
+  --text-sm-size:    14px;
+  --text-label-size: 12px;
+
+  --weight-display:  600;   /* webflow: --font-weight-display */
+  --weight-heading:  600;   /* webflow: --font-weight-heading */
+  --weight-body:     400;   /* webflow: --font-weight-body */
+  --weight-btn:      600;   /* webflow: --font-weight-btn */
+  --weight-eyebrow:  600;   /* webflow: --font-weight-eyebrow */
+
+  --leading-display: 1.1;   /* webflow: --leading-display */
+  --leading-tight:   1.15;  /* webflow: --leading-tight */
+  --leading-normal:  1.25;  /* h3 */
+  --leading-body:    1.5;   /* webflow: --leading-body */
+
+  --tracking-h1:     -0.04em; /* webflow: --tracking-h1 */
+  --tracking-h2:     -0.03em; /* webflow: --tracking-h2 */
+  --tracking-h3:     -0.02em; /* webflow: --tracking-h3 */
+  --tracking-body:   0em;     /* webflow: --tracking-body */
+  --tracking-btn:    0.08em;  /* webflow: --tracking-btn */
+  --tracking-eyebrow:0.08em;  /* webflow: --tracking-eyebrow */
+
+  /* --- Border radius (webflow-design.md: rounded) */
+  --radius-none:  0px;
+  --radius-sm:    2px;
+  --radius-card:  0px;         /* webflow: card = 0 */
+  --radius-btn:   0.5rem;      /* webflow: button = .5rem = 8px */
+  --radius-input: 0px;         /* webflow: input = 0 */
+  --radius-lg:    12px;
+  --radius-xl:    18px;
+  --radius-full:  9999px;
+
+  /* --- Shadows (webflow-design.md: shadows / elevation) */
+  --shadow-raised:   0 0 0 1px #0000001a, 0 1px 3px #0000001a;
+  --shadow-floating: rgba(8,8,8,0.08) 0px 1px 1px 0px,
+                     rgba(8,8,8,0.2) 0px 1px 1px 0px,
+                     rgba(255,255,255,0.12) 0px 6px 12px 0px inset,
+                     rgba(255,255,255,0.2) 0px 1px 1px 0px inset;
+  --shadow-modal:    0 105px 30px #0000,
+                     0 67px 27px #00000005,
+                     0 38px 23px #0000000f,
+                     0 17px 17px #0000001a,
+                     0 4px 9px #0000001f;
+
+  /* --- Spacing (webflow-design.md: spacing) */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:   1rem;    /* 16px */
+  --space-5:  20px;
+  --space-6:   1.5rem;  /* 24px */
+  --space-7:  28px;
+  --space-8:   2rem;    /* 32px */
+  --space-9:  36px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+
+  /* --- Layout (webflow-design.md: brand_primitives) */
+  --section-padx:  clamp(1rem, 4vw, 1.5rem);
+  --section-pady:  80px;   /* 2× step de 40px */
+  --card-pad:      1.5rem; /* webflow: card-pad */
+  --nav-padx:      1.5rem; /* webflow: nav-padx */
+
+  /* --- Hairline */
+  --hairline-width: 1px;
+  --hairline-color: var(--color-border);
+
+  /* --- Motion (webflow-design.md: motion) */
+  --duration-fast:    200ms;
+  --duration-normal:  300ms;
+  --duration-gentle:  450ms;
+  --ease-out:         cubic-bezier(0, 0, 0.2, 1);
+  --ease-inout:       cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+
+/* ── 2. RESET & BASE ───────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-size);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* WCAG AA: no body text below 16px (webflow accessibility_rule) */
+p, li, td, th { font-size: max(var(--text-body-size), 16px); }
+
+/* Focus ring (webflow: visible focus rings) */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-stone); }
+::-webkit-scrollbar-thumb { background: var(--color-gold); border-radius: var(--radius-full); }
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ── 3. TYPOGRAPHY CLASSES ────────────────────────────────── */
+
+/* H1 — display (webflow: 48px/1.1/600/-0.04em) */
+.cv-h1 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h1-size);
+  font-weight: var(--weight-display);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-h1);
+}
+
+/* H2 — heading */
+.cv-h2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h2-size);
+  font-weight: var(--weight-heading);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-h2);
+}
+
+/* H3 — subtitle */
+.cv-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h3-size);
+  font-weight: 600;
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-h3);
+}
+
+/* Body */
+.cv-body {
+  font-size: var(--text-body-size);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+}
+
+/* Body SM */
+.cv-body-sm {
+  font-size: var(--text-sm-size);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+}
+
+/* Eyebrow / label — monospace (webflow: label slot) */
+.cv-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-label-size);
+  font-weight: var(--weight-eyebrow);
+  line-height: 1.25;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: none; /* webflow: case-eyebrow = none */
+  display: block;
+}
+
+
+/* ── 4. BUTTONS ───────────────────────────────────────────── */
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-label-size);
+  font-weight: var(--weight-btn);
+  letter-spacing: var(--tracking-btn);
+  text-transform: none; /* webflow: case-btn = none */
+  border-radius: var(--radius-btn);
+  padding: 10px var(--space-6);
+  border: 2px solid transparent; /* webflow: btn-border-width = 2px */
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background var(--duration-normal) var(--ease-out),
+    box-shadow  var(--duration-normal) var(--ease-out),
+    transform   var(--duration-fast)   var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out);
+  min-height: 44px; /* WCAG tap target */
+}
+
+.cv-btn:active { transform: scale(0.98); } /* webflow: motion-press */
+
+.cv-btn-primary {
+  background: #25D366;
+  color: #fff;
+  border-color: #25D366;
+}
+.cv-btn-primary:hover {
+  background: #20c157;
+  border-color: #20c157;
+}
+
+.cv-btn-gold {
+  background: var(--color-gold);
+  color: #fff;
+  border-color: var(--color-gold);
+}
+.cv-btn-gold:hover {
+  background: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  box-shadow: 0 6px 24px rgba(184,150,46,.3);
+}
+
+/* WhatsApp buttons always green */
+a[href*="wa.me"].cv-btn-gold {
+  background: #25D366;
+  border-color: #25D366;
+}
+a[href*="wa.me"].cv-btn-gold:hover {
+  background: #20c157;
+  border-color: #20c157;
+  box-shadow: 0 6px 24px rgba(37,211,102,.35);
+}
+
+.cv-btn-outline-gold {
+  background: #fff;
+  color: var(--color-navy);
+  border-color: #fff;
+}
+.cv-btn-outline-gold:hover {
+  background: rgba(255,255,255,0.88);
+  border-color: #fff;
+}
+
+.cv-btn-navy {
+  background: var(--color-navy);
+  color: #fff;
+  border-color: var(--color-navy);
+}
+.cv-btn-navy:hover {
+  background: var(--color-navy-mid);
+  box-shadow: 0 6px 20px rgba(13,27,42,.25);
+}
+
+.cv-btn-charcoal {
+  background: #2C3A4A;
+  color: var(--color-gold-light);
+  border-color: #2C3A4A;
+}
+.cv-btn-charcoal:hover {
+  background: #3A4A5C;
+  border-color: #3A4A5C;
+}
+
+.cv-btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: transparent;
+}
+.cv-btn-ghost:hover {
+  background: rgba(0,0,0,.04);
+}
+
+
+/* ── 5. CARDS ─────────────────────────────────────────────── */
+
+/* webflow: card radius = 0, shadow = raised */
+.cv-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  border: var(--hairline-width) solid var(--color-border);
+  padding: var(--card-pad);
+  transition:
+    box-shadow     var(--duration-normal) var(--ease-out),
+    border-color   var(--duration-normal) var(--ease-out),
+    transform      var(--duration-normal) var(--ease-out);
+}
+
+.cv-card-hover:hover {
+  box-shadow: var(--shadow-floating);
+  border-color: var(--color-gold);
+  transform: translateY(-4px);
+}
+
+/* Card icon container */
+.cv-card-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(184,150,46,.06);
+}
+
+
+/* ── 6. NAV LINK ──────────────────────────────────────────── */
+.cv-nav-link {
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: color var(--duration-fast) var(--ease-out);
+  position: relative;
+}
+.cv-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-gold);
+  transition: width var(--duration-normal) var(--ease-out);
+}
+.cv-nav-link:hover { color: var(--color-navy); }
+.cv-nav-link:hover::after { width: 100%; }
+
+
+/* ── 7. MARQUEE ───────────────────────────────────────────── */
+.cv-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: cv-marquee 32s linear infinite;
+}
+.cv-marquee-track:hover { animation-play-state: paused; }
+
+.cv-marquee-block { display: flex; align-items: center; flex-shrink: 0; }
+
+.cv-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-gold-light);
+  white-space: nowrap;
+}
+
+.cv-marquee-sep {
+  color: rgba(212,174,74,.2);
+  padding: 0 4px;
+  user-select: none;
+}
+
+
+/* ── 8. STAT CARDS ────────────────────────────────────────── */
+.cv-stat-card {
+  background: rgba(184,150,46,.08);
+  border: var(--hairline-width) solid rgba(184,150,46,.2);
+  padding: 12px 16px;
+  text-align: center;
+}
+.cv-stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-gold-light);
+}
+.cv-stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,.4);
+  margin-top: 4px;
+}
+
+
+/* ── 9. STEP NUMBER ───────────────────────────────────────── */
+.cv-step-number {
+  width: 52px;
+  height: 52px;
+  background: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin: 0 auto var(--space-5);
+}
+
+
+/* ── 10. CHECKLIST ────────────────────────────────────────── */
+.cv-check-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.cv-check-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--check-text, var(--color-ink, inherit));
+}
+.cv-check-list li::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: var(--check-color, var(--color-gold));
+  flex-shrink: 0;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+
+/* ── 11. TRANSFORM LIST ───────────────────────────────────── */
+.cv-transform-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.cv-transform-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255,255,255,.6);
+}
+.cv-transform-list li::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: var(--icon-color, var(--color-gold));
+  flex-shrink: 0;
+  margin-top: 2px;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+
+/* ── 12. FAQ ──────────────────────────────────────────────── */
+.cv-faq-item {
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.cv-faq-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: var(--card-pad);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-h3);
+  color: var(--color-navy);
+  transition: background var(--duration-fast) var(--ease-out);
+}
+.cv-faq-btn:hover { background: var(--color-stone); }
+
+.cv-faq-icon {
+  transition: transform var(--duration-normal) var(--ease-out);
+  flex-shrink: 0;
+}
+.faq-open .cv-faq-icon { transform: rotate(45deg); }
+
+.cv-faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--duration-gentle) var(--ease-out);
+}
+.cv-faq-body.open { max-height: 300px; }
+
+
+/* ── 13. FORM ─────────────────────────────────────────────── */
+.cv-form-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  color: rgba(255,255,255,.4);
+  margin-bottom: 6px;
+}
+
+/* webflow: input radius = 0, border #d8d8d8 */
+.cv-input {
+  width: 100%;
+  border-radius: var(--radius-input);
+  border: var(--hairline-width) solid rgba(184,150,46,.2);
+  background: rgba(255,255,255,.05);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm-size);
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+.cv-input:focus { border-color: rgba(184,150,46,.6); }
+.cv-input::placeholder { color: rgba(255,255,255,.22); }
+
+.cv-select {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* ── 14. FOOTER LINKS ─────────────────────────────────────── */
+.cv-footer-link {
+  color: rgba(255,255,255,.3);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+.cv-footer-link:hover { color: var(--color-gold-light); }
+
+
+/* ── 15. PHOTO ────────────────────────────────────────────── */
+.cv-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* ── 16. ANIMATIONS ───────────────────────────────────────── */
+@keyframes cv-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes cv-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wf-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+.cv-fade-up {
+  opacity: 0;
+  animation: cv-fade-up var(--duration-gentle) var(--ease-out) var(--delay, 0ms) forwards;
+}
+
+
+/* ── 17. DIVIDER / GOLD LINE ──────────────────────────────── */
+.cv-divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+.cv-divider-center {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: 0 auto;
+}
+
+
+/* ── 18. SECTION LAYOUT HELPERS ───────────────────────────── */
+.cv-section {
+  padding: var(--section-pady) var(--section-padx);
+}
+
+.cv-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.cv-container-md {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.cv-container-sm {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Responsive grid gap */
+.cv-grid-flush {
+  display: grid;
+  gap: 1px;
+  background: var(--color-border);
+  border: var(--hairline-width) solid var(--color-border);
+}
+
+
+/* ── 19. INVERSE SECTION ──────────────────────────────────── */
+.cv-section-inverse {
+  background: var(--color-navy);
+  color: #fff;
+}

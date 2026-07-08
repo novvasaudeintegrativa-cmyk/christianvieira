@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metropolitan Dream — Barra da Tijuca | Christian Vieira</title>
+  <meta name="description" content="Metropolitan Dream na Barra da Tijuca. Lofts, 1, 2 e 3 quartos com lazer surpreendente.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy:#0D1B2A; --gold:#B8962E; --gold-light:#D4AE4A; --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; --sans:'Plus Jakarta Sans',Arial,sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--navy); color: #fff; -webkit-font-smoothing: antialiased; }
+    #navbar { position:fixed; top:0; left:0; right:0; z-index:50; height:56px; background:#fff; border-bottom:1px solid rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:space-between; padding:0 clamp(1rem,4vw,2rem); gap:16px; }
+    .nav-brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .nav-badge { width:36px; height:36px; background:var(--gold); border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:13px; font-weight:700; color:#fff; flex-shrink:0; }
+    .nav-name { font-size:15px; font-weight:700; letter-spacing:0.04em; color:var(--navy); text-transform:uppercase; line-height:1; }
+    .nav-sub  { font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:0.08em; color:#000; margin-top:2px; line-height:1.2; }
+    .nav-creci { font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:0.08em; color:#000; line-height:1.2; }
+    .nav-links { display:none; align-items:center; gap:28px; }
+    @media (min-width:1024px) { .nav-links { display:flex; } }
+    .nav-link { font-size:13px; font-weight:600; color:rgba(13,27,42,0.55); text-decoration:none; transition:color 200ms; }
+    .nav-link:hover { color:var(--gold); }
+    .nav-dd { position:relative; }
+    .nav-dd__btn { background:transparent; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:4px; font-size:13px; font-weight:600; color:var(--gold); font-family:var(--sans); padding:0; }
+    .nav-dd__btn svg { transition:transform .25s; }
+    .nav-dd.is-open .nav-dd__btn svg { transform:rotate(180deg); }
+    .nav-dd__panel { position:absolute; top:calc(100% + 12px); left:50%; transform:translateX(-50%) translateY(-4px); min-width:230px; background:#fff; border:1px solid #e5e0d5; border-radius:10px; box-shadow:0 8px 32px rgba(13,27,42,0.14); padding:6px; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .2s,transform .2s,visibility .2s; z-index:9999; }
+    .nav-dd.is-open .nav-dd__panel { opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+    .nav-dd__item { display:flex; align-items:center; padding:9px 12px; border-radius:7px; font-size:13px; font-weight:500; color:#2d3748; text-decoration:none; transition:background .15s; gap:8px; }
+    .nav-dd__item:hover { background:#f5f0e8; }
+    .nav-dd__item--current { color:var(--gold); font-weight:700; background:rgba(184,150,46,0.07); }
+    .nav-dd__item--current::before { content:'●'; font-size:7px; }
+    .nav-right { display:flex; align-items:center; gap:12px; }
+    .nav-cta { display:inline-flex; align-items:center; font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:0.08em; color:#fff; background:#25D366; border:2px solid #25D366; border-radius:8px; padding:8px 18px; text-decoration:none; min-height:36px; transition:background 300ms; }
+    .nav-cta:hover { background:#20c157; border-color:#20c157; }
+    @media (max-width:640px) { .nav-cta { display:none; } }
+    .nav-ham { display:flex; flex-direction:row; align-items:center; gap:6px; height:36px; background:transparent; border:none; cursor:pointer; padding:0 2px; flex-shrink:0; }
+    @media (min-width:1024px) { .nav-ham { display:none; } }
+    .nav-ham__label { font-size:11px; font-weight:700; letter-spacing:0.12em; color:var(--navy); }
+    .nav-ham__bars { display:flex; flex-direction:column; gap:5px; }
+    .nav-ham__bars span { display:block; width:22px; height:2px; background:var(--navy); border-radius:2px; transform-origin:center; transition:transform .3s,opacity .2s,width .3s; }
+    .nav-ham__bars span:nth-child(2) { width:16px; }
+    .nav-ham.is-open .nav-ham__bars span:nth-child(1) { transform:translateY(7px) rotate(45deg); width:22px; }
+    .nav-ham.is-open .nav-ham__bars span:nth-child(2) { opacity:0; transform:scaleX(0); }
+    .nav-ham.is-open .nav-ham__bars span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); width:22px; }
+    .nav-mobile { position:fixed; top:56px; left:0; right:0; z-index:49; display:flex; flex-direction:column; overflow:hidden; max-height:0; background:rgba(13,27,42,0.97); backdrop-filter:blur(10px); transition:max-height .35s; }
+    .nav-mobile.is-open { max-height:500px; border-bottom:1px solid rgba(184,150,46,0.18); }
+    .nav-mobile-link { display:flex; align-items:center; padding:12px clamp(1rem,4vw,2rem); border-bottom:1px solid rgba(255,255,255,0.06); font-size:14px; font-weight:600; color:rgba(255,255,255,0.7); text-decoration:none; transition:color .15s; }
+    .nav-mobile-link:hover { color:var(--gold-light); }
+    .nav-mobile-link--current { color:var(--gold-light); font-weight:700; }
+    .nav-mobile-cta { display:block; margin:12px clamp(1rem,4vw,2rem) 16px; padding:12px 24px; background:#25D366; color:#fff; border-radius:8px; font-size:13px; font-weight:700; text-align:center; text-decoration:none; }
+    main { padding-top:56px; }
+    .hero-video { width:100%; background:#000; aspect-ratio:16/9; position:relative; overflow:hidden; }
+    .hero-video video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .hero-video__overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(13,27,42,0.6) 0%,transparent 50%); pointer-events:none; }
+    .page-header { background:var(--navy); border-bottom:1px solid rgba(184,150,46,0.15); padding:28px clamp(1rem,5vw,2rem); text-align:center; }
+    .page-eyebrow { font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:0.14em; color:var(--gold-light); margin-bottom:10px; display:block; }
+    .page-title { font-size:clamp(28px,4.5vw,56px); font-weight:800; letter-spacing:-0.03em; color:#fff; margin:0; }
+    .page-title span { color:var(--gold-light); }
+    .page-sub { font-size:15px; color:rgba(255,255,255,0.5); margin-top:12px; }
+    .info-section { background:var(--navy); padding:48px clamp(1rem,5vw,2rem) 0; }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1px; background:rgba(184,150,46,0.12); border:1px solid rgba(184,150,46,0.12); max-width:640px; margin:0 auto; }
+    .info-card { background:rgba(13,27,42,0.8); padding:20px 16px; text-align:center; }
+    .info-val { font-size:26px; font-weight:700; letter-spacing:-0.04em; color:var(--gold-light); line-height:1; margin-bottom:4px; }
+    .info-lbl { font-family:var(--mono); font-size:9px; font-weight:600; letter-spacing:0.08em; color:rgba(255,255,255,0.35); }
+    .carousel-section { background:var(--navy); padding:64px clamp(1rem,5vw,2rem); }
+    .carousel-section__label { font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:0.14em; color:var(--gold-light); text-align:center; margin-bottom:32px; display:block; }
+    .carousel { position:relative; max-width:900px; margin:0 auto; user-select:none; }
+    .carousel__track { overflow:hidden; border-radius:12px; background:#000; box-shadow:0 24px 60px rgba(0,0,0,0.55); }
+    .carousel__slides { display:flex; transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); will-change:transform; }
+    .carousel__slide { flex:0 0 100%; }
+    .carousel__slide img { width:100%; height:auto; display:block; }
+    .carousel__btn { position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; background:rgba(13,27,42,0.75); border:1px solid rgba(184,150,46,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background 200ms,border-color 200ms; z-index:2; }
+    .carousel__btn:hover { background:rgba(184,150,46,0.25); border-color:rgba(184,150,46,0.7); }
+    .carousel__btn svg { width:18px; height:18px; fill:none; stroke:#fff; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+    .carousel__btn--prev { left:-22px; }
+    .carousel__btn--next { right:-22px; }
+    @media (max-width:640px) { .carousel__btn--prev { left:6px; } .carousel__btn--next { right:6px; } }
+    .carousel__counter { text-align:center; margin-top:16px; font-family:var(--mono); font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:0.08em; }
+    .carousel__counter span { color:var(--gold-light); font-weight:700; }
+    .carousel__dots { display:flex; justify-content:center; gap:6px; padding:12px 1rem; overflow-x:auto; scrollbar-width:none; margin-top:8px; }
+    .carousel__dots::-webkit-scrollbar { display:none; }
+    .carousel__dot { width:150px; height:100px; border-radius:4px; border:2px solid transparent; padding:0; background:none; cursor:pointer; flex-shrink:0; opacity:0.45; transition:opacity .2s,border-color .2s; overflow:hidden; }
+    .carousel__dot.is-active { opacity:1; border-color:var(--gold-light); }
+    .carousel__dot img { width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
+    .cta-section { text-align:center; padding:64px clamp(1rem,5vw,2rem) 80px; background:var(--navy); }
+    .cta-eyebrow { font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:0.14em; color:var(--gold-light); margin-bottom:20px; display:block; }
+    .cta-title { font-size:clamp(28px,4vw,44px); font-weight:700; letter-spacing:-0.03em; line-height:1.1; color:#fff; margin-bottom:16px; }
+    .cta-title span { color:var(--gold-light); }
+    .cta-body { font-size:15px; line-height:1.65; color:rgba(255,255,255,0.5); max-width:480px; margin:0 auto 40px; }
+    .cta-buttons { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+    .btn-gold { display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:0.08em; color:#fff; background:#25D366; border:2px solid #25D366; border-radius:8px; padding:12px 28px; text-decoration:none; min-height:48px; transition:background 300ms; }
+    .btn-gold:hover { background:#20c157; border-color:#20c157; }
+    .btn-outline { display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:0.08em; color:var(--gold-light); background:transparent; border:2px solid rgba(184,150,46,.45); border-radius:8px; padding:12px 28px; text-decoration:none; min-height:48px; }
+    .btn-outline:hover { background:rgba(184,150,46,.08); border-color:var(--gold-light); }
+    .btn-svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+    footer { background:#060810; border-top:1px solid rgba(184,150,46,0.1); padding:32px clamp(1rem,4vw,2rem); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; }
+    .footer-brand { display:flex; align-items:center; gap:10px; }
+    .footer-badge { width:30px; height:30px; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:10px; font-weight:700; color:#fff; }
+    .footer-name { font-size:12px; font-weight:600; color:#fff; }
+    .footer-sub  { font-family:var(--mono); font-size:9px; font-weight:600; letter-spacing:0.08em; color:var(--gold); margin-top:1px; }
+    .footer-copy { font-family:var(--mono); font-size:10px; color:rgba(255,255,255,0.5); }
+    .wa-float { position:fixed; bottom:24px; right:24px; z-index:50; width:52px; height:52px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,0.35); text-decoration:none; transition:transform 300ms; }
+    .wa-float:hover { transform:scale(1.08); }
+    .wa-float svg { width:26px; height:26px; fill:#fff; }
+  </style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="../../index.html" class="nav-brand">
+    <div class="nav-badge">CV</div>
+    <div><p class="nav-name">Christian Vieira</p><p class="nav-sub">Imóveis &amp; Consultoria</p><p class="nav-creci">CRECI 45539</p></div>
+  </a>
+  <div class="nav-links">
+    <a href="../../index.html" class="nav-link">Início</a>
+    <div class="nav-dd" id="nav-dd">
+      <button class="nav-dd__btn" id="nav-dd-btn" aria-expanded="false" aria-haspopup="true">
+        Lançamentos
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dd__panel" role="menu">
+        <a href="../ArcosdoPorto/index.html" class="nav-dd__item" role="menuitem">Arcos do Porto</a>
+        <a href="../CartollaII/index.html" class="nav-dd__item" role="menuitem">Residencial Cartola II</a>
+        <a href="#" class="nav-dd__item nav-dd__item--current" role="menuitem">Metropolitan Dream</a>
+        <a href="../OrlaRecreioReserva/index.html" class="nav-dd__item" role="menuitem">Orla Recreio Reserva</a>
+        <a href="../ConnectSquare/index.html" class="nav-dd__item" role="menuitem">Connect Square</a>
+      </div>
+    </div>
+    <a href="../../index.html" class="nav-link">Consultoria</a>
+    <a href="../../blog/index.html" class="nav-link">Blog</a>
+    <a href="../../index.html#contato" class="nav-link">Contato</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Tenho%20interesse%20no%20Metropolitan%20Dream." target="_blank" rel="noopener" class="nav-cta">Falar no WhatsApp</a>
+    <button class="nav-ham" id="nav-ham" aria-label="Abrir menu" aria-expanded="false">
+      <span class="nav-ham__label">MENU</span>
+      <div class="nav-ham__bars"><span></span><span></span><span></span></div>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <a href="../../index.html" class="nav-mobile-link">Início</a>
+  <a href="../ArcosdoPorto/index.html" class="nav-mobile-link">Arcos do Porto</a>
+  <a href="../CartollaII/index.html" class="nav-mobile-link">Residencial Cartola II</a>
+  <a href="#" class="nav-mobile-link nav-mobile-link--current">● Metropolitan Dream</a>
+  <a href="../OrlaRecreioReserva/index.html" class="nav-mobile-link">Orla Recreio Reserva</a>
+  <a href="../ConnectSquare/index.html" class="nav-mobile-link">Connect Square</a>
+  <a href="../../blog/index.html" class="nav-mobile-link">Blog</a>
+  <a href="../../index.html#contato" class="nav-mobile-link">Contato</a>
+  <a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Tenho%20interesse%20no%20Metropolitan%20Dream." target="_blank" rel="noopener" class="nav-mobile-cta">Falar no WhatsApp</a>
+</div>
+
+<main>
+  <div class="hero-video">
+    <video src="../../Videos/Metropolitan Dream.mp4" autoplay muted loop playsinline></video>
+    <div class="hero-video__overlay"></div>
+  </div>
+
+  <section class="page-header">
+    <span class="page-eyebrow">Lançamento · Barra da Tijuca · Rio de Janeiro</span>
+    <h1 class="page-title">Metropolitan <span>Dream</span></h1>
+    <p class="page-sub">Lofts, 1, 2 e 3 quartos com lazer surpreendente.</p>
+  </section>
+
+  <section class="info-section">
+    <div class="info-grid">
+      <div class="info-card"><p class="info-val">Barra</p><p class="info-lbl">BAIRRO</p></div>
+      <div class="info-card"><p class="info-val">Lofts+3</p><p class="info-lbl">TIPOLOGIAS</p></div>
+      <div class="info-card"><p class="info-val">10+</p><p class="info-lbl">ANOS DE EXPERTISE</p></div>
+    </div>
+  </section>
+
+  <section class="carousel-section">
+    <span class="carousel-section__label">BOOK DO EMPREENDIMENTO — 42 PÁGINAS</span>
+    <div class="carousel" id="carousel">
+      <div class="carousel__track">
+        <div class="carousel__slides" id="carousel-slides"></div>
+      </div>
+      <button class="carousel__btn carousel__btn--prev" id="carousel-prev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="carousel__btn carousel__btn--next" id="carousel-next" aria-label="Próxima">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <p class="carousel__counter">Página <span id="carousel-current">1</span> / <span id="carousel-total">42</span></p>
+    <div class="carousel__dots" id="carousel-dots"></div>
+  </section>
+
+  <section class="cta-section">
+    <span class="cta-eyebrow">FALE COM O ESPECIALISTA</span>
+    <h2 class="cta-title">Quer saber mais sobre o<br><span>Metropolitan Dream?</span></h2>
+    <p class="cta-body">Fale diretamente com Christian Vieira. Ele acompanha cada etapa — do primeiro contato até as chaves na mão — com clareza e estratégia.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Tenho%20interesse%20no%20Metropolitan%20Dream." target="_blank" rel="noopener" class="btn-gold">
+        <svg class="btn-svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a href="../../index.html#contato" class="btn-outline">
+        <svg class="btn-svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Enviar mensagem
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-brand"><div class="footer-badge">CV</div><div><p class="footer-name">Christian Vieira</p><p class="footer-sub">IMÓVEIS &amp; CONSULTORIA · RJ · CRECI 45539</p></div></div>
+  <p class="footer-copy">© 2025 Christian Vieira. Todos os direitos reservados.</p>
+</footer>
+
+<a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Tenho%20interesse%20no%20Metropolitan%20Dream." target="_blank" rel="noopener" class="wa-float" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+(function(){
+  const ham=document.getElementById('nav-ham'),mob=document.getElementById('nav-mobile');
+  if(ham&&mob){
+    ham.addEventListener('click',()=>{const o=mob.classList.toggle('is-open');ham.classList.toggle('is-open',o);ham.setAttribute('aria-expanded',o);mob.setAttribute('aria-hidden',!o);});
+    mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mob.classList.remove('is-open');ham.classList.remove('is-open');ham.setAttribute('aria-expanded',false);mob.setAttribute('aria-hidden',true);}));
+  }
+  const dd=document.getElementById('nav-dd'),ddBtn=document.getElementById('nav-dd-btn');
+  if(dd&&ddBtn){
+    ddBtn.addEventListener('click',e=>{e.stopPropagation();const o=dd.classList.toggle('is-open');ddBtn.setAttribute('aria-expanded',o);});
+    document.addEventListener('click',()=>{dd.classList.remove('is-open');ddBtn.setAttribute('aria-expanded',false);});
+  }
+
+  const TOTAL = 42;
+  const slidesEl = document.getElementById('carousel-slides');
+  const dotsEl   = document.getElementById('carousel-dots');
+  const curEl    = document.getElementById('carousel-current');
+  const totEl    = document.getElementById('carousel-total');
+  if(!slidesEl) return;
+
+  totEl.textContent = TOTAL;
+
+  for(let i=1;i<=TOTAL;i++){
+    const num = String(i).padStart(4,'0');
+    const img = document.createElement('img');
+    img.src = 'Carrossel/METROPOLITAN DREAM_page-'+num+'.jpg';
+    img.alt = 'Metropolitan Dream — página '+i;
+    img.loading = i<=3 ? 'eager' : 'lazy';
+    img.style.cssText = 'width:100%;height:auto;display:block;';
+    const slide = document.createElement('div');
+    slide.className = 'carousel__slide';
+    slide.appendChild(img);
+    slidesEl.appendChild(slide);
+
+    const dot = document.createElement('button');
+    dot.className = 'carousel__dot'+(i===1?' is-active':'');
+    dot.setAttribute('aria-label','Página '+i);
+    dot.dataset.idx = i-1;
+    const tImg = document.createElement('img');
+    tImg.src = 'Carrossel/METROPOLITAN DREAM_page-'+num+'.jpg';
+    tImg.alt = '';
+    tImg.loading = 'lazy';
+    dot.appendChild(tImg);
+    dotsEl.appendChild(dot);
+  }
+
+  let current = 0;
+
+  function goTo(idx){
+    idx = ((idx % TOTAL) + TOTAL) % TOTAL;
+    current = idx;
+    slidesEl.style.transform = 'translateX(-'+idx+'00%)';
+    curEl.textContent = idx+1;
+    dotsEl.querySelectorAll('.carousel__dot').forEach((d,i)=>d.classList.toggle('is-active',i===idx));
+    const activeDot = dotsEl.children[idx];
+    if(activeDot) activeDot.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+  }
+
+  document.getElementById('carousel-prev').addEventListener('click',()=>goTo(current-1));
+  document.getElementById('carousel-next').addEventListener('click',()=>goTo(current+1));
+  dotsEl.addEventListener('click',e=>{if(e.target.dataset.idx!==undefined) goTo(+e.target.dataset.idx);});
+
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft') goTo(current-1);
+    if(e.key==='ArrowRight') goTo(current+1);
+  });
+
+  let tx=0;
+  const track = document.querySelector('.carousel__track');
+  track.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+  track.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>40) goTo(current+(dx<0?1:-1));
+  },{passive:true});
+})();
+</script>
+</body>
+</html>

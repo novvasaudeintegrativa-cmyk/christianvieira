@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Mercado Imobiliário RJ | Christian Vieira</title>
+  <meta name="description" content="Novidades, análises e dicas sobre o mercado imobiliário do Rio de Janeiro. Por Christian Vieira, corretor e mentor com mais de 10 anos de experiência.">
+
+  <link rel="stylesheet" href="../design-system.css">
+  <link rel="stylesheet" href="../style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'gold':       'var(--color-gold)',
+            'gold-light': 'var(--color-gold-light)',
+            'gold-pale':  'var(--color-gold-pale)',
+            'navy':       'var(--color-navy)',
+            'navy-mid':   'var(--color-navy-mid)',
+            'stone':      'var(--color-stone)',
+            'ink':        'var(--color-ink)',
+            'ink-soft':   'var(--color-ink-soft)',
+            'ink-muted':  'var(--color-ink-muted)',
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Arial', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Blog-specific styles ── */
+    .blog-hero { background: var(--color-navy); padding: 80px clamp(1rem,5vw,2rem) 64px; text-align: center; border-bottom: 1px solid rgba(184,150,46,0.15); }
+    .blog-hero__eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--color-gold-light); margin-bottom: 14px; display: block; }
+    .blog-hero__title { font-size: clamp(36px, 5vw, 60px); font-weight: 800; letter-spacing: -0.04em; color: #fff; line-height: 1.05; margin-bottom: 16px; }
+    .blog-hero__title span { color: var(--color-gold-light); }
+    .blog-hero__sub { font-size: 16px; color: rgba(255,255,255,0.5); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+    .blog-filters { background: var(--color-stone); border-bottom: 1px solid var(--color-border); padding: 16px clamp(1rem,5vw,2rem); display: flex; align-items: center; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+    .blog-filters::-webkit-scrollbar { display: none; }
+    .filter-btn { flex-shrink: 0; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; padding: 7px 14px; border-radius: 999px; border: 1.5px solid var(--color-border); background: #fff; color: var(--color-ink-soft); cursor: pointer; transition: all .2s; white-space: nowrap; }
+    .filter-btn:hover, .filter-btn.is-active { background: var(--color-navy); color: #fff; border-color: var(--color-navy); }
+
+    .blog-grid-section { background: var(--color-stone); padding: 48px clamp(1rem,5vw,2rem) 80px; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
+
+    .post-card { background: #fff; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; }
+    .post-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(13,27,42,0.1); }
+    .post-card__thumb { aspect-ratio: 16/9; background: var(--color-navy); overflow: hidden; position: relative; }
+    .post-card__thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .post-card__thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .post-card__thumb-icon { font-size: 40px; opacity: 0.15; }
+    .post-card__body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .post-card__meta { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .post-card__tag { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 4px; }
+    .tag--mercado   { background: rgba(184,150,46,0.12); color: #8a6e1a; }
+    .tag--financiamento { background: rgba(13,27,42,0.07); color: var(--color-navy); }
+    .tag--bairros   { background: rgba(34,130,84,0.1); color: #1a6640; }
+    .tag--dicas     { background: rgba(120,60,160,0.1); color: #5a2a8a; }
+    .tag--lancamentos { background: rgba(200,60,30,0.1); color: #a02010; }
+    .post-card__date { font-family: var(--font-mono); font-size: 10px; color: var(--color-ink-muted); }
+    .post-card__title { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-ink); line-height: 1.35; margin-bottom: 10px; }
+    .post-card__excerpt { font-size: 14px; color: var(--color-ink-soft); line-height: 1.6; flex: 1; margin-bottom: 20px; }
+    .post-card__link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--color-gold); text-decoration: none; transition: gap .2s; }
+    .post-card__link:hover { gap: 10px; }
+
+    .post-card--featured { grid-column: 1 / -1; flex-direction: row; }
+    @media (max-width: 700px) { .post-card--featured { flex-direction: column; } }
+    .post-card--featured .post-card__thumb { aspect-ratio: auto; min-height: 220px; flex: 0 0 40%; }
+    .post-card--featured .post-card__body { padding: 32px; }
+    .post-card--featured .post-card__title { font-size: 22px; }
+    .post-card--featured .post-card__badge { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--color-gold); background: rgba(184,150,46,0.12); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 12px; }
+
+    .blog-cta { background: var(--color-navy); padding: 64px clamp(1rem,5vw,2rem); text-align: center; }
+    .blog-cta__eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--color-gold-light); margin-bottom: 16px; display: block; }
+    .blog-cta__title { font-size: clamp(24px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.03em; color: #fff; margin-bottom: 12px; }
+    .blog-cta__title span { color: var(--color-gold-light); }
+    .blog-cta__body { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 440px; margin: 0 auto 32px; line-height: 1.65; }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar" class="sticky top-0 z-50">
+  <div class="nav-inner max-w-7xl mx-auto h-16 flex items-center justify-between gap-4">
+    <a href="../index.html" class="flex items-center gap-3 shrink-0">
+      <div class="nav-logo-badge w-9 h-9 flex items-center justify-center">CV</div>
+      <div>
+        <p class="nav-logo-name">Christian Vieira</p>
+        <p class="nav-logo-sub">Imóveis &amp; Consultoria</p>
+        <p class="nav-logo-creci">CRECI 45539</p>
+      </div>
+    </a>
+
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="../index.html" class="cv-nav-link">Início</a>
+      <div class="nav-dropdown" id="nav-dropdown-lancamentos">
+        <button class="nav-dropdown__trigger" aria-expanded="false" aria-haspopup="true">
+          Lançamentos
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown__panel" role="menu">
+          <a href="../lancamentos/ArcosdoPorto/index.html" class="nav-dropdown__item" role="menuitem">Arcos do Porto <span class="nav-dropdown__tag nav-dropdown__tag--live">Disponível</span></a>
+          <a href="../lancamentos/CartollaII/index.html" class="nav-dropdown__item" role="menuitem">Residencial Cartola II <span class="nav-dropdown__tag nav-dropdown__tag--live">Disponível</span></a>
+          <a href="../lancamentos/MetropolitanDream/index.html" class="nav-dropdown__item" role="menuitem">Metropolitan Dream <span class="nav-dropdown__tag nav-dropdown__tag--live">Disponível</span></a>
+          <a href="../lancamentos/OrlaRecreioReserva/index.html" class="nav-dropdown__item" role="menuitem">Orla Recreio Reserva <span class="nav-dropdown__tag nav-dropdown__tag--live">Disponível</span></a>
+          <a href="../lancamentos/ConnectSquare/index.html" class="nav-dropdown__item" role="menuitem">Connect Square <span class="nav-dropdown__tag nav-dropdown__tag--live">Disponível</span></a>
+        </div>
+      </div>
+      <a href="../index.html#servicos" class="cv-nav-link">Consultoria</a>
+      <a href="index.html" class="cv-nav-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+      <a href="../index.html#contato" class="cv-nav-link">Contato</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="../index.html#contato" class="cv-btn cv-btn-primary whitespace-nowrap hidden sm:inline-flex">Fale com o Christian</a>
+      <button class="nav-hamburger lg:hidden" id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span class="nav-hamburger__label">MENU</span>
+        <div class="nav-hamburger__bars"><span></span><span></span><span></span></div>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+    <a href="../index.html" class="nav-mobile-link">Início</a>
+    <button class="nav-mobile-toggle" id="nav-mobile-lancamentos" aria-expanded="false">
+      Lançamentos
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="nav-mobile-sub" id="nav-mobile-sub-lancamentos">
+      <a href="../lancamentos/ArcosdoPorto/index.html" class="nav-mobile-sublink">Arcos do Porto</a>
+      <a href="../lancamentos/CartollaII/index.html" class="nav-mobile-sublink">Residencial Cartola II</a>
+      <a href="../lancamentos/MetropolitanDream/index.html" class="nav-mobile-sublink">Metropolitan Dream</a>
+      <a href="../lancamentos/OrlaRecreioReserva/index.html" class="nav-mobile-sublink">Orla Recreio Reserva</a>
+      <a href="../lancamentos/ConnectSquare/index.html" class="nav-mobile-sublink">Connect Square</a>
+    </div>
+    <a href="../index.html#servicos" class="nav-mobile-link">Consultoria</a>
+    <a href="index.html" class="nav-mobile-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+    <a href="../index.html#contato" class="nav-mobile-link">Contato</a>
+    <a href="../index.html#contato" class="nav-mobile-cta">Fale com o Christian</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="blog-hero" style="padding-top:96px;">
+  <span class="blog-hero__eyebrow">MERCADO IMOBILIÁRIO · RIO DE JANEIRO</span>
+  <h1 class="blog-hero__title">Novidades do<br><span>Mercado</span></h1>
+  <p class="blog-hero__sub">Análises, dicas e tendências do mercado imobiliário carioca — direto de quem vive isso todos os dias.</p>
+</section>
+
+<!-- ══ FILTROS ══ -->
+<div class="blog-filters">
+  <button class="filter-btn is-active" data-filter="all">Todos</button>
+  <button class="filter-btn" data-filter="mercado">Mercado</button>
+  <button class="filter-btn" data-filter="financiamento">Financiamento</button>
+  <button class="filter-btn" data-filter="bairros">Bairros</button>
+  <button class="filter-btn" data-filter="dicas">Dicas</button>
+  <button class="filter-btn" data-filter="lancamentos">Lançamentos</button>
+</div>
+
+<!-- ══ GRID DE POSTS ══ -->
+<section class="blog-grid-section">
+  <div class="blog-grid" id="blog-grid">
+
+    <!-- Post Destaque -->
+    <article class="post-card post-card--featured" data-category="mercado">
+      <div class="post-card__thumb">
+        <img class="post-card__thumb-img" src="images/post-01-como-comprar-primeiro-imovel.jpg" alt="Como comprar o primeiro imóvel">
+      </div>
+      <div class="post-card__body">
+        <span class="post-card__badge">DESTAQUE DA SEMANA</span>
+        <div class="post-card__meta">
+          <span class="post-card__tag tag--mercado">MERCADO</span>
+          <span class="post-card__date">8 jul 2026</span>
+        </div>
+        <h2 class="post-card__title">Mercado imobiliário do Rio cresce 12% no primeiro semestre de 2026 — o que isso significa para quem quer comprar?</h2>
+        <p class="post-card__excerpt">Os dados do SECOVI-RJ confirmam: o Rio de Janeiro registrou crescimento expressivo nas vendas de imóveis novos nos primeiros seis meses de 2026. Entenda os bairros que mais valorizaram e o que esperar para o segundo semestre.</p>
+        <a href="posts/mercado-imobiliario-rj-2025.html" class="post-card__link">
+          Ler artigo completo
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- Post 2 -->
+    <article class="post-card" data-category="financiamento">
+      <div class="post-card__thumb">
+        <img class="post-card__thumb-img" src="images/post-02-casa-ou-apartamento.jpg" alt="Casa ou apartamento">
+      </div>
+      <div class="post-card__body">
+        <div class="post-card__meta">
+          <span class="post-card__tag tag--financiamento">FINANCIAMENTO</span>
+          <span class="post-card__date">5 jul 2026</span>
+        </div>
+        <h2 class="post-card__title">Selic em queda: quanto você economiza no financiamento imobiliário?</h2>
+        <p class="post-card__excerpt">Com a taxa básica de juros recuando, o crédito imobiliário fica mais acessível. Simulamos diferentes cenários para mostrar o impacto real na sua parcela.</p>
+        <a href="posts/selic-queda-financiamento.html" class="post-card__link">Ler artigo <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </article>
+
+    <!-- Post 3 -->
+    <article class="post-card" data-category="bairros">
+      <div class="post-card__thumb">
+        <img class="post-card__thumb-img" src="images/post-03-financiamento-explicado-simples.jpg" alt="Financiamento explicado de forma simples">
+      </div>
+      <div class="post-card__body">
+        <div class="post-card__meta">
+          <span class="post-card__tag tag--bairros">BAIRROS</span>
+          <span class="post-card__date">2 jul 2026</span>
+        </div>
+        <h2 class="post-card__title">Recreio dos Bandeirantes: o bairro que mais valoriza na Zona Oeste do Rio</h2>
+        <p class="post-card__excerpt">Infraestrutura em expansão, orla preservada e novos lançamentos. Veja por que o Recreio se tornou o destino preferido de famílias e investidores.</p>
+        <a href="posts/recreio-bandeirantes-valoriza.html" class="post-card__link">Ler artigo <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </article>
+
+    <!-- Post 4 -->
+    <article class="post-card" data-category="dicas">
+      <div class="post-card__thumb">
+        <img class="post-card__thumb-img" src="images/post-04-quanto-custa-financiar-imovel.jpg" alt="Quanto custa financiar um imóvel">
+      </div>
+      <div class="post-card__body">
+        <div class="post-card__meta">
+          <span class="post-card__tag tag--dicas">DICAS</span>
+          <span class="post-card__date">28 jun 2026</span>
+        </div>
+        <h2 class="post-card__title">5 erros que todo comprador de primeiro imóvel comete (e como evitar)</h2>
+        <p class="post-card__excerpt">Da documentação ao vistoria, passando pela análise do contrato — veja os erros mais comuns e como um bom corretor faz a diferença em cada etapa.</p>
+        <a href="posts/erros-comprador-primeiro-imovel.html" class="post-card__link">Ler artigo <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </article>
+
+    <!-- Post 5 -->
+    <article class="post-card" data-category="lancamentos">
+      <div class="post-card__thumb">
+        <img class="post-card__thumb-img" src="images/post-05-comprar-na-planta-rio.jpg" alt="Comprar na planta no Rio de Janeiro">
+      </div>
+      <div class="post-card__body">
+        <div class="post-card__meta">
+          <span class="post-card__tag tag--lancamentos">LANÇAMENTOS</span>
+          <span class="post-card__date">24 jun 2026</span>
+        </div>
+        <h2 class="post-card__title">Por que comprar na planta ainda é o melhor investimento imobiliário do Rio?</h2>
+        <p class="post-card__excerpt">Preço de lançamento, valorização até a entrega e condições facilitadas de pagamento. Entenda a estratégia que profissionais usam para maximizar o retorno.</p>
+        <a href="posts/comprar-na-planta-rio.html" class="post-card__link">Ler artigo <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </article>
+
+    <!-- Post 6 -->
+    <article class="post-card" data-category="mercado">
+      <div class="post-card__thumb">
+        <img class="post-card__thumb-img" src="images/post-06-fipezap-preco-m2-rio-2026.jpg" alt="FipeZAP preço do m² Rio 2026">
+      </div>
+      <div class="post-card__body">
+        <div class="post-card__meta">
+          <span class="post-card__tag tag--mercado">MERCADO</span>
+          <span class="post-card__date">20 jun 2026</span>
+        </div>
+        <h2 class="post-card__title">FipeZAP: preço do m² no Rio cresce acima da inflação pelo 3º mês consecutivo</h2>
+        <p class="post-card__excerpt">O índice que acompanha os preços de imóveis nas principais cidades brasileiras mostra uma tendência de alta sustentada. O que os dados revelam sobre 2026?</p>
+        <a href="posts/fipezap-preco-m2-rio-2026.html" class="post-card__link">Ler artigo <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="blog-cta">
+  <span class="blog-cta__eyebrow">FALE COM O ESPECIALISTA</span>
+  <h2 class="blog-cta__title">Quer uma análise<br><span>personalizada?</span></h2>
+  <p class="blog-cta__body">Cada situação é única. Christian Vieira analisa seu perfil e indica o melhor caminho — sem pressão, com clareza.</p>
+  <div class="flex flex-wrap gap-3 justify-center">
+    <a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Li%20seu%20blog%20e%20gostaria%20de%20uma%20consulta." target="_blank" rel="noopener" class="cv-btn cv-btn-gold">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Falar no WhatsApp
+    </a>
+    <a href="../index.html#contato" class="cv-btn cv-btn-charcoal">Enviar mensagem</a>
+  </div>
+</section>
+
+<footer style="background:#060810;border-top:1px solid rgba(184,150,46,0.1);padding:32px clamp(1rem,4vw,2rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div style="width:30px;height:30px;background:var(--color-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;font-weight:700;color:#fff;">CV</div>
+    <div><p style="font-size:12px;font-weight:600;color:#fff;">Christian Vieira</p><p style="font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:0.08em;color:var(--color-gold);margin-top:1px;">IMÓVEIS &amp; CONSULTORIA · RJ · CRECI 45539</p></div>
+  </div>
+  <p style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);">© 2025 Christian Vieira. Todos os direitos reservados.</p>
+</footer>
+
+<a href="https://wa.me/5521993399299" target="_blank" rel="noopener" style="position:fixed;bottom:24px;right:24px;z-index:50;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);text-decoration:none;transition:transform 300ms;" title="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+// Navbar hamburger
+(function(){
+  const ham = document.getElementById('nav-hamburger');
+  const mob = document.getElementById('nav-mobile');
+  if (ham && mob) {
+    ham.addEventListener('click', () => {
+      const o = mob.classList.toggle('is-open');
+      ham.classList.toggle('is-open', o);
+      ham.setAttribute('aria-expanded', o);
+      mob.setAttribute('aria-hidden', !o);
+    });
+  }
+  // Dropdown desktop
+  document.querySelectorAll('.nav-dropdown').forEach(dd => {
+    const trigger = dd.querySelector('.nav-dropdown__trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', e => { e.stopPropagation(); dd.classList.toggle('is-open'); trigger.setAttribute('aria-expanded', dd.classList.contains('is-open')); });
+    document.addEventListener('click', () => { dd.classList.remove('is-open'); trigger.setAttribute('aria-expanded', false); });
+  });
+  // Sub-menu mobile
+  const mobToggle = document.getElementById('nav-mobile-lancamentos');
+  const mobSub = document.getElementById('nav-mobile-sub-lancamentos');
+  if (mobToggle && mobSub) {
+    mobToggle.addEventListener('click', () => {
+      const o = mobSub.classList.toggle('is-open');
+      mobToggle.classList.toggle('is-open', o);
+      mobToggle.setAttribute('aria-expanded', o);
+    });
+  }
+})();
+
+// Filtros
+(function(){
+  const btns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#blog-grid article');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

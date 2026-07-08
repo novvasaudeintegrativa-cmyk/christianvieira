@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — Christian Vieira</title>
+  <link rel="stylesheet" href="design-system.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Arial', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* DS Page chrome — não faz parte do design system do site */
+    :root { --ds-sidebar: 220px; }
+
+    .ds-sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--ds-sidebar);
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--color-navy);
+      border-right: 1px solid rgba(184,150,46,.15);
+      padding: 24px 0;
+      z-index: 100;
+    }
+
+    .ds-sidebar a {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,.35);
+      padding: 7px 20px;
+      text-decoration: none;
+      transition: color 150ms, background 150ms;
+    }
+    .ds-sidebar a:hover { color: var(--color-gold-light); background: rgba(184,150,46,.06); }
+    .ds-sidebar .ds-nav-group {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,.18);
+      padding: 18px 20px 6px;
+      text-transform: uppercase;
+    }
+
+    .ds-main {
+      margin-left: var(--ds-sidebar);
+      padding: 48px 48px 96px;
+      max-width: 1000px;
+    }
+
+    .ds-section {
+      padding-top: 64px;
+      border-top: 1px solid var(--color-border);
+      margin-top: 64px;
+    }
+    .ds-section:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+
+    .ds-section-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--color-ink-muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .ds-section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-navy);
+      margin-bottom: 32px;
+    }
+
+    .ds-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .ds-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--color-ink-muted);
+      margin-top: 8px;
+    }
+
+    .ds-swatch {
+      width: 64px;
+      height: 64px;
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .ds-swatch-lg {
+      width: 100%;
+      height: 48px;
+      border: 1px solid rgba(0,0,0,.06);
+    }
+
+    .ds-token-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .ds-token-name {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-gold);
+      width: 220px;
+      flex-shrink: 0;
+    }
+    .ds-token-value {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-ink-soft);
+    }
+
+    .ds-preview-block {
+      background: var(--color-stone);
+      border: 1px solid var(--color-border);
+      padding: 32px;
+      margin-bottom: 16px;
+    }
+    .ds-preview-block.dark {
+      background: var(--color-navy);
+    }
+
+    .ds-shadow-box {
+      width: 100%;
+      height: 64px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--color-ink-muted);
+      letter-spacing: 0.06em;
+    }
+
+    .ds-radius-box {
+      width: 64px;
+      height: 64px;
+      background: var(--color-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      color: rgba(255,255,255,.5);
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .ds-sidebar { display: none; }
+      .ds-main { margin-left: 0; padding: 24px; }
+    }
+  </style>
+</head>
+<body style="background: var(--color-surface);">
+
+
+<!-- ════════════════════════════════════
+     SIDEBAR NAV
+════════════════════════════════════ -->
+<nav class="ds-sidebar">
+  <div style="display:flex;align-items:center;gap:10px;padding:0 20px 24px;">
+    <div style="width:32px;height:32px;background:var(--color-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;font-weight:700;color:#fff;border-radius:4px;">CV</div>
+    <div>
+      <p style="font-family:var(--font-mono);font-size:11px;font-weight:700;color:#fff;line-height:1;">Design System</p>
+      <p style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.3);margin-top:2px;">Christian Vieira · v1.0</p>
+    </div>
+  </div>
+
+  <div class="ds-nav-group">Fundação</div>
+  <a href="#cores">Cores</a>
+  <a href="#tipografia">Tipografia</a>
+  <a href="#espacamento">Espaçamento</a>
+  <a href="#bordas">Bordas & Raio</a>
+  <a href="#sombras">Sombras</a>
+  <a href="#motion">Movimento</a>
+
+  <div class="ds-nav-group">Componentes</div>
+  <a href="#botoes">Botões</a>
+  <a href="#cards">Cards</a>
+  <a href="#forms">Formulários</a>
+  <a href="#nav">Navegação</a>
+  <a href="#stats">Stat Cards</a>
+  <a href="#steps">Steps</a>
+  <a href="#listas">Listas</a>
+  <a href="#marquee">Marquee</a>
+  <a href="#divisores">Divisores</a>
+  <a href="#animacoes">Animações</a>
+</nav>
+
+
+<!-- ════════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════ -->
+<main class="ds-main">
+
+  <!-- Header -->
+  <div style="margin-bottom:64px;">
+    <p style="font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:0.12em;color:var(--color-gold);text-transform:uppercase;margin-bottom:8px;">Christian Vieira Imóveis</p>
+    <h1 style="font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-0.04em;color:var(--color-navy);line-height:1.1;margin-bottom:12px;">Design System</h1>
+    <p style="font-size:15px;color:var(--color-ink-soft);max-width:480px;line-height:1.6;">Tokens, componentes e padrões visuais derivados de <code style="font-family:var(--font-mono);font-size:12px;background:var(--color-stone);padding:1px 6px;">webflow-design.md</code>. Paleta navy/gold com tipografia Plus Jakarta Sans.</p>
+  </div>
+
+
+  <!-- ── CORES ──────────────────────────── -->
+  <section class="ds-section" id="cores">
+    <p class="ds-section-title">Fundação</p>
+    <h2>Cores</h2>
+
+    <!-- Brand -->
+    <p style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.06em;color:var(--color-ink-muted);margin-bottom:12px;">Brand</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px;margin-bottom:32px;">
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-gold);"></div>
+        <p class="ds-label">--color-gold</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#B8962E</p>
+      </div>
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-gold-light);"></div>
+        <p class="ds-label">--color-gold-light</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#D4AE4A</p>
+      </div>
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-gold-pale);border:1px solid #e5e0d5;"></div>
+        <p class="ds-label">--color-gold-pale</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#F5EDD3</p>
+      </div>
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-navy);"></div>
+        <p class="ds-label">--color-navy</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#0D1B2A</p>
+      </div>
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-navy-mid);"></div>
+        <p class="ds-label">--color-navy-mid</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#1A2E40</p>
+      </div>
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-navy-dark);"></div>
+        <p class="ds-label">--color-navy-dark</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#060B14</p>
+      </div>
+    </div>
+
+    <!-- Surfaces -->
+    <p style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.06em;color:var(--color-ink-muted);margin-bottom:12px;">Superfícies & Texto</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px;">
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-surface);border:1px solid #e5e0d5;"></div>
+        <p class="ds-label">--color-surface</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#FFFFFF</p>
+      </div>
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-stone);border:1px solid #e5e0d5;"></div>
+        <p class="ds-label">--color-stone</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#F8F6F1</p>
+      </div>
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-stone-dark);border:1px solid #e5e0d5;"></div>
+        <p class="ds-label">--color-stone-dark</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#EDE9E0</p>
+      </div>
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-ink);"></div>
+        <p class="ds-label">--color-ink</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#0A0A0A</p>
+      </div>
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-ink-soft);"></div>
+        <p class="ds-label">--color-ink-soft</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#4A4540</p>
+      </div>
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-ink-muted);"></div>
+        <p class="ds-label">--color-ink-muted</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#9A9590</p>
+      </div>
+      <div>
+        <div class="ds-swatch-lg" style="background:var(--color-border);border:1px solid #ccc;"></div>
+        <p class="ds-label">--color-border</p>
+        <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">#E5E0D5</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── TIPOGRAFIA ─────────────────────── -->
+  <section class="ds-section" id="tipografia">
+    <p class="ds-section-title">Fundação</p>
+    <h2>Tipografia</h2>
+
+    <!-- Fontes -->
+    <div class="ds-token-row"><span class="ds-token-name">--font-sans</span><span class="ds-token-value">Plus Jakarta Sans, Arial, sans-serif</span></div>
+    <div class="ds-token-row" style="margin-bottom:32px;"><span class="ds-token-name">--font-mono</span><span class="ds-token-value">ui-monospace, SFMono-Regular, Menlo…</span></div>
+
+    <!-- Escala -->
+    <div class="ds-preview-block" style="background:#fff;">
+
+      <div style="margin-bottom:32px;">
+        <p class="ds-label" style="margin-bottom:8px;">.cv-h1 — 48px / weight 600 / leading 1.1 / tracking -0.04em</p>
+        <p class="cv-h1" style="color:var(--color-navy);">Headline principal</p>
+      </div>
+
+      <div style="margin-bottom:32px;">
+        <p class="ds-label" style="margin-bottom:8px;">.cv-h2 — 36px / weight 600 / leading 1.15 / tracking -0.03em</p>
+        <p class="cv-h2" style="color:var(--color-navy);">Título de seção</p>
+      </div>
+
+      <div style="margin-bottom:32px;">
+        <p class="ds-label" style="margin-bottom:8px;">.cv-h3 — 24px / weight 600 / leading 1.25 / tracking -0.02em</p>
+        <p class="cv-h3" style="color:var(--color-navy);">Subtítulo de card</p>
+      </div>
+
+      <div style="margin-bottom:32px;">
+        <p class="ds-label" style="margin-bottom:8px;">.cv-body — 16px / weight 400 / leading 1.5</p>
+        <p class="cv-body" style="color:var(--color-ink-soft);">O texto corrido do site usa Plus Jakarta Sans com tamanho mínimo de 16px para garantir legibilidade. Nunca abaixo de 16px para texto de leitura.</p>
+      </div>
+
+      <div style="margin-bottom:32px;">
+        <p class="ds-label" style="margin-bottom:8px;">.cv-body-sm — 14px / weight 400 / leading 1.5</p>
+        <p class="cv-body-sm" style="color:var(--color-ink-soft);">Texto secundário em cards, descrições e suportes visuais onde o contexto já garante legibilidade.</p>
+      </div>
+
+      <div>
+        <p class="ds-label" style="margin-bottom:8px;">.cv-eyebrow — ui-monospace / 12px / weight 600 / tracking +0.08em</p>
+        <span class="cv-eyebrow" style="color:var(--color-gold);">Rio de Janeiro · Mais de 10 anos</span>
+      </div>
+
+    </div>
+
+    <!-- Tokens de tracking -->
+    <div class="ds-token-row"><span class="ds-token-name">--tracking-h1</span><span class="ds-token-value">-0.04em</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">--tracking-h2</span><span class="ds-token-value">-0.03em</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">--tracking-h3</span><span class="ds-token-value">-0.02em</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">--tracking-body</span><span class="ds-token-value">0em</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">--tracking-eyebrow</span><span class="ds-token-value">+0.08em</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">--tracking-btn</span><span class="ds-token-value">+0.08em</span></div>
+    <div class="ds-token-row" style="border:none;"><span style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);font-style:italic;">Regra: texto em maiúsculas (text-transform:uppercase) está proibido — case-eyebrow, case-btn e case-heading são todos "none".</span></div>
+  </section>
+
+
+  <!-- ── ESPAÇAMENTO ────────────────────── -->
+  <section class="ds-section" id="espacamento">
+    <p class="ds-section-title">Fundação</p>
+    <h2>Espaçamento</h2>
+
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div class="ds-token-row"><span class="ds-token-name">--space-1</span><span class="ds-token-value">4px</span><div style="height:8px;width:4px;background:var(--color-gold);margin-left:auto;"></div></div>
+      <div class="ds-token-row"><span class="ds-token-name">--space-2</span><span class="ds-token-value">8px</span><div style="height:8px;width:8px;background:var(--color-gold);margin-left:auto;"></div></div>
+      <div class="ds-token-row"><span class="ds-token-name">--space-3</span><span class="ds-token-value">12px</span><div style="height:8px;width:12px;background:var(--color-gold);margin-left:auto;"></div></div>
+      <div class="ds-token-row"><span class="ds-token-name">--space-4</span><span class="ds-token-value">16px</span><div style="height:8px;width:16px;background:var(--color-gold);margin-left:auto;"></div></div>
+      <div class="ds-token-row"><span class="ds-token-name">--space-5</span><span class="ds-token-value">20px</span><div style="height:8px;width:20px;background:var(--color-gold);margin-left:auto;"></div></div>
+      <div class="ds-token-row"><span class="ds-token-name">--space-6</span><span class="ds-token-value">24px (1.5rem)</span><div style="height:8px;width:24px;background:var(--color-gold);margin-left:auto;"></div></div>
+      <div class="ds-token-row"><span class="ds-token-name">--space-8</span><span class="ds-token-value">32px (2rem)</span><div style="height:8px;width:32px;background:var(--color-gold);margin-left:auto;"></div></div>
+      <div class="ds-token-row"><span class="ds-token-name">--space-10</span><span class="ds-token-value">40px</span><div style="height:8px;width:40px;background:var(--color-gold);margin-left:auto;"></div></div>
+      <div class="ds-token-row"><span class="ds-token-name">--space-12</span><span class="ds-token-value">48px</span><div style="height:8px;width:48px;background:var(--color-gold);margin-left:auto;"></div></div>
+      <div class="ds-token-row"><span class="ds-token-name">--space-16</span><span class="ds-token-value">64px</span><div style="height:8px;width:64px;background:var(--color-gold);margin-left:auto;"></div></div>
+      <div class="ds-token-row"><span class="ds-token-name">--section-padx</span><span class="ds-token-value">clamp(1rem, 4vw, 1.5rem)</span></div>
+      <div class="ds-token-row"><span class="ds-token-name">--section-pady</span><span class="ds-token-value">80px</span></div>
+      <div class="ds-token-row"><span class="ds-token-name">--card-pad</span><span class="ds-token-value">1.5rem (24px)</span></div>
+    </div>
+  </section>
+
+
+  <!-- ── BORDAS & RAIO ──────────────────── -->
+  <section class="ds-section" id="bordas">
+    <p class="ds-section-title">Fundação</p>
+    <h2>Bordas & Raio de Borda</h2>
+
+    <div class="ds-row" style="align-items:flex-start;">
+      <div>
+        <div class="ds-radius-box" style="border-radius:var(--radius-none);">0px</div>
+        <p class="ds-label">--radius-card</p>
+        <p class="ds-label" style="color:var(--color-ink-muted);">--radius-input</p>
+      </div>
+      <div>
+        <div class="ds-radius-box" style="border-radius:var(--radius-sm);">2px</div>
+        <p class="ds-label">--radius-sm</p>
+      </div>
+      <div>
+        <div class="ds-radius-box" style="border-radius:var(--radius-btn);">8px</div>
+        <p class="ds-label">--radius-btn</p>
+        <p class="ds-label" style="color:var(--color-ink-muted);">.5rem</p>
+      </div>
+      <div>
+        <div class="ds-radius-box" style="border-radius:var(--radius-lg);">12px</div>
+        <p class="ds-label">--radius-lg</p>
+      </div>
+      <div>
+        <div class="ds-radius-box" style="border-radius:var(--radius-xl);">18px</div>
+        <p class="ds-label">--radius-xl</p>
+      </div>
+      <div>
+        <div class="ds-radius-box" style="border-radius:var(--radius-full);">9999px</div>
+        <p class="ds-label">--radius-full</p>
+        <p class="ds-label" style="color:var(--color-ink-muted);">pill</p>
+      </div>
+    </div>
+
+    <div class="ds-token-row" style="margin-top:16px;"><span class="ds-token-name">--hairline-width</span><span class="ds-token-value">1px</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">--hairline-color</span><span class="ds-token-value">var(--color-border)</span></div>
+  </section>
+
+
+  <!-- ── SOMBRAS ────────────────────────── -->
+  <section class="ds-section" id="sombras">
+    <p class="ds-section-title">Fundação</p>
+    <h2>Sombras</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div>
+        <div class="ds-shadow-box" style="box-shadow:var(--shadow-raised);">--shadow-raised</div>
+        <p class="ds-label" style="margin-top:8px;">Elevação padrão — cards em repouso</p>
+      </div>
+      <div>
+        <div class="ds-shadow-box" style="box-shadow:var(--shadow-floating);">--shadow-floating</div>
+        <p class="ds-label" style="margin-top:8px;">Hover de cards — webflow "sm"</p>
+      </div>
+      <div>
+        <div class="ds-shadow-box" style="box-shadow:var(--shadow-modal);">--shadow-modal</div>
+        <p class="ds-label" style="margin-top:8px;">Modais, overlays — webflow "md"</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── MOVIMENTO ──────────────────────── -->
+  <section class="ds-section" id="motion">
+    <p class="ds-section-title">Fundação</p>
+    <h2>Movimento</h2>
+
+    <div class="ds-token-row"><span class="ds-token-name">--duration-fast</span><span class="ds-token-value">200ms — micro-interações (hover, press)</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">--duration-normal</span><span class="ds-token-value">300ms — transições padrão</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">--duration-gentle</span><span class="ds-token-value">450ms — fade-up, expansões</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">--ease-out</span><span class="ds-token-value">cubic-bezier(0, 0, 0.2, 1)</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">--ease-inout</span><span class="ds-token-value">cubic-bezier(0.455, 0.03, 0.515, 0.955)</span></div>
+    <div class="ds-token-row" style="border:none;font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);font-style:italic;">Regra: prefers-reduced-motion aplicado globalmente — todas as animações colapsam para 0.01ms.</div>
+  </section>
+
+
+  <!-- ── BOTÕES ─────────────────────────── -->
+  <section class="ds-section" id="botoes">
+    <p class="ds-section-title">Componentes</p>
+    <h2>Botões</h2>
+
+    <p style="font-size:13px;color:var(--color-ink-soft);margin-bottom:24px;">Base: <code style="font-family:var(--font-mono);font-size:11px;background:var(--color-stone);padding:1px 6px;">.cv-btn</code> + modificador. Fonte ui-monospace, tracking +0.08em, border-radius 0.5rem, min-height 44px (WCAG).</p>
+
+    <div class="ds-preview-block" style="background:#fff;display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+      <button class="cv-btn cv-btn-primary">cv-btn-primary</button>
+      <button class="cv-btn cv-btn-gold">cv-btn-gold</button>
+      <button class="cv-btn cv-btn-navy">cv-btn-navy</button>
+      <button class="cv-btn cv-btn-ghost">cv-btn-ghost</button>
+    </div>
+
+    <div class="ds-preview-block dark" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+      <button class="cv-btn cv-btn-gold">cv-btn-gold</button>
+      <button class="cv-btn cv-btn-outline-gold">cv-btn-outline-gold</button>
+    </div>
+
+    <div class="ds-token-row" style="margin-top:16px;"><span class="ds-token-name">border-width</span><span class="ds-token-value">2px</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">padding</span><span class="ds-token-value">10px var(--space-6)</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">:active</span><span class="ds-token-value">transform: scale(0.98)</span></div>
+  </section>
+
+
+  <!-- ── CARDS ──────────────────────────── -->
+  <section class="ds-section" id="cards">
+    <p class="ds-section-title">Componentes</p>
+    <h2>Cards</h2>
+
+    <p style="font-size:13px;color:var(--color-ink-soft);margin-bottom:24px;">border-radius: 0 (flat) · border: 1px hairline · padding: 1.5rem. O hover eleva com <code style="font-family:var(--font-mono);font-size:11px;background:var(--color-stone);padding:1px 6px;">--shadow-floating</code> e translateY(-4px).</p>
+
+    <div class="ds-preview-block" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--color-border);padding:0;">
+
+      <div class="cv-card" style="padding:var(--card-pad);">
+        <div class="cv-card-icon" style="margin-bottom:16px;">
+          <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:none;stroke:var(--color-gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <p class="cv-h3" style="color:var(--color-navy);margin-bottom:8px;">Card padrão</p>
+        <p class="cv-body-sm" style="color:var(--color-ink-soft);">Base: .cv-card. Sem hover.</p>
+      </div>
+
+      <div class="cv-card cv-card-hover" style="padding:var(--card-pad);">
+        <div class="cv-card-icon" style="margin-bottom:16px;">
+          <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:none;stroke:var(--color-gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <p class="cv-h3" style="color:var(--color-navy);margin-bottom:8px;">Card com hover</p>
+        <p class="cv-body-sm" style="color:var(--color-ink-soft);">.cv-card + .cv-card-hover</p>
+      </div>
+
+      <div class="cv-card" style="padding:var(--card-pad);background:var(--color-navy);">
+        <div class="cv-card-icon" style="margin-bottom:16px;background:rgba(184,150,46,.12);">
+          <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:none;stroke:var(--color-gold-light);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
+        <p class="cv-h3" style="color:#fff;margin-bottom:8px;">Card escuro</p>
+        <p class="cv-body-sm" style="color:rgba(255,255,255,.55);">.cv-card + background navy</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── FORMULÁRIOS ────────────────────── -->
+  <section class="ds-section" id="forms">
+    <p class="ds-section-title">Componentes</p>
+    <h2>Formulários</h2>
+
+    <div class="ds-preview-block dark" style="max-width:420px;">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div>
+          <label class="cv-form-label">Label do campo</label>
+          <input type="text" placeholder="Placeholder de exemplo" class="cv-input">
+        </div>
+        <div>
+          <label class="cv-form-label">Select</label>
+          <select class="cv-input cv-select">
+            <option style="background:#0D1B2A;">Selecione uma opção</option>
+            <option style="background:#0D1B2A;">Opção A</option>
+            <option style="background:#0D1B2A;">Opção B</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-token-row" style="margin-top:16px;"><span class="ds-token-name">.cv-form-label</span><span class="ds-token-value">ui-monospace · 10px · tracking +0.08em · opacity-muted</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">.cv-input</span><span class="ds-token-value">border-radius: 0 · border: 1px gold/20% · focus: gold/60%</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">.cv-select</span><span class="ds-token-value">appearance: none · cursor: pointer</span></div>
+  </section>
+
+
+  <!-- ── NAVEGAÇÃO ──────────────────────── -->
+  <section class="ds-section" id="nav">
+    <p class="ds-section-title">Componentes</p>
+    <h2>Navegação</h2>
+
+    <div class="ds-preview-block" style="background:#fff;display:flex;gap:32px;align-items:center;">
+      <a href="#" class="cv-nav-link">Serviços</a>
+      <a href="#" class="cv-nav-link">Sobre</a>
+      <a href="#" class="cv-nav-link">Método</a>
+      <a href="#" class="cv-nav-link">Depoimentos</a>
+    </div>
+
+    <div class="ds-token-row" style="margin-top:16px;"><span class="ds-token-name">.cv-nav-link</span><span class="ds-token-value">14px · weight 500 · underline grow on hover</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">::after</span><span class="ds-token-value">width 0→100% · 300ms · ease-out · gold</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">.cv-footer-link</span><span class="ds-token-value">13px · rgba(white,.3) → gold-light on hover</span></div>
+  </section>
+
+
+  <!-- ── STAT CARDS ─────────────────────── -->
+  <section class="ds-section" id="stats">
+    <p class="ds-section-title">Componentes</p>
+    <h2>Stat Cards</h2>
+
+    <div class="ds-preview-block dark" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:400px;">
+      <div class="cv-stat-card">
+        <p class="cv-stat-value">10+</p>
+        <p class="cv-stat-label">Anos de mercado</p>
+      </div>
+      <div class="cv-stat-card">
+        <p class="cv-stat-value">RJ</p>
+        <p class="cv-stat-label">Rio de Janeiro</p>
+      </div>
+      <div class="cv-stat-card">
+        <p class="cv-stat-value">360°</p>
+        <p class="cv-stat-label">Visão de ciclo</p>
+      </div>
+    </div>
+
+    <div class="ds-token-row" style="margin-top:16px;"><span class="ds-token-name">.cv-stat-card</span><span class="ds-token-value">bg: gold/8% · border: gold/20%</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">.cv-stat-value</span><span class="ds-token-value">26px · weight 700 · tracking -0.04em · gold-light</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">.cv-stat-label</span><span class="ds-token-value">ui-monospace · 10px · tracking +0.06em · white/40%</span></div>
+  </section>
+
+
+  <!-- ── STEPS ──────────────────────────── -->
+  <section class="ds-section" id="steps">
+    <p class="ds-section-title">Componentes</p>
+    <h2>Step Numbers</h2>
+
+    <div class="ds-preview-block" style="display:flex;gap:24px;align-items:flex-start;">
+      <div style="text-align:center;">
+        <div class="cv-step-number">01</div>
+        <p class="cv-h3" style="color:var(--color-navy);margin-bottom:4px;">Diagnóstico</p>
+        <p class="cv-body-sm" style="color:var(--color-ink-soft);">Descrição da etapa</p>
+      </div>
+      <div style="text-align:center;">
+        <div class="cv-step-number">02</div>
+        <p class="cv-h3" style="color:var(--color-navy);margin-bottom:4px;">Mapeamento</p>
+        <p class="cv-body-sm" style="color:var(--color-ink-soft);">Descrição da etapa</p>
+      </div>
+      <div style="text-align:center;">
+        <div class="cv-step-number" style="background:rgba(184,150,46,0.15);color:var(--color-gold-light);">04</div>
+        <p class="cv-h3" style="color:var(--color-navy);margin-bottom:4px;">Legado (dark var.)</p>
+        <p class="cv-body-sm" style="color:var(--color-ink-soft);">Variante navy</p>
+      </div>
+    </div>
+
+    <div class="ds-token-row" style="margin-top:16px;"><span class="ds-token-name">.cv-step-number</span><span class="ds-token-value">52×52px · bg: gold · ui-monospace · 14px · bold</span></div>
+  </section>
+
+
+  <!-- ── LISTAS ─────────────────────────── -->
+  <section class="ds-section" id="listas">
+    <p class="ds-section-title">Componentes</p>
+    <h2>Listas</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+      <div>
+        <p class="ds-label" style="margin-bottom:12px;">.cv-check-list — fundo claro</p>
+        <div class="ds-preview-block" style="background:#fff;">
+          <ul class="cv-check-list">
+            <li>Análise de risco e valorização</li>
+            <li>Simulação financeira detalhada</li>
+            <li>Verificação de incorporadora</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <p class="ds-label" style="margin-bottom:12px;">.cv-check-list — fundo escuro (--check-color override)</p>
+        <div class="ds-preview-block dark">
+          <ul class="cv-check-list" style="--check-color:var(--color-gold-light);--check-text:rgba(255,255,255,.75);">
+            <li>Estratégia personalizada</li>
+            <li>Individual, grupo ou ao vivo</li>
+            <li>De poupador a investidor</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <p class="ds-label" style="margin-bottom:12px;">.cv-transform-list — ícone check</p>
+        <div class="ds-preview-block dark">
+          <ul class="cv-transform-list">
+            <li>Clareza total sobre o que faz sentido para o seu momento</li>
+            <li>Decisão tomada com segurança e base real</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <p class="ds-label" style="margin-bottom:12px;">.cv-transform-list — ícone X (--icon-color override)</p>
+        <div class="ds-preview-block dark">
+          <ul class="cv-transform-list" style="--icon-color:#f87171;">
+            <li>Paralisia por medo — não consegue dar o primeiro passo</li>
+            <li>Confusão com jargões técnicos do mercado</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── MARQUEE ────────────────────────── -->
+  <section class="ds-section" id="marquee">
+    <p class="ds-section-title">Componentes</p>
+    <h2>Marquee / Ticker</h2>
+
+    <div style="overflow:hidden;padding:14px 0;background:var(--color-navy);border:1px solid rgba(184,150,46,0.2);">
+      <div class="cv-marquee-track">
+        <div class="cv-marquee-block">
+          <span class="cv-marquee-item"><svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:currentColor;flex-shrink:0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Mais de 10 anos no mercado</span><span class="cv-marquee-sep">|</span>
+          <span class="cv-marquee-item">Lançamentos na planta</span><span class="cv-marquee-sep">|</span>
+          <span class="cv-marquee-item">Apartamentos prontos</span><span class="cv-marquee-sep">|</span>
+          <span class="cv-marquee-item">Consultoria individual e em grupo</span><span class="cv-marquee-sep">|</span>
+          <span class="cv-marquee-item">Rio de Janeiro</span><span class="cv-marquee-sep">|</span>
+        </div>
+        <div class="cv-marquee-block" aria-hidden="true">
+          <span class="cv-marquee-item">Mais de 10 anos no mercado</span><span class="cv-marquee-sep">|</span>
+          <span class="cv-marquee-item">Lançamentos na planta</span><span class="cv-marquee-sep">|</span>
+          <span class="cv-marquee-item">Apartamentos prontos</span><span class="cv-marquee-sep">|</span>
+          <span class="cv-marquee-item">Consultoria individual e em grupo</span><span class="cv-marquee-sep">|</span>
+          <span class="cv-marquee-item">Rio de Janeiro</span><span class="cv-marquee-sep">|</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-token-row" style="margin-top:16px;"><span class="ds-token-name">.cv-marquee-track</span><span class="ds-token-value">animation: cv-marquee 32s linear infinite · pausa on hover</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">.cv-marquee-item</span><span class="ds-token-value">ui-monospace · 11px · weight 600 · tracking +0.08em · gold-light</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">.cv-marquee-sep</span><span class="ds-token-value">color: gold/20%</span></div>
+  </section>
+
+
+  <!-- ── DIVISORES ──────────────────────── -->
+  <section class="ds-section" id="divisores">
+    <p class="ds-section-title">Componentes</p>
+    <h2>Divisores</h2>
+
+    <div class="ds-preview-block" style="background:#fff;display:flex;flex-direction:column;gap:24px;">
+      <div>
+        <p class="ds-label" style="margin-bottom:8px;">.cv-divider — alinhado à esquerda</p>
+        <div class="cv-divider"></div>
+      </div>
+      <div>
+        <p class="ds-label" style="margin-bottom:8px;">.cv-divider-center — centralizado</p>
+        <div class="cv-divider-center"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── ANIMAÇÕES ──────────────────────── -->
+  <section class="ds-section" id="animacoes">
+    <p class="ds-section-title">Componentes</p>
+    <h2>Animações</h2>
+
+    <div class="ds-preview-block" style="background:#fff;">
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <div class="cv-fade-up" style="--delay:0ms; background:var(--color-stone);border:1px solid var(--color-border);padding:16px 24px;">
+          <p class="cv-body-sm" style="color:var(--color-navy);">.cv-fade-up<br>delay: 0ms</p>
+        </div>
+        <div class="cv-fade-up" style="--delay:150ms; background:var(--color-stone);border:1px solid var(--color-border);padding:16px 24px;">
+          <p class="cv-body-sm" style="color:var(--color-navy);">.cv-fade-up<br>delay: 150ms</p>
+        </div>
+        <div class="cv-fade-up" style="--delay:300ms; background:var(--color-stone);border:1px solid var(--color-border);padding:16px 24px;">
+          <p class="cv-body-sm" style="color:var(--color-navy);">.cv-fade-up<br>delay: 300ms</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-token-row" style="margin-top:16px;"><span class="ds-token-name">.cv-fade-up</span><span class="ds-token-value">opacity 0→1 + translateY 20px→0 · 450ms ease-out · via --delay</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">@keyframes wf-bounce</span><span class="ds-token-value">translateY 0→5px→0 · 1.6s ease-in-out infinite · indicador scroll</span></div>
+    <div class="ds-token-row"><span class="ds-token-name">@keyframes cv-marquee</span><span class="ds-token-value">translateX 0→-50% · 32s linear infinite</span></div>
+
+    <p style="margin-top:24px;font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);font-style:italic;">prefers-reduced-motion: todas as animações colapsam para 0.01ms automaticamente via regra global no design-system.css.</p>
+  </section>
+
+
+  <!-- Footer da página DS -->
+  <div style="margin-top:80px;padding-top:24px;border-top:1px solid var(--color-border);display:flex;align-items:center;justify-content:space-between;">
+    <p style="font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);">Christian Vieira Design System · v1.0 · webflow-design.md tokens</p>
+    <a href="index.html" class="cv-btn cv-btn-navy" style="font-size:11px;padding:8px 16px;min-height:36px;">Ver o site →</a>
+  </div>
+
+</main>
+
+</body>
+</html>
