@@ -247,22 +247,11 @@ p, li, td, th { font-size: max(var(--text-body-size), 16px); }
 }
 
 .cv-btn-gold {
-  background: var(--color-gold);
-  color: #fff;
-  border-color: var(--color-gold);
-}
-.cv-btn-gold:hover {
-  background: var(--color-gold-light);
-  border-color: var(--color-gold-light);
-  box-shadow: 0 6px 24px rgba(184,150,46,.3);
-}
-
-/* WhatsApp buttons always green */
-a[href*="wa.me"].cv-btn-gold {
   background: #25D366;
+  color: #fff;
   border-color: #25D366;
 }
-a[href*="wa.me"].cv-btn-gold:hover {
+.cv-btn-gold:hover {
   background: #20c157;
   border-color: #20c157;
   box-shadow: 0 6px 24px rgba(37,211,102,.35);
