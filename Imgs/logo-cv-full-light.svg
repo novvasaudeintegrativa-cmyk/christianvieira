@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 140" fill="none">
+  <polyline points="128,48 150,18 172,48" stroke="#9A7630" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/>
+  <rect x="148.3" y="16.3" width="3.4" height="3.4" fill="#9A7630" transform="rotate(45 150 18)"/>
+  <line x1="138" y1="60" x2="162" y2="60" stroke="#9A7630" stroke-width="0.7" opacity="0.45"/>
+  <text x="150" y="82" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" font-size="13.5" font-weight="300" letter-spacing="7.5" fill="#0D1B2A">CHRISTIAN</text>
+  <text x="150" y="102" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" font-size="15.5" font-weight="600" letter-spacing="9.5" fill="#0D1B2A">VIEIRA</text>
+  <text x="150" y="124" text-anchor="middle" font-family="ui-monospace,'SFMono-Regular',Menlo,Monaco,Consolas,monospace" font-size="6.5" font-weight="400" letter-spacing="3.5" fill="#9A7630" opacity="0.75">CONSULTORIA IMOBILIÁRIA</text>
+</svg>
