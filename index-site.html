@@ -50,21 +50,45 @@
     .wa-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 24px;
       align-items: start;
     }
-    @media(max-width:1024px){ .wa-grid { grid-template-columns: repeat(2,1fr); } }
-    @media(max-width:560px) { .wa-grid { grid-template-columns: 1fr; max-width:320px; margin:0 auto; } }
+    @media(max-width:1024px){ .wa-grid { grid-template-columns: repeat(2,1fr); gap: 20px; } }
+    @media(max-width:560px) { .wa-grid { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; } }
     .wa-phone {
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+      box-shadow: 0 4px 6px rgba(0,0,0,.15), 0 8px 16px rgba(0,0,0,.2), 0 24px 60px rgba(0,0,0,.35), inset 0 0 0 1.5px rgba(255,255,255,.08);
       font-family: -apple-system, 'Segoe UI', sans-serif;
       display: flex; flex-direction: column;
-      height: 420px;
+      aspect-ratio: 9/19.5;
+      background: #000;
     }
-    .wa-header {
+    /* ── Status bar estilo iPhone ── */
+    .wa-statusbar {
       background: #075E54;
+      padding: 14px 20px 6px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .wa-statusbar-time { font-size: 12px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+    .wa-statusbar-icons { display: flex; align-items: center; gap: 5px; }
+    .wa-statusbar-icons svg { width: 14px; height: 14px; fill: #fff; }
+    .wa-battery-icon { display: flex; align-items: center; gap: 2px; }
+    .wa-battery-body {
+      width: 22px; height: 11px; border: 1.5px solid #fff; border-radius: 3px; position: relative;
+      display: flex; align-items: center; padding: 1.5px;
+    }
+    .wa-battery-body::after { content:''; width: 2px; height: 5px; background: #fff; position: absolute; right: -4px; top: 50%; transform: translateY(-50%); border-radius: 0 1px 1px 0; }
+    .wa-battery-fill { background: #fff; height: 100%; width: 75%; border-radius: 1px; }
+    /* ── Dynamic Island ── */
+    .wa-dynamic-island {
+      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      width: 90px; height: 28px; background: #000; border-radius: 20px; z-index: 10;
+    }
+    .wa-statusbar-wrap { position: relative; flex-shrink: 0; }
+    .wa-header {
+      background: #128C7E;
       padding: 10px 14px;
       display: flex; align-items: center; gap: 10px;
       flex-shrink: 0;
@@ -137,6 +161,17 @@
       flex-shrink: 0;
     }
     .wa-mic svg { width: 16px; height: 16px; fill: #fff; }
+    /* ── Home indicator ── */
+    .wa-home-bar {
+      background: #F0F0F0;
+      padding: 6px 0 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .wa-home-bar span {
+      display: block; width: 100px; height: 4px;
+      background: #333; border-radius: 4px; opacity: 0.25;
+    }
   </style>
 </head>
 <body>
@@ -736,9 +771,17 @@
 
       <!-- Thiago M. -->
       <div class="wa-phone">
+        <div class="wa-statusbar">
+          <span class="wa-statusbar-time">14:28</span>
+          <div class="wa-statusbar-icons">
+            <svg viewBox="0 0 17 12" width="17" height="12" fill="white"><rect x="0" y="9" width="3" height="3" rx="0.5"/><rect x="4.5" y="6" width="3" height="6" rx="0.5"/><rect x="9" y="3" width="3" height="9" rx="0.5"/><rect x="13.5" y="0" width="3" height="12" rx="0.5"/></svg>
+            <svg viewBox="0 0 16 12" width="16" height="12" fill="white"><path d="M8 9a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm0-3c-1.5 0-2.8.6-3.7 1.5l1.1 1.1C6.1 8 7 7.5 8 7.5S9.9 8 10.6 8.6l1.1-1.1C10.8 6.6 9.5 6 8 6zm0-3C5.4 3 3.1 4 1.5 5.8l1.1 1.1C4 5.4 5.9 4.5 8 4.5S12 5.4 13.4 6.9l1.1-1.1C12.9 4 10.6 3 8 3z"/></svg>
+            <div class="wa-battery-icon"><div class="wa-battery-body"><div class="wa-battery-fill"></div></div></div>
+          </div>
+        </div>
         <div class="wa-header">
           <span class="wa-back">‹</span>
-          <div class="wa-av">TM</div>
+          <div class="wa-av"><img src="Imgs/testimonial-thiago.png" alt="Thiago M." style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
           <div class="wa-ct">
             <div class="wa-ct-name">Thiago M.</div>
             <div class="wa-ct-status">online</div>
@@ -764,13 +807,22 @@
           <div class="wa-inp-f">Mensagem</div>
           <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
+        <div class="wa-home-bar"><span></span></div>
       </div>
 
       <!-- Fernanda C. -->
       <div class="wa-phone">
+        <div class="wa-statusbar">
+          <span class="wa-statusbar-time">09:10</span>
+          <div class="wa-statusbar-icons">
+            <svg viewBox="0 0 17 12" width="17" height="12" fill="white"><rect x="0" y="9" width="3" height="3" rx="0.5"/><rect x="4.5" y="6" width="3" height="6" rx="0.5"/><rect x="9" y="3" width="3" height="9" rx="0.5"/><rect x="13.5" y="0" width="3" height="12" rx="0.5"/></svg>
+            <svg viewBox="0 0 16 12" width="16" height="12" fill="white"><path d="M8 9a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm0-3c-1.5 0-2.8.6-3.7 1.5l1.1 1.1C6.1 8 7 7.5 8 7.5S9.9 8 10.6 8.6l1.1-1.1C10.8 6.6 9.5 6 8 6zm0-3C5.4 3 3.1 4 1.5 5.8l1.1 1.1C4 5.4 5.9 4.5 8 4.5S12 5.4 13.4 6.9l1.1-1.1C12.9 4 10.6 3 8 3z"/></svg>
+            <div class="wa-battery-icon"><div class="wa-battery-body"><div class="wa-battery-fill"></div></div></div>
+          </div>
+        </div>
         <div class="wa-header">
           <span class="wa-back">‹</span>
-          <div class="wa-av" style="background:#8e44ad;">FC</div>
+          <div class="wa-av"><img src="Imgs/testimonial-fernanda.png" alt="Fernanda C." style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
           <div class="wa-ct">
             <div class="wa-ct-name">Fernanda C.</div>
             <div class="wa-ct-status">Investidora · Ipanema</div>
@@ -796,13 +848,22 @@
           <div class="wa-inp-f">Mensagem</div>
           <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
+        <div class="wa-home-bar"><span></span></div>
       </div>
 
       <!-- Ricardo A. -->
       <div class="wa-phone">
+        <div class="wa-statusbar">
+          <span class="wa-statusbar-time">18:38</span>
+          <div class="wa-statusbar-icons">
+            <svg viewBox="0 0 17 12" width="17" height="12" fill="white"><rect x="0" y="9" width="3" height="3" rx="0.5"/><rect x="4.5" y="6" width="3" height="6" rx="0.5"/><rect x="9" y="3" width="3" height="9" rx="0.5"/><rect x="13.5" y="0" width="3" height="12" rx="0.5"/></svg>
+            <svg viewBox="0 0 16 12" width="16" height="12" fill="white"><path d="M8 9a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm0-3c-1.5 0-2.8.6-3.7 1.5l1.1 1.1C6.1 8 7 7.5 8 7.5S9.9 8 10.6 8.6l1.1-1.1C10.8 6.6 9.5 6 8 6zm0-3C5.4 3 3.1 4 1.5 5.8l1.1 1.1C4 5.4 5.9 4.5 8 4.5S12 5.4 13.4 6.9l1.1-1.1C12.9 4 10.6 3 8 3z"/></svg>
+            <div class="wa-battery-icon"><div class="wa-battery-body"><div class="wa-battery-fill"></div></div></div>
+          </div>
+        </div>
         <div class="wa-header">
           <span class="wa-back">‹</span>
-          <div class="wa-av" style="background:#e67e22;">RA</div>
+          <div class="wa-av"><img src="Imgs/testimonial-ricardo.png" alt="Ricardo A." style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
           <div class="wa-ct">
             <div class="wa-ct-name">Ricardo A.</div>
             <div class="wa-ct-status">Consultoria · RJ</div>
@@ -828,13 +889,22 @@
           <div class="wa-inp-f">Mensagem</div>
           <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
+        <div class="wa-home-bar"><span></span></div>
       </div>
 
       <!-- Ana Paula S. -->
       <div class="wa-phone">
+        <div class="wa-statusbar">
+          <span class="wa-statusbar-time">11:05</span>
+          <div class="wa-statusbar-icons">
+            <svg viewBox="0 0 17 12" width="17" height="12" fill="white"><rect x="0" y="9" width="3" height="3" rx="0.5"/><rect x="4.5" y="6" width="3" height="6" rx="0.5"/><rect x="9" y="3" width="3" height="9" rx="0.5"/><rect x="13.5" y="0" width="3" height="12" rx="0.5"/></svg>
+            <svg viewBox="0 0 16 12" width="16" height="12" fill="white"><path d="M8 9a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm0-3c-1.5 0-2.8.6-3.7 1.5l1.1 1.1C6.1 8 7 7.5 8 7.5S9.9 8 10.6 8.6l1.1-1.1C10.8 6.6 9.5 6 8 6zm0-3C5.4 3 3.1 4 1.5 5.8l1.1 1.1C4 5.4 5.9 4.5 8 4.5S12 5.4 13.4 6.9l1.1-1.1C12.9 4 10.6 3 8 3z"/></svg>
+            <div class="wa-battery-icon"><div class="wa-battery-body"><div class="wa-battery-fill"></div></div></div>
+          </div>
+        </div>
         <div class="wa-header">
           <span class="wa-back">‹</span>
-          <div class="wa-av" style="background:#c0392b;">AP</div>
+          <div class="wa-av"><img src="Imgs/testimonial-anapaula.png" alt="Ana Paula S." style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
           <div class="wa-ct">
             <div class="wa-ct-name">Ana Paula S.</div>
             <div class="wa-ct-status">online</div>
@@ -860,6 +930,7 @@
           <div class="wa-inp-f">Mensagem</div>
           <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
+        <div class="wa-home-bar"><span></span></div>
       </div>
 
     </div>
