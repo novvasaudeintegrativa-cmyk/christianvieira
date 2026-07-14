@@ -666,7 +666,12 @@
   <div class="max-w-7xl mx-auto">
 
     <div class="section-hdr text-center">
-      <p class="cv-eyebrow eyebrow-gold">Consultoria</p>
+      <!-- Destaque "CONSULTORIA" estilo hero -->
+      <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom: var(--space-5);">
+        <span style="display:block; width:40px; height:1px; background:var(--color-gold); opacity:.6;"></span>
+        <span style="font-family:var(--font-mono); font-size:clamp(13px,1.5vw,16px); font-weight:700; letter-spacing:0.35em; color:var(--color-gold-light); text-transform:uppercase;">Consultoria</span>
+        <span style="display:block; width:40px; height:1px; background:var(--color-gold); opacity:.6;"></span>
+      </div>
       <h2 class="cv-h2 h2-white">Os detalhes que a maioria dos compradores<br>descobre tarde demais</h2>
       <p class="cv-body body-white-60" style="max-width:600px;margin:0 auto;">Mais de 90% das pessoas que compram um imóvel nunca receberam orientação sobre esses três pontos — e pagam caro por isso.</p>
     </div>
@@ -674,61 +679,57 @@
     <div class="grid grid-cols-1 md:grid-cols-3" style="gap: var(--space-8); margin-top: var(--space-10);">
 
       <!-- Taxas Cartorárias -->
-      <div class="cv-card cv-card--dark" style="border-top: 3px solid var(--color-gold);">
-        <div class="cv-card-icon cv-card-icon--strong" style="margin-bottom:var(--space-5);">
-          <svg class="icon-card icon-stroke stroke-gold-light" viewBox="0 0 24 24" fill="none">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
-          </svg>
+      <div class="cv-card cv-card--dark" style="padding:0; overflow:hidden; border-top: 3px solid var(--color-gold);">
+        <div style="height:200px; overflow:hidden; position:relative;">
+          <img src="Imgs/consult-cartorio.png" alt="Taxas Cartorárias" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div style="position:absolute;inset:0; background:linear-gradient(to bottom, transparent 50%, rgba(10,20,35,0.85) 100%);"></div>
         </div>
-        <h3 class="cv-h3 h3-white" style="margin-bottom:var(--space-3);">Taxas Cartorárias</h3>
-        <p class="cv-body-sm body-white-60" style="margin-bottom:var(--space-5);">As taxas de cartório podem representar entre 4% e 6% do valor do imóvel — um custo que muitos compradores descobrem apenas na hora de assinar.</p>
-        <ul class="cv-check-list checklist--dark">
-          <li>ITBI: de 2% a 3% sobre o valor do imóvel</li>
-          <li>Escritura pública e reconhecimento de firma</li>
-          <li>Registro do imóvel no cartório competente</li>
-          <li>Cálculo antecipado para evitar surpresas</li>
-        </ul>
+        <div style="padding: var(--card-pad);">
+          <h3 class="cv-h3 h3-white" style="margin-bottom:var(--space-3);">Taxas Cartorárias</h3>
+          <p class="cv-body-sm body-white-60" style="margin-bottom:var(--space-5);">As taxas de cartório podem representar entre 4% e 6% do valor do imóvel — um custo que muitos compradores descobrem apenas na hora de assinar.</p>
+          <ul class="cv-check-list checklist--dark">
+            <li>ITBI: de 2% a 3% sobre o valor do imóvel</li>
+            <li>Escritura pública e reconhecimento de firma</li>
+            <li>Registro do imóvel no cartório competente</li>
+            <li>Cálculo antecipado para evitar surpresas</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Planejar Financiamento -->
-      <div class="cv-card cv-card--dark" style="border-top: 3px solid var(--color-gold);">
-        <div class="cv-card-icon cv-card-icon--strong" style="margin-bottom:var(--space-5);">
-          <svg class="icon-card icon-stroke stroke-gold-light" viewBox="0 0 24 24" fill="none">
-            <rect x="2" y="3" width="20" height="18" rx="2"/>
-            <line x1="8" y1="3" x2="8" y2="21"/>
-            <path d="M12 7h4M12 11h4M12 15h4M5 7h1M5 11h1M5 15h1"/>
-          </svg>
+      <div class="cv-card cv-card--dark" style="padding:0; overflow:hidden; border-top: 3px solid var(--color-gold);">
+        <div style="height:200px; overflow:hidden; position:relative;">
+          <img src="Imgs/consult-financiamento.png" alt="Planejar Financiamento" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div style="position:absolute;inset:0; background:linear-gradient(to bottom, transparent 50%, rgba(10,20,35,0.85) 100%);"></div>
         </div>
-        <h3 class="cv-h3 h3-white" style="margin-bottom:var(--space-3);">Planejar Financiamento</h3>
-        <p class="cv-body-sm body-white-60" style="margin-bottom:var(--space-5);">Escolher o banco errado pode custar dezenas de milhares de reais a mais ao longo do contrato. Entender CET, taxas e FGTS faz toda a diferença.</p>
-        <ul class="cv-check-list checklist--dark">
-          <li>Comparativo entre bancos: Caixa, Bradesco, Itaú</li>
-          <li>Uso estratégico do FGTS na entrada</li>
-          <li>SAC ou Price: qual tabela é melhor para você?</li>
-          <li>Como preparar o dossiê de crédito</li>
-        </ul>
+        <div style="padding: var(--card-pad);">
+          <h3 class="cv-h3 h3-white" style="margin-bottom:var(--space-3);">Planejar Financiamento</h3>
+          <p class="cv-body-sm body-white-60" style="margin-bottom:var(--space-5);">Escolher o banco errado pode custar dezenas de milhares de reais a mais ao longo do contrato. Entender CET, taxas e FGTS faz toda a diferença.</p>
+          <ul class="cv-check-list checklist--dark">
+            <li>Comparativo entre bancos: Caixa, Bradesco, Itaú</li>
+            <li>Uso estratégico do FGTS na entrada</li>
+            <li>SAC ou Price: qual tabela é melhor para você?</li>
+            <li>Como preparar o dossiê de crédito</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Amortização -->
-      <div class="cv-card cv-card--dark" style="border-top: 3px solid var(--color-gold);">
-        <div class="cv-card-icon cv-card-icon--strong" style="margin-bottom:var(--space-5);">
-          <svg class="icon-card icon-stroke stroke-gold-light" viewBox="0 0 24 24" fill="none">
-            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-            <polyline points="16 7 22 7 22 13"/>
-          </svg>
+      <div class="cv-card cv-card--dark" style="padding:0; overflow:hidden; border-top: 3px solid var(--color-gold);">
+        <div style="height:200px; overflow:hidden; position:relative;">
+          <img src="Imgs/consult-amortizacao.png" alt="Amortização de Parcelas" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div style="position:absolute;inset:0; background:linear-gradient(to bottom, transparent 50%, rgba(10,20,35,0.85) 100%);"></div>
         </div>
-        <h3 class="cv-h3 h3-white" style="margin-bottom:var(--space-3);">Amortização de Parcelas</h3>
-        <p class="cv-body-sm body-white-60" style="margin-bottom:var(--space-5);">A estratégia certa de amortização pode eliminar anos de dívida. Poucos sabem exatamente quando e como usar o FGTS para pagar menos juros.</p>
-        <ul class="cv-check-list checklist--dark">
-          <li>Amortizar prazo ou reduzir parcela mensal?</li>
-          <li>Quando usar FGTS para amortizar e quanto economizar</li>
-          <li>Impacto da Selic nas prestações variáveis</li>
-          <li>Simulação personalizada de quitação antecipada</li>
-        </ul>
+        <div style="padding: var(--card-pad);">
+          <h3 class="cv-h3 h3-white" style="margin-bottom:var(--space-3);">Amortização de Parcelas</h3>
+          <p class="cv-body-sm body-white-60" style="margin-bottom:var(--space-5);">A estratégia certa de amortização pode eliminar anos de dívida. Poucos sabem exatamente quando e como usar o FGTS para pagar menos juros.</p>
+          <ul class="cv-check-list checklist--dark">
+            <li>Amortizar prazo ou reduzir parcela mensal?</li>
+            <li>Quando usar FGTS para amortizar e quanto economizar</li>
+            <li>Impacto da Selic nas prestações variáveis</li>
+            <li>Simulação personalizada de quitação antecipada</li>
+          </ul>
+        </div>
       </div>
 
     </div>
