@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * generate-post.js
  *
@@ -247,7 +247,7 @@ function renderHTML(post, content, schedule) {
 <nav id="navbar" class="sticky top-0 z-50">
   <div class="nav-inner max-w-7xl mx-auto h-16 flex items-center justify-between gap-4">
     <a href="../../index.html" class="flex items-center gap-3 shrink-0">
-      <div class="nav-logo-badge w-9 h-9 flex items-center justify-center" style="background:transparent;"><svg viewBox="0 0 36 36" fill="none" width="28" height="28"><polyline points="10,27 18,9 26,27" stroke="#C5973E" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/><rect x="16.75" y="7.75" width="2.5" height="2.5" fill="#C5973E" transform="rotate(45 18 9)"/></svg></div>
+      <div class="nav-logo-badge w-9 h-9 flex items-center justify-center" style="background:transparent;"><svg viewBox="0 0 36 36" fill="none" width="36" height="36"><polyline points="6,30 18,5 30,30" stroke="#C5973E" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter"/><rect x="16.55" y="3.55" width="2.9" height="2.9" fill="#C5973E" transform="rotate(45 18 5)"/></svg></div>
       <div><p class="nav-logo-name">Christian Vieira</p><p class="nav-logo-sub">Imóveis &amp; Consultoria</p><p class="nav-logo-creci">CRECI 45539</p></div>
     </a>
     <div class="hidden lg:flex items-center gap-7">
