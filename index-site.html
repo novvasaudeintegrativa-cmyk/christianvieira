@@ -45,6 +45,99 @@
       }
     }
   </script>
+  <style>
+    /* ── WhatsApp Depoimentos ── */
+    .wa-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+    @media(max-width:1024px){ .wa-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:560px) { .wa-grid { grid-template-columns: 1fr; max-width:320px; margin:0 auto; } }
+    .wa-phone {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+      font-family: -apple-system, 'Segoe UI', sans-serif;
+      display: flex; flex-direction: column;
+      height: 420px;
+    }
+    .wa-header {
+      background: #075E54;
+      padding: 10px 14px;
+      display: flex; align-items: center; gap: 10px;
+      flex-shrink: 0;
+    }
+    .wa-back { color: rgba(255,255,255,.8); font-size: 18px; margin-right: -4px; }
+    .wa-av {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .wa-ct { flex: 1; min-width: 0; }
+    .wa-ct-name { font-size: 13px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .wa-ct-status { font-size: 11px; color: rgba(255,255,255,.7); }
+    .wa-ic { color: rgba(255,255,255,.8); }
+    .wa-ic svg { width: 18px; height: 18px; }
+    .wa-body {
+      background: #E5DDD5;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c5bdb5' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+      padding: 10px 10px 6px;
+      display: flex; flex-direction: column; gap: 6px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .wa-sep {
+      text-align: center;
+      font-size: 11px; color: #667781;
+      background: rgba(255,255,255,.65);
+      padding: 2px 10px; border-radius: 8px;
+      align-self: center; margin: 4px 0;
+    }
+    .wa-bub {
+      max-width: 84%;
+      padding: 7px 10px 20px;
+      border-radius: 8px;
+      font-size: 13px; line-height: 1.45; color: #111;
+      position: relative; word-break: break-word;
+    }
+    .wa-bub-r {
+      background: #fff; align-self: flex-start;
+      border-top-left-radius: 0;
+      margin-left: 4px;
+    }
+    .wa-bub-s {
+      background: #DCF8C6; align-self: flex-end;
+      border-top-right-radius: 0;
+      margin-right: 4px;
+    }
+    .wa-t {
+      position: absolute; bottom: 4px; right: 8px;
+      font-size: 10px; color: #667781;
+      display: flex; align-items: center; gap: 3px;
+    }
+    .wa-bub-s .wa-t { color: #4a9fd4; }
+    .wa-inp {
+      background: #F0F0F0;
+      padding: 8px 10px;
+      display: flex; align-items: center; gap: 8px;
+      flex-shrink: 0;
+    }
+    .wa-inp-f {
+      flex: 1; background: #fff;
+      border-radius: 20px; padding: 7px 14px;
+      font-size: 13px; color: #999;
+    }
+    .wa-mic {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .wa-mic svg { width: 16px; height: 16px; fill: #fff; }
+  </style>
 </head>
 <body>
 
@@ -639,53 +732,133 @@
       <h2 class="cv-h2 h2-navy">O que dizem quem já<br>percorreu esse caminho</h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 grid-hairline-plain">
+    <div class="wa-grid">
 
-      <div class="cv-card quote-card">
-        <p class="quote-mark quote-mark--light">"</p>
-        <p class="quote-text quote-text--light">Tinha medo de comprar na planta depois de ver casos de construtoras atrasando. O Christian me mostrou exatamente o que analisar. Comprei na Barra, entregou no prazo e valorizou bastante antes mesmo de ficar pronto.</p>
-        <div class="quote-author-row quote-author-row--light">
-          <div class="quote-avatar quote-avatar--light">TM</div>
-          <div>
-            <p class="quote-author-name quote-author-name--light">Thiago M.</p>
-            <p class="quote-author-role quote-author-role--light">Investidor · Barra da Tijuca</p>
+      <!-- Thiago M. -->
+      <div class="wa-phone">
+        <div class="wa-header">
+          <span class="wa-back">‹</span>
+          <div class="wa-av">TM</div>
+          <div class="wa-ct">
+            <div class="wa-ct-name">Thiago M.</div>
+            <div class="wa-ct-status">online</div>
           </div>
+          <div class="wa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-sep">Hoje</div>
+          <div class="wa-bub wa-bub-s">
+            Thiago! Como foi a entrega do apartamento na Barra? 😊
+            <div class="wa-t">14:28 ✓✓</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Tinha medo de comprar na planta depois de ver casos de construtoras atrasando. O Christian me mostrou exatamente o que analisar. 😮
+            <div class="wa-t">14:32</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Entregou no prazo e valorizou bastante antes mesmo de ficar pronto. Exatamente o que eu precisava! 🏆
+            <div class="wa-t">14:33</div>
+          </div>
+        </div>
+        <div class="wa-inp">
+          <div class="wa-inp-f">Mensagem</div>
+          <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
       </div>
 
-      <div class="cv-card quote-card">
-        <p class="quote-mark quote-mark--light">"</p>
-        <p class="quote-text quote-text--light">Já tinha um imóvel mas queria aumentar o portfólio. O Christian montou uma estratégia para os próximos anos. A sensação de ter um caminho claro faz toda a diferença — parei de tomar decisões por impulso.</p>
-        <div class="quote-author-row quote-author-row--light">
-          <div class="quote-avatar quote-avatar--light">FC</div>
-          <div>
-            <p class="quote-author-name quote-author-name--light">Fernanda C.</p>
-            <p class="quote-author-role quote-author-role--light">Investidora · Ipanema</p>
+      <!-- Fernanda C. -->
+      <div class="wa-phone">
+        <div class="wa-header">
+          <span class="wa-back">‹</span>
+          <div class="wa-av" style="background:#8e44ad;">FC</div>
+          <div class="wa-ct">
+            <div class="wa-ct-name">Fernanda C.</div>
+            <div class="wa-ct-status">Investidora · Ipanema</div>
           </div>
+          <div class="wa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-sep">Hoje</div>
+          <div class="wa-bub wa-bub-s">
+            Fernanda, como está a estratégia de portfólio? 📊
+            <div class="wa-t">09:10 ✓✓</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Já tinha um imóvel mas queria aumentar o portfólio. O Christian montou uma estratégia para os próximos anos. 🙌
+            <div class="wa-t">09:14</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            A sensação de ter um caminho claro faz toda a diferença — parei de tomar decisões por impulso!
+            <div class="wa-t">09:17</div>
+          </div>
+        </div>
+        <div class="wa-inp">
+          <div class="wa-inp-f">Mensagem</div>
+          <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
       </div>
 
-      <div class="cv-card quote-card--dark">
-        <p class="quote-mark quote-mark--dark">"</p>
-        <p class="quote-text quote-text--dark">Tentei comprar um imóvel sozinho anos atrás e me dei mal. Passei três anos com esse trauma. O Christian foi o primeiro que não tentou me empurrar nada — me ajudou a entender o mercado. Durmo com paz.</p>
-        <div class="quote-author-row quote-author-row--dark">
-          <div class="quote-avatar quote-avatar--dark">RA</div>
-          <div>
-            <p class="quote-author-name quote-author-name--dark">Ricardo A.</p>
-            <p class="quote-author-role quote-author-role--dark">Consultoria individual · RJ</p>
+      <!-- Ricardo A. -->
+      <div class="wa-phone">
+        <div class="wa-header">
+          <span class="wa-back">‹</span>
+          <div class="wa-av" style="background:#e67e22;">RA</div>
+          <div class="wa-ct">
+            <div class="wa-ct-name">Ricardo A.</div>
+            <div class="wa-ct-status">Consultoria · RJ</div>
           </div>
+          <div class="wa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-sep">Hoje</div>
+          <div class="wa-bub wa-bub-s">
+            Ricardo! Dormindo com paz agora? 😄
+            <div class="wa-t">18:38 ✓✓</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Tentei comprar um imóvel sozinho anos atrás e me dei mal. Passei três anos com esse trauma. 😔
+            <div class="wa-t">18:41</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            O Christian foi o primeiro que não tentou me empurrar nada — me ajudou a entender o mercado. Durmo com paz. ✌️
+            <div class="wa-t">18:45</div>
+          </div>
+        </div>
+        <div class="wa-inp">
+          <div class="wa-inp-f">Mensagem</div>
+          <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
       </div>
 
-      <div class="cv-card quote-card">
-        <p class="quote-mark quote-mark--light">"</p>
-        <p class="quote-text quote-text--light">Nunca imaginei que poderia usar o FGTS como entrada. O Christian me explicou tudo com uma paciência incrível. Minha filha hoje mora no apartamento que achávamos impossível. A conquista foi nossa — mas o caminho foi dele.</p>
-        <div class="quote-author-row quote-author-row--light">
-          <div class="quote-avatar quote-avatar--light">AP</div>
-          <div>
-            <p class="quote-author-name quote-author-name--light">Ana Paula S.</p>
-            <p class="quote-author-role quote-author-role--light">Primeiro imóvel · Zona Norte</p>
+      <!-- Ana Paula S. -->
+      <div class="wa-phone">
+        <div class="wa-header">
+          <span class="wa-back">‹</span>
+          <div class="wa-av" style="background:#c0392b;">AP</div>
+          <div class="wa-ct">
+            <div class="wa-ct-name">Ana Paula S.</div>
+            <div class="wa-ct-status">online</div>
           </div>
+          <div class="wa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-sep">Hoje</div>
+          <div class="wa-bub wa-bub-s">
+            Ana Paula! Sua filha já está no apartamento novo? 🏠
+            <div class="wa-t">11:05 ✓✓</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Nunca imaginei que poderia usar o FGTS como entrada. O Christian explicou tudo com uma paciência incrível! 🙏
+            <div class="wa-t">11:12</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Minha filha hoje mora no apartamento que achávamos impossível. A conquista foi nossa — mas o caminho foi dele! 💚
+            <div class="wa-t">11:20</div>
+          </div>
+        </div>
+        <div class="wa-inp">
+          <div class="wa-inp-f">Mensagem</div>
+          <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
       </div>
 
