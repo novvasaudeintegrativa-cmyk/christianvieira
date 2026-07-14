@@ -9,7 +9,6 @@ node_modules/
 .codex/
 .cursor/
 .gemini/
-.github/
 *.log
 .DS_Store
 Thumbs.db

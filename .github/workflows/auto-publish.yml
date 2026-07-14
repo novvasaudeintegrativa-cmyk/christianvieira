@@ -1,0 +1,63 @@
+name: Auto-publicar post do blog
+
+on:
+  # Toda terça às 11:00 UTC (08:00 BRT) — garante publicação no horário do calendário
+  schedule:
+    - cron: '0 11 * * 2'
+
+  # Disparo manual pela aba "Actions" do GitHub (útil para publicar posts atrasados)
+  workflow_dispatch:
+    inputs:
+      post_num:
+        description: 'Número do post para forçar (ex: 3). Deixe vazio para o próximo pendente.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write  # necessário para commit + push
+
+jobs:
+  gerar-e-publicar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+        with:
+          # token com permissão de write para poder fazer push
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configurar Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Gerar post
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -n "${{ github.event.inputs.post_num }}" ]; then
+            node scripts/generate-post.js --num=${{ github.event.inputs.post_num }}
+          else
+            node scripts/generate-post.js
+          fi
+
+      - name: Commit e push (se houver novos arquivos)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog/posts/ blog/images/
+          if git diff --staged --quiet; then
+            echo "Nenhum arquivo novo — post já existia ou nenhum estava pendente."
+          else
+            POST_TITLE=$(node -e "
+              const s = require('./blog/posts-schedule.json');
+              const today = new Date(); today.setHours(23,59,59,0);
+              const post = s.posts
+                .filter(p => new Date(p.date+'T00:00:00') <= today)
+                .sort((a,b) => new Date(b.date)-new Date(a.date))[0];
+              console.log(post ? post.title : 'post');
+            ")
+            git commit -m "post: $(date +%Y-%m-%d) — $POST_TITLE"
+            git push
+          fi
