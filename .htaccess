@@ -1,0 +1,11 @@
+# Desabilita cache para arquivos HTML — garante que o blog sempre sirva versão atualizada
+<FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</FilesMatch>
+
+# Cache longo para assets estáticos (imagens, CSS, JS)
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|css|js|woff2|woff|ttf)$">
+    Header set Cache-Control "public, max-age=2592000"
+</FilesMatch>
