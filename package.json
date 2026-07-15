@@ -1,0 +1,11 @@
+{
+  "name": "christianvieira-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "instagram": "node scripts/generate-instagram-content.js"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
+}

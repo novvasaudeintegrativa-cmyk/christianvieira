@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christian Vieira — Imóveis & Consultoria</title>
+  <meta name="description" content="Corretor de imóveis no Rio de Janeiro. Site em breve.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0D1B2A;
+      --gold: #B8962E;
+      --green: #25D366;
+      --green-dark: #20c157;
+      --white: #ffffff;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--navy);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Glow de fundo */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(37,211,102,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      width: 56px;
+      height: 56px;
+      background: var(--green);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin: 0 auto 24px;
+    }
+
+    .name {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .sub {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--green);
+      margin: 0 auto 40px;
+      border-radius: 2px;
+    }
+
+    .message {
+      font-size: clamp(15px, 2.5vw, 18px);
+      line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      max-width: 480px;
+      margin-bottom: 48px;
+    }
+
+    .message strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cta:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+    .cta svg { flex-shrink: 0; }
+
+    .creci {
+      margin-top: 48px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="badge" style="background:transparent;"><svg viewBox="0 0 36 36" fill="none" width="36" height="36"><polyline points="6,30 18,5 30,30" stroke="#C5973E" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter"/><rect x="16.55" y="3.55" width="2.9" height="2.9" fill="#C5973E" transform="rotate(45 18 5)"/></svg></div>
+
+  <h1 class="name">Christian Vieira</h1>
+  <p class="sub">Imóveis &amp; Consultoria · Rio de Janeiro</p>
+
+  <div class="divider"></div>
+
+  <p class="message">
+    Nosso site está passando por uma <strong>atualização completa</strong>.<br>
+    Em breve, uma experiência ainda melhor para você encontrar o imóvel ideal no Rio.
+  </p>
+
+  <a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Vi%20que%20o%20site%20est%C3%A1%20em%20constru%C3%A7%C3%A3o%20e%20quero%20saber%20mais%20sobre%20im%C3%B3veis." target="_blank" rel="noopener" class="cta">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.852L0 24l6.335-1.508A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.374l-.36-.214-3.727.977.995-3.645-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
+    Falar com o Christian
+  </a>
+
+  <p class="creci">CRECI 45539</p>
+
+</body>
+</html>

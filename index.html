@@ -1,152 +1,1336 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Christian Vieira — Imóveis & Consultoria</title>
-  <meta name="description" content="Corretor de imóveis no Rio de Janeiro. Site em breve.">
+  <title>Christian Vieira — Corretor e Mentor Imobiliário | Rio de Janeiro</title>
+  <meta name="description" content="Mais de 10 anos guiando famílias e investidores no mercado imobiliário do Rio de Janeiro. Do lançamento ao destino final — com clareza, estratégia e segurança.">
+
+  <link rel="stylesheet" href="design-system.css">
+  <link rel="stylesheet" href="style.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'gold':       'var(--color-gold)',
+            'gold-light': 'var(--color-gold-light)',
+            'gold-pale':  'var(--color-gold-pale)',
+            'navy':       'var(--color-navy)',
+            'navy-mid':   'var(--color-navy-mid)',
+            'stone':      'var(--color-stone)',
+            'ink':        'var(--color-ink)',
+            'ink-soft':   'var(--color-ink-soft)',
+            'ink-muted':  'var(--color-ink-muted)',
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Arial', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+          },
+          borderRadius: {
+            'card':  'var(--radius-card)',
+            'btn':   'var(--radius-btn)',
+            'input': 'var(--radius-input)',
+            'pill':  'var(--radius-full)',
+          },
+          transitionTimingFunction: { 'wf-out': 'cubic-bezier(0, 0, 0.2, 1)' },
+          transitionDuration: { 'wf': '300ms' },
+        }
+      }
+    }
+  </script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy: #0D1B2A;
-      --gold: #B8962E;
-      --green: #25D366;
-      --green-dark: #20c157;
-      --white: #ffffff;
+    /* ── WhatsApp Depoimentos ── */
+    .wa-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      align-items: start;
     }
-
-    body {
-      min-height: 100vh;
-      background: var(--navy);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: var(--white);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      text-align: center;
-      position: relative;
+    @media(max-width:1024px){ .wa-grid { grid-template-columns: repeat(2,1fr); gap: 20px; } }
+    @media(max-width:560px) { .wa-grid { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; } }
+    .wa-phone {
+      border-radius: 20px;
       overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,.15), 0 8px 16px rgba(0,0,0,.2), 0 24px 60px rgba(0,0,0,.35), inset 0 0 0 1.5px rgba(255,255,255,.08);
+      font-family: -apple-system, 'Segoe UI', sans-serif;
+      display: flex; flex-direction: column;
+      aspect-ratio: 9/19.5;
+      background: #000;
     }
-
-    /* Glow de fundo */
-    body::before {
-      content: '';
-      position: fixed;
-      top: -20%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(37,211,102,0.08) 0%, transparent 70%);
-      pointer-events: none;
+    /* ── Status bar estilo iPhone ── */
+    .wa-statusbar {
+      background: #075E54;
+      padding: 14px 20px 6px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
     }
-
-    .badge {
-      width: 56px;
-      height: 56px;
-      background: var(--green);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin: 0 auto 24px;
+    .wa-statusbar-time { font-size: 12px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+    .wa-statusbar-icons { display: flex; align-items: center; gap: 5px; }
+    .wa-statusbar-icons svg { width: 14px; height: 14px; fill: #fff; }
+    .wa-battery-icon { display: flex; align-items: center; gap: 2px; }
+    .wa-battery-body {
+      width: 22px; height: 11px; border: 1.5px solid #fff; border-radius: 3px; position: relative;
+      display: flex; align-items: center; padding: 1.5px;
     }
-
-    .name {
-      font-size: clamp(28px, 5vw, 44px);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 8px;
+    .wa-battery-body::after { content:''; width: 2px; height: 5px; background: #fff; position: absolute; right: -4px; top: 50%; transform: translateY(-50%); border-radius: 0 1px 1px 0; }
+    .wa-battery-fill { background: #fff; height: 100%; width: 75%; border-radius: 1px; }
+    /* ── Dynamic Island ── */
+    .wa-dynamic-island {
+      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      width: 90px; height: 28px; background: #000; border-radius: 20px; z-index: 10;
     }
-
-    .sub {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 40px;
+    .wa-statusbar-wrap { position: relative; flex-shrink: 0; }
+    .wa-header {
+      background: #128C7E;
+      padding: 10px 14px;
+      display: flex; align-items: center; gap: 10px;
+      flex-shrink: 0;
     }
-
-    .divider {
-      width: 48px;
-      height: 2px;
-      background: var(--green);
-      margin: 0 auto 40px;
-      border-radius: 2px;
+    .wa-back { color: rgba(255,255,255,.8); font-size: 18px; margin-right: -4px; }
+    .wa-av {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; color: #fff; flex-shrink: 0;
     }
-
-    .message {
-      font-size: clamp(15px, 2.5vw, 18px);
-      line-height: 1.7;
-      color: rgba(255,255,255,0.65);
-      max-width: 480px;
-      margin-bottom: 48px;
+    .wa-ct { flex: 1; min-width: 0; }
+    .wa-ct-name { font-size: 13px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .wa-ct-status { font-size: 11px; color: rgba(255,255,255,.7); }
+    .wa-ic { color: rgba(255,255,255,.8); }
+    .wa-ic svg { width: 18px; height: 18px; }
+    .wa-body {
+      background: #E5DDD5;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c5bdb5' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+      padding: 10px 10px 6px;
+      display: flex; flex-direction: column; gap: 6px;
+      flex: 1;
+      overflow-y: auto;
     }
-
-    .message strong {
-      color: var(--white);
-      font-weight: 700;
+    .wa-sep {
+      text-align: center;
+      font-size: 11px; color: #667781;
+      background: rgba(255,255,255,.65);
+      padding: 2px 10px; border-radius: 8px;
+      align-self: center; margin: 4px 0;
     }
-
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--green);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 10px;
-      transition: background 0.2s, transform 0.15s;
+    .wa-bub {
+      max-width: 84%;
+      padding: 7px 10px 20px;
+      border-radius: 8px;
+      font-size: 13px; line-height: 1.45; color: #111;
+      position: relative; word-break: break-word;
     }
-    .cta:hover {
-      background: var(--green-dark);
-      transform: translateY(-1px);
+    .wa-bub-r {
+      background: #fff; align-self: flex-start;
+      border-top-left-radius: 0;
+      margin-left: 4px;
     }
-    .cta svg { flex-shrink: 0; }
-
-    .creci {
-      margin-top: 48px;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.25);
-      text-transform: uppercase;
+    .wa-bub-s {
+      background: #DCF8C6; align-self: flex-end;
+      border-top-right-radius: 0;
+      margin-right: 4px;
+    }
+    .wa-t {
+      position: absolute; bottom: 4px; right: 8px;
+      font-size: 10px; color: #667781;
+      display: flex; align-items: center; gap: 3px;
+    }
+    .wa-bub-s .wa-t { color: #4a9fd4; }
+    .wa-inp {
+      background: #F0F0F0;
+      padding: 8px 10px;
+      display: flex; align-items: center; gap: 8px;
+      flex-shrink: 0;
+    }
+    .wa-inp-f {
+      flex: 1; background: #fff;
+      border-radius: 20px; padding: 7px 14px;
+      font-size: 13px; color: #999;
+    }
+    .wa-mic {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .wa-mic svg { width: 16px; height: 16px; fill: #fff; }
+    /* ── Home indicator ── */
+    .wa-home-bar {
+      background: #F0F0F0;
+      padding: 6px 0 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .wa-home-bar span {
+      display: block; width: 100px; height: 4px;
+      background: #333; border-radius: 4px; opacity: 0.25;
     }
   </style>
 </head>
 <body>
 
-  <div class="badge" style="background:transparent;"><svg viewBox="0 0 36 36" fill="none" width="36" height="36"><polyline points="6,30 18,5 30,30" stroke="#C5973E" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter"/><rect x="16.55" y="3.55" width="2.9" height="2.9" fill="#C5973E" transform="rotate(45 18 5)"/></svg></div>
 
-  <h1 class="name">Christian Vieira</h1>
-  <p class="sub">Imóveis &amp; Consultoria · Rio de Janeiro</p>
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav id="navbar" class="sticky top-0 z-50">
+  <div class="nav-inner max-w-7xl mx-auto h-16 flex items-center justify-between gap-4">
 
-  <div class="divider"></div>
+    <a href="#" class="flex items-center gap-3 shrink-0">
+      <div class="nav-logo-badge w-9 h-9 flex items-center justify-center" style="background:transparent;"><svg viewBox="0 0 36 36" fill="none" width="36" height="36"><polyline points="6,30 18,5 30,30" stroke="#C5973E" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter"/><rect x="16.55" y="3.55" width="2.9" height="2.9" fill="#C5973E" transform="rotate(45 18 5)"/></svg></div>
+      <div>
+        <p class="nav-logo-name">Christian Vieira</p>
+        <p class="nav-logo-sub">Imóveis &amp; Consultoria</p>
+        <p class="nav-logo-creci">CRECI 45539</p>
+      </div>
+    </a>
 
-  <p class="message">
-    Nosso site está passando por uma <strong>atualização completa</strong>.<br>
-    Em breve, uma experiência ainda melhor para você encontrar o imóvel ideal no Rio.
-  </p>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="#" class="cv-nav-link">Início</a>
 
-  <a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Vi%20que%20o%20site%20est%C3%A1%20em%20constru%C3%A7%C3%A3o%20e%20quero%20saber%20mais%20sobre%20im%C3%B3veis." target="_blank" rel="noopener" class="cta">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.852L0 24l6.335-1.508A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.374l-.36-.214-3.727.977.995-3.645-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
-    Falar com o Christian
-  </a>
+      <!-- Dropdown Lançamentos -->
+      <div class="nav-dropdown" id="nav-dropdown-lancamentos">
+        <button class="nav-dropdown__trigger" aria-expanded="false" aria-haspopup="true">
+          Lançamentos
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown__panel" role="menu">
+          <a href="lancamentos/ArcosdoPorto/index.html" class="nav-dropdown__item" role="menuitem">
+            Arcos do Porto
+            <span class="nav-dropdown__tag nav-dropdown__tag--live">Disponível</span>
+          </a>
+          <a href="lancamentos/CartollaII/index.html" class="nav-dropdown__item" role="menuitem">
+            Residencial Cartola II
+            <span class="nav-dropdown__tag nav-dropdown__tag--live">Disponível</span>
+          </a>
+          <a href="lancamentos/MetropolitanDream/index.html" class="nav-dropdown__item" role="menuitem">
+            Metropolitan Dream
+            <span class="nav-dropdown__tag nav-dropdown__tag--live">Disponível</span>
+          </a>
+          <a href="lancamentos/OrlaRecreioReserva/index.html" class="nav-dropdown__item" role="menuitem">
+            Orla Recreio Reserva
+            <span class="nav-dropdown__tag nav-dropdown__tag--live">Disponível</span>
+          </a>
+          <a href="lancamentos/ConnectSquare/index.html" class="nav-dropdown__item" role="menuitem">
+            Connect Square
+            <span class="nav-dropdown__tag nav-dropdown__tag--live">Disponível</span>
+          </a>
+        </div>
+      </div>
 
-  <p class="creci">CRECI 45539</p>
+      <a href="#consultoria" class="cv-nav-link">Consultoria</a>
+      <a href="blog/index.html" class="cv-nav-link">Blog</a>
+      <a href="#contato"  class="cv-nav-link">Contato</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="#contato" class="cv-btn cv-btn-primary whitespace-nowrap hidden sm:inline-flex">Fale com o Christian</a>
+      <button class="nav-hamburger lg:hidden" id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span class="nav-hamburger__label">MENU</span>
+        <div class="nav-hamburger__bars">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menu mobile -->
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+    <a href="#" class="nav-mobile-link">Início</a>
+
+    <!-- Sub-menu mobile Lançamentos -->
+    <button class="nav-mobile-toggle" id="nav-mobile-lancamentos" aria-expanded="false">
+      Lançamentos
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="nav-mobile-sub" id="nav-mobile-sub-lancamentos">
+      <a href="lancamentos/ArcosdoPorto/index.html"      class="nav-mobile-sublink">Arcos do Porto</a>
+      <a href="lancamentos/CartollaII/index.html"        class="nav-mobile-sublink">Residencial Cartola II</a>
+      <a href="lancamentos/MetropolitanDream/index.html" class="nav-mobile-sublink">Metropolitan Dream</a>
+      <a href="lancamentos/OrlaRecreioReserva/index.html"       class="nav-mobile-sublink">Orla Recreio Reserva</a>
+      <a href="lancamentos/ConnectSquare/index.html"     class="nav-mobile-sublink">Connect Square</a>
+    </div>
+
+    <a href="#consultoria" class="nav-mobile-link">Consultoria</a>
+    <a href="blog/index.html" class="nav-mobile-link">Blog</a>
+    <a href="#contato"  class="nav-mobile-link">Contato</a>
+    <a href="#contato"  class="nav-mobile-cta">Fale com o Christian</a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero relative flex items-center overflow-hidden">
+
+  <!-- Slides de fundo -->
+  <div class="hero__slides">
+    <div class="hero__slide hero__slide--1 is-active" data-slide="0"></div>
+    <div class="hero__slide hero__slide--2"            data-slide="1"></div>
+    <div class="hero__slide hero__slide--3"            data-slide="2"></div>
+    <div class="hero__slide hero__slide--4"            data-slide="3"></div>
+    <div class="hero__slide hero__slide--5"            data-slide="4"></div>
+  </div>
+
+  <div class="hero__overlay absolute inset-0"></div>
+  <div class="hero__grid absolute inset-0"></div>
+  <div class="hero__glow absolute inset-0"></div>
+
+  <!-- Seta anterior -->
+  <button class="hero__arrow hero__arrow--prev" id="hero-prev" aria-label="Slide anterior">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+
+  <!-- Seta próximo -->
+  <button class="hero__arrow hero__arrow--next" id="hero-next" aria-label="Próximo slide">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+
+  <!-- Bullets centralizados -->
+  <div class="hero__dots" id="hero-dots">
+    <button class="hero__dot is-active" data-target="0" aria-label="Slide 1"></button>
+    <button class="hero__dot"           data-target="1" aria-label="Slide 2"></button>
+    <button class="hero__dot"           data-target="2" aria-label="Slide 3"></button>
+    <button class="hero__dot"           data-target="3" aria-label="Slide 4"></button>
+    <button class="hero__dot"           data-target="4" aria-label="Slide 5"></button>
+  </div>
+
+  <div class="hero__content relative z-10 w-full mx-auto">
+    <div class="hero__texts">
+
+      <!-- ── Slide 1: Arcos do Porto ── -->
+      <div class="hero__text-panel is-active" data-panel="0">
+        <div class="hero__panel-left">
+          <p class="hero__panel-eyebrow cv-eyebrow">Lançamento · Cury</p>
+          <h1 class="hero__panel-title">Arcos<br><span>do Porto</span></h1>
+          <p class="hero__panel-tagline">A melhor forma de viver o Rio.</p>
+        </div>
+        <div class="hero__panel-right">
+          <div class="hero__panel-photo hero__panel-photo--yt">
+            <video src="Videos/Arcos-do-Porto.mp4"
+                   autoplay muted loop playsinline
+                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+          </div>
+          <div class="hero__panel-btns flex flex-wrap gap-3">
+            <a href="lancamentos/ArcosdoPorto/index.html" class="cv-btn cv-btn-gold">Quero saber mais</a>
+            <a href="#sobre" class="cv-btn cv-btn-charcoal">Conheça Christian</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Slide 2: Residencial Cartola II ── -->
+      <div class="hero__text-panel" data-panel="1">
+        <div class="hero__panel-left">
+          <p class="hero__panel-eyebrow cv-eyebrow">Lançamento · Leopoldina</p>
+          <h1 class="hero__panel-title hero__panel-title--cartola">Residencial<br><span class="hero__panel-title-script">Cartola II</span></h1>
+          <p class="hero__panel-tagline">Meu caminho é feito de sorrisos.</p>
+        </div>
+        <div class="hero__panel-right">
+          <div class="hero__panel-photo hero__panel-photo--yt">
+            <video src="Videos/Residencial%20Cartola%20II.mp4"
+                   autoplay muted loop playsinline
+                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+          </div>
+          <div class="hero__panel-btns flex flex-wrap gap-3">
+            <a href="lancamentos/CartollaII/index.html" class="cv-btn cv-btn-gold">Quero saber mais</a>
+            <a href="#sobre"   class="cv-btn cv-btn-charcoal">Conheça Christian</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Slide 3: Metropolitan Dream ── -->
+      <div class="hero__text-panel" data-panel="2">
+        <div class="hero__panel-left">
+          <p class="hero__panel-eyebrow cv-eyebrow">Lançamento · Barra da Tijuca</p>
+          <h1 class="hero__panel-title">Metro-<br>politan<br><span class="hero__panel-title-sub">Dream</span></h1>
+          <p class="hero__panel-tagline">Lofts, 1, 2 e 3 quartos com lazer surpreendente.</p>
+        </div>
+        <div class="hero__panel-right">
+          <div class="hero__panel-photo hero__panel-photo--yt">
+            <video src="Videos/Metropolitan%20Dream.mp4"
+                   autoplay muted loop playsinline
+                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+          </div>
+          <div class="hero__panel-btns flex flex-wrap gap-3">
+            <a href="lancamentos/MetropolitanDream/index.html" class="cv-btn cv-btn-gold">Quero saber mais</a>
+            <a href="#sobre"   class="cv-btn cv-btn-charcoal">Conheça Christian</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Slide 4: Orla Recreio Reserva ── -->
+      <div class="hero__text-panel" data-panel="3">
+        <div class="hero__panel-left">
+          <p class="hero__panel-eyebrow cv-eyebrow">Lançamento · Recreio dos Bandeirantes</p>
+          <h1 class="hero__panel-title">Orla<br><span>Recreio</span></h1>
+          <p class="hero__panel-tagline">Apartamentos à venda no Recreio com 1, 2 e 3 quartos, opção de suíte e lazer completo.</p>
+        </div>
+        <div class="hero__panel-right">
+          <div class="hero__panel-photo hero__panel-photo--yt">
+            <video src="Videos/Orla%20Recreio%20Reserva.mp4"
+                   autoplay muted loop playsinline
+                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+          </div>
+          <div class="hero__panel-btns flex flex-wrap gap-3">
+            <a href="lancamentos/OrlaRecreioReserva/index.html" class="cv-btn cv-btn-gold">Conheça o Orla Recreio</a>
+            <a href="#sobre"   class="cv-btn cv-btn-charcoal">Conheça Christian</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Slide 5: Connect Square ── -->
+      <div class="hero__text-panel" data-panel="4">
+        <div class="hero__panel-left">
+          <p class="hero__panel-eyebrow cv-eyebrow">Lançamento · Centro · Rio de Janeiro</p>
+          <h1 class="hero__panel-title">Connect<br><span>Square</span></h1>
+          <p class="hero__panel-tagline">Studios, 1 e 2 quartos com varanda. De 24 a 60 m² com lazer no rooftop.</p>
+        </div>
+        <div class="hero__panel-right">
+          <div class="hero__panel-photo hero__panel-photo--yt">
+            <video src="Videos/Connect%20Square%20Centro%20RJ.mp4"
+                   autoplay muted loop playsinline
+                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+          </div>
+          <div class="hero__panel-btns flex flex-wrap gap-3">
+            <a href="lancamentos/ConnectSquare/index.html" class="cv-btn cv-btn-gold">Quero saber mais</a>
+            <a href="#sobre"   class="cv-btn cv-btn-charcoal">Conheça Christian</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════
+     MARQUEE
+══════════════════════════════════════ -->
+<div class="marquee-wrapper">
+  <div class="cv-marquee-track">
+    <div class="cv-marquee-block">
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Mais de 10 anos no mercado
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Lançamentos na planta
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Apartamentos prontos
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        Consultoria individual e em grupo
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Do lançamento ao destino final
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        Médio e alto padrão
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Rio de Janeiro
+      </span><span class="cv-marquee-sep">|</span>
+    </div>
+    <div class="cv-marquee-block" aria-hidden="true">
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Mais de 10 anos no mercado
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Lançamentos na planta
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Apartamentos prontos
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        Consultoria individual e em grupo
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Do lançamento ao destino final
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        Médio e alto padrão
+      </span><span class="cv-marquee-sep">|</span>
+      <span class="cv-marquee-item">
+        <svg class="icon-sm icon-stroke stroke-thin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Rio de Janeiro
+      </span><span class="cv-marquee-sep">|</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     CONTEXTO — PRIMEIRO IMÓVEL
+══════════════════════════════════════ -->
+<section class="section-stone">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="section-hdr text-center">
+      <p class="cv-eyebrow eyebrow-gold">Quem procura Christian Vieira</p>
+      <h2 class="cv-h2 h2-navy">Os desafios de quem quer sair do aluguel<br>e comprar seu primeiro imóvel</h2>
+      <p class="cv-body body-soft">Do financiamento à escritura, eu te guio em cada etapa para você comprar com confiança e sem surpresas.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-hairline">
+
+      <div class="cv-card cv-card-hover" style="padding:0; overflow:hidden;">
+        <div style="height:180px; overflow:hidden; position:relative;">
+          <img src="Imgs/desafio-escolha.png" alt="Escolha do imóvel" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div style="position:absolute;inset:0; background:linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(255,252,245,0.7) 80%, #F2EDE4 100%);"></div>
+        </div>
+        <div style="padding:var(--card-pad);">
+          <h3 class="cv-h3 h3-navy" style="margin-bottom:var(--space-3);">Dúvida na escolha do imóvel</h3>
+          <p class="cv-body-sm body-ink-soft">Qual bairro, tipo de imóvel e valor ideal para sua realidade.</p>
+        </div>
+      </div>
+
+      <div class="cv-card cv-card-hover" style="padding:0; overflow:hidden;">
+        <div style="height:180px; overflow:hidden; position:relative;">
+          <img src="Imgs/desafio-financiamento.png" alt="Financiamento" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div style="position:absolute;inset:0; background:linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(255,252,245,0.7) 80%, #F2EDE4 100%);"></div>
+        </div>
+        <div style="padding:var(--card-pad);">
+          <h3 class="cv-h3 h3-navy" style="margin-bottom:var(--space-3);">Medo do financiamento</h3>
+          <p class="cv-body-sm body-ink-soft">Parcelas, renda necessária e aprovação sem surpresas.</p>
+        </div>
+      </div>
+
+      <div class="cv-card cv-card-hover" style="padding:0; overflow:hidden;">
+        <div style="height:180px; overflow:hidden; position:relative;">
+          <img src="Imgs/desafio-processo.png" alt="Processo de compra" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div style="position:absolute;inset:0; background:linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(255,252,245,0.7) 80%, #F2EDE4 100%);"></div>
+        </div>
+        <div style="padding:var(--card-pad);">
+          <h3 class="cv-h3 h3-navy" style="margin-bottom:var(--space-3);">Processo confuso da compra</h3>
+          <p class="cv-body-sm body-ink-soft">Documentação, escritura e etapas explicadas de forma simples.</p>
+        </div>
+      </div>
+
+      <div class="cv-card cv-card-hover" style="padding:0; overflow:hidden;">
+        <div style="height:180px; overflow:hidden; position:relative;">
+          <img src="Imgs/desafio-decisao.png" alt="Insegurança na decisão" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div style="position:absolute;inset:0; background:linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(255,252,245,0.7) 80%, #F2EDE4 100%);"></div>
+        </div>
+        <div style="padding:var(--card-pad);">
+          <h3 class="cv-h3 h3-navy" style="margin-bottom:var(--space-3);">Insegurança na decisão</h3>
+          <p class="cv-body-sm body-ink-soft">E se eu estiver fazendo a escolha errada? Eu te ajudo a decidir com clareza.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pullquote">
+      <p class="pullquote__text">
+        "Comprar o primeiro imóvel é uma das decisões mais importantes da vida. Eu estou do seu lado para que ela seja <span class="pullquote__accent">segura, clara e sem arrependimentos.</span>"
+      </p>
+      <p class="pullquote__attr">— Christian Vieira</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SOBRE
+══════════════════════════════════════ -->
+<section id="sobre" class="section-navy">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <div class="flex justify-center lg:justify-end">
+        <img src="Imgs/ChristianVieira.png" alt="Christian Vieira" class="sobre-photo-img">
+      </div>
+
+      <div>
+        <p class="cv-eyebrow eyebrow-gold-light">Quem é Christian Vieira</p>
+        <h2 class="cv-h2 h2-white">
+          Não sou só um corretor.<br>Sou um aliado estratégico<br>para o seu patrimônio.
+        </h2>
+        <p class="cv-body body-white-65">
+          Com mais de <strong class="strong-white">10 anos no mercado imobiliário do Rio de Janeiro</strong>, já acompanhei centenas de famílias e investidores em cada etapa — da primeira visita a um lançamento até a venda ou locação anos depois.
+        </p>
+        <p class="cv-body body-white-50">
+          Meu diferencial não é a carteira de imóveis — é a <strong class="strong-white80">visão de ciclo completo</strong>. Entendo o momento de entrar, de sair e quanto custará cada decisão ao longo do caminho.
+        </p>
+        <div class="sobre-stats grid grid-cols-3 gap-3">
+          <div class="cv-stat-card"><p class="cv-stat-value">10+</p><p class="cv-stat-label">Anos de experiência</p></div>
+          <div class="cv-stat-card"><p class="cv-stat-value">RJ</p><p class="cv-stat-label">Rio de Janeiro</p></div>
+          <div class="cv-stat-card"><p class="cv-stat-value">360°</p><p class="cv-stat-label">Visão de ciclo</p></div>
+          <div class="cv-stat-card col-span-3"><p class="cv-stat-label" style="font-size:11px;letter-spacing:0.1em;">CRECI · 45539</p></div>
+        </div>
+        <a href="#contato" class="cv-btn cv-btn-gold">Entre em contato</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SERVIÇOS
+══════════════════════════════════════ -->
+<section id="servicos" class="section-white">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="section-hdr text-center">
+      <p class="cv-eyebrow eyebrow-gold">Atuação</p>
+      <h2 class="cv-h2 h2-navy">Soluções para cada momento<br>da sua jornada imobiliária</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 grid-hairline-plain">
+
+      <div class="cv-card cv-card-hover">
+        <div class="svc-card-line"></div>
+        <div class="cv-card-icon" style="margin-bottom:var(--space-5);">
+          <svg class="icon-card icon-stroke stroke-gold" viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3 class="cv-h3 h3-navy">Lançamentos na planta</h3>
+        <p class="cv-body-sm body-ink-soft" style="margin-bottom:var(--space-5);">Acesso antecipado aos melhores lançamentos do RJ com análise de potencial de valorização, condições de pagamento e riscos do empreendimento.</p>
+        <ul class="cv-check-list">
+          <li>Análise de risco e valorização</li>
+          <li>Simulação financeira detalhada</li>
+          <li>Verificação de incorporadora</li>
+        </ul>
+      </div>
+
+      <div class="cv-card cv-card-hover">
+        <div class="svc-card-line"></div>
+        <div class="cv-card-icon" style="margin-bottom:var(--space-5);">
+          <svg class="icon-card icon-stroke stroke-gold" viewBox="0 0 24 24">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3 class="cv-h3 h3-navy">Apartamentos prontos</h3>
+        <p class="cv-body-sm body-ink-soft" style="margin-bottom:var(--space-5);">Para quem quer morar ou investir agora. Seleção estratégica com potencial real de valorização, negociação e suporte em toda a documentação.</p>
+        <ul class="cv-check-list">
+          <li>Curadoria de imóveis selecionados</li>
+          <li>Negociação e suporte jurídico</li>
+          <li>FGTS e financiamento orientado</li>
+        </ul>
+      </div>
+
+      <div class="cv-card cv-card--dark">
+        <div class="svc-card-line"></div>
+        <div class="cv-card-icon cv-card-icon--strong" style="margin-bottom:var(--space-5);">
+          <svg class="icon-card icon-stroke stroke-gold-light" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3 class="cv-h3 h3-white">Consultoria de investimento</h3>
+        <p class="cv-body-sm body-white-60">Para quem quer entender o mercado de verdade. Individual ou em grupo: do diagnóstico à estratégia personalizada de construção de patrimônio.</p>
+        <ul class="cv-check-list checklist--dark">
+          <li>Estratégia de patrimônio personalizada</li>
+          <li>Individual, grupo ou evento ao vivo</li>
+          <li>De poupador receoso a investidor</li>
+        </ul>
+        <a href="#contato" class="cv-btn cv-btn-gold svc-cta">Saiba mais sobre a consultoria</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CONSULTORIA
+══════════════════════════════════════ -->
+<section id="consultoria" class="section-navy">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="section-hdr text-center">
+      <!-- Destaque "CONSULTORIA" estilo hero -->
+      <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom: var(--space-5);">
+        <span style="display:block; width:40px; height:1px; background:var(--color-gold); opacity:.6;"></span>
+        <span style="font-family:var(--font-mono); font-size:clamp(13px,1.5vw,16px); font-weight:700; letter-spacing:0.35em; color:var(--color-gold-light); text-transform:uppercase;">Consultoria</span>
+        <span style="display:block; width:40px; height:1px; background:var(--color-gold); opacity:.6;"></span>
+      </div>
+      <h2 class="cv-h2 h2-white">Os detalhes que a maioria dos compradores<br>descobre tarde demais</h2>
+      <p class="cv-body body-white-60" style="max-width:600px;margin:0 auto;">Mais de 90% das pessoas que compram um imóvel nunca receberam orientação sobre esses três pontos — e pagam caro por isso.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3" style="gap: var(--space-8); margin-top: var(--space-10);">
+
+      <!-- Taxas Cartorárias -->
+      <div class="cv-card cv-card--dark" style="padding:0; overflow:hidden; border-top: 3px solid var(--color-gold);">
+        <div style="height:200px; overflow:hidden; position:relative;">
+          <img src="Imgs/consult-cartorio.png" alt="Taxas Cartorárias" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div style="position:absolute;inset:0; background:linear-gradient(to bottom, transparent 0%, transparent 30%, rgba(10,20,35,0.45) 60%, rgba(10,20,35,0.92) 100%);"></div>
+        </div>
+        <div style="padding: var(--card-pad);">
+          <h3 class="cv-h3 h3-white" style="margin-bottom:var(--space-3);">Taxas Cartorárias</h3>
+          <p class="cv-body-sm body-white-60" style="margin-bottom:var(--space-5);">As taxas de cartório podem representar entre 4% e 6% do valor do imóvel — um custo que muitos compradores descobrem apenas na hora de assinar.</p>
+          <ul class="cv-check-list checklist--dark">
+            <li>ITBI: de 2% a 3% sobre o valor do imóvel</li>
+            <li>Escritura pública e reconhecimento de firma</li>
+            <li>Registro do imóvel no cartório competente</li>
+            <li>Cálculo antecipado para evitar surpresas</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Planejar Financiamento -->
+      <div class="cv-card cv-card--dark" style="padding:0; overflow:hidden; border-top: 3px solid var(--color-gold);">
+        <div style="height:200px; overflow:hidden; position:relative;">
+          <img src="Imgs/consult-financiamento.png" alt="Planejar Financiamento" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div style="position:absolute;inset:0; background:linear-gradient(to bottom, transparent 0%, transparent 30%, rgba(10,20,35,0.45) 60%, rgba(10,20,35,0.92) 100%);"></div>
+        </div>
+        <div style="padding: var(--card-pad);">
+          <h3 class="cv-h3 h3-white" style="margin-bottom:var(--space-3);">Planejar Financiamento</h3>
+          <p class="cv-body-sm body-white-60" style="margin-bottom:var(--space-5);">Escolher o banco errado pode custar dezenas de milhares de reais a mais ao longo do contrato. Entender CET, taxas e FGTS faz toda a diferença.</p>
+          <ul class="cv-check-list checklist--dark">
+            <li>Comparativo entre bancos: Caixa, Bradesco, Itaú</li>
+            <li>Uso estratégico do FGTS na entrada</li>
+            <li>SAC ou Price: qual tabela é melhor para você?</li>
+            <li>Como preparar o dossiê de crédito</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Amortização -->
+      <div class="cv-card cv-card--dark" style="padding:0; overflow:hidden; border-top: 3px solid var(--color-gold);">
+        <div style="height:200px; overflow:hidden; position:relative;">
+          <img src="Imgs/consult-amortizacao.png" alt="Amortização de Parcelas" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div style="position:absolute;inset:0; background:linear-gradient(to bottom, transparent 0%, transparent 30%, rgba(10,20,35,0.45) 60%, rgba(10,20,35,0.92) 100%);"></div>
+        </div>
+        <div style="padding: var(--card-pad);">
+          <h3 class="cv-h3 h3-white" style="margin-bottom:var(--space-3);">Amortização de Parcelas</h3>
+          <p class="cv-body-sm body-white-60" style="margin-bottom:var(--space-5);">A estratégia certa de amortização pode eliminar anos de dívida. Poucos sabem exatamente quando e como usar o FGTS para pagar menos juros.</p>
+          <ul class="cv-check-list checklist--dark">
+            <li>Amortizar prazo ou reduzir parcela mensal?</li>
+            <li>Quando usar FGTS para amortizar e quanto economizar</li>
+            <li>Impacto da Selic nas prestações variáveis</li>
+            <li>Simulação personalizada de quitação antecipada</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center" style="margin-top: var(--space-12);">
+      <p class="cv-body-sm body-white-60" style="margin-bottom: var(--space-4);">Quer entender como esses pontos se aplicam à sua situação específica?</p>
+      <a href="https://wa.me/5521993399299?text=Olá%20Christian!%20Gostaria%20de%20uma%20consultoria%20sobre%20taxas%2C%20financiamento%20e%20amortização." class="cv-btn cv-btn-primary" target="_blank" rel="noopener">
+        Falar com Christian pelo WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     MÉTODO
+══════════════════════════════════════ -->
+<section id="metodo" class="section-stone">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="section-hdr text-center">
+      <p class="cv-eyebrow eyebrow-gold">Processo de trabalho</p>
+      <h2 class="cv-h2 h2-navy">Do diagnóstico ao patrimônio —<br>cada etapa com clareza e intenção</h2>
+      <p class="cv-body body-ink-soft section-hdr-body">Não existe fórmula única. Mas existe um processo confiável — e é ele que guia cada decisão.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-hairline-plain">
+
+      <div class="cv-card text-center">
+        <div class="cv-step-number">01</div>
+        <h3 class="cv-h3 h3-navy">Diagnóstico</h3>
+        <p class="cv-body-sm body-ink-soft">Entendemos sua situação real: objetivos, perfil financeiro, histórico e medos. Sem julgamento, sem pressa.</p>
+      </div>
+
+      <div class="cv-card text-center">
+        <div class="cv-step-number">02</div>
+        <h3 class="cv-h3 h3-navy">Mapeamento</h3>
+        <p class="cv-body-sm body-ink-soft">Identificamos a oportunidade certa para o seu momento — não a mais cara nem a mais rápida de fechar.</p>
+      </div>
+
+      <div class="cv-card text-center">
+        <div class="cv-step-number">03</div>
+        <h3 class="cv-h3 h3-navy">Execução</h3>
+        <p class="cv-body-sm body-ink-soft">Negociação, documentação, financiamento, FGTS — cuido de cada detalhe. Você só decide.</p>
+      </div>
+
+      <div class="cv-card cv-card--dark text-center">
+        <div class="cv-step-number step-number--dark">04</div>
+        <h3 class="cv-h3 h3-white">Legado</h3>
+        <p class="cv-body-sm body-white-55">Mais do que um imóvel — uma conquista tangível, uma identidade de investidor e um patrimônio que cresce.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     TRANSFORMAÇÃO
+══════════════════════════════════════ -->
+<section class="section-navy">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="section-hdr text-center">
+      <p class="cv-eyebrow eyebrow-gold-light">A jornada do cliente</p>
+      <h2 class="cv-h2 h2-white-plain">
+        De onde você está<br><span class="h2-accent">para onde você pode chegar</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 grid-hairline-dark">
+
+      <div class="transform-col transform-col--before">
+        <div class="transform-label-row">
+          <div class="transform-icon transform-icon--before">
+            <svg class="icon-xs" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 24 24">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </div>
+          <p class="transform-label-text transform-label-text--before">Cenário comum antes</p>
+        </div>
+        <ul class="cv-transform-list" style="--icon-color:#f87171;">
+          <li>Paralisia por medo — sabe que precisa investir mas não consegue dar o primeiro passo</li>
+          <li>Confusão com jargões e pressão de corretores focados em comissão</li>
+          <li>Dinheiro parado perdendo para a inflação enquanto o mercado avança</li>
+          <li>Ansiedade de não saber se está fazendo a escolha certa para a família</li>
+        </ul>
+      </div>
+
+      <div class="transform-col transform-col--after">
+        <div class="transform-label-row">
+          <div class="transform-icon transform-icon--after">
+            <svg class="icon-xs icon-stroke stroke-gold-light" viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <p class="transform-label-text transform-label-text--after">Após trabalharem juntos</p>
+        </div>
+        <ul class="cv-transform-list" style="--icon-color:var(--color-gold-light);">
+          <li>Clareza total sobre o que faz sentido para o <em>seu</em> momento financeiro</li>
+          <li>Decisão tomada com segurança — você sabe o que está comprando e por quê</li>
+          <li>Patrimônio tangível — da ansiedade da escassez para a paz de espírito da solidez</li>
+          <li>Identidade transformada: de poupador receoso a investidor consciente</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     DEPOIMENTOS
+══════════════════════════════════════ -->
+<section id="depoimentos" class="section-stone">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="section-hdr text-center">
+      <p class="cv-eyebrow eyebrow-gold">Clientes</p>
+      <h2 class="cv-h2 h2-navy">O que dizem quem já<br>percorreu esse caminho</h2>
+    </div>
+
+    <div class="wa-grid">
+
+      <!-- Thiago M. -->
+      <div class="wa-phone">
+        <div class="wa-statusbar">
+          <span class="wa-statusbar-time">14:28</span>
+          <div class="wa-statusbar-icons">
+            <svg viewBox="0 0 17 12" width="17" height="12" fill="white"><rect x="0" y="9" width="3" height="3" rx="0.5"/><rect x="4.5" y="6" width="3" height="6" rx="0.5"/><rect x="9" y="3" width="3" height="9" rx="0.5"/><rect x="13.5" y="0" width="3" height="12" rx="0.5"/></svg>
+            <svg viewBox="0 0 16 12" width="16" height="12" fill="white"><path d="M8 9a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm0-3c-1.5 0-2.8.6-3.7 1.5l1.1 1.1C6.1 8 7 7.5 8 7.5S9.9 8 10.6 8.6l1.1-1.1C10.8 6.6 9.5 6 8 6zm0-3C5.4 3 3.1 4 1.5 5.8l1.1 1.1C4 5.4 5.9 4.5 8 4.5S12 5.4 13.4 6.9l1.1-1.1C12.9 4 10.6 3 8 3z"/></svg>
+            <div class="wa-battery-icon"><div class="wa-battery-body"><div class="wa-battery-fill"></div></div></div>
+          </div>
+        </div>
+        <div class="wa-header">
+          <span class="wa-back">‹</span>
+          <div class="wa-av"><img src="Imgs/testimonial-thiago.png" alt="Thiago M." style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+          <div class="wa-ct">
+            <div class="wa-ct-name">Thiago M.</div>
+            <div class="wa-ct-status">online</div>
+          </div>
+          <div class="wa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-sep">Hoje</div>
+          <div class="wa-bub wa-bub-s">
+            Thiago! Como foi a entrega do apartamento na Barra? 😊
+            <div class="wa-t">14:28 ✓✓</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Tinha medo de comprar na planta depois de ver casos de construtoras atrasando. O Christian me mostrou exatamente o que analisar. 😮
+            <div class="wa-t">14:32</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Entregou no prazo e valorizou bastante antes mesmo de ficar pronto. Exatamente o que eu precisava! 🏆
+            <div class="wa-t">14:33</div>
+          </div>
+        </div>
+        <div class="wa-inp">
+          <div class="wa-inp-f">Mensagem</div>
+          <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="wa-home-bar"><span></span></div>
+      </div>
+
+      <!-- Fernanda C. -->
+      <div class="wa-phone">
+        <div class="wa-statusbar">
+          <span class="wa-statusbar-time">09:10</span>
+          <div class="wa-statusbar-icons">
+            <svg viewBox="0 0 17 12" width="17" height="12" fill="white"><rect x="0" y="9" width="3" height="3" rx="0.5"/><rect x="4.5" y="6" width="3" height="6" rx="0.5"/><rect x="9" y="3" width="3" height="9" rx="0.5"/><rect x="13.5" y="0" width="3" height="12" rx="0.5"/></svg>
+            <svg viewBox="0 0 16 12" width="16" height="12" fill="white"><path d="M8 9a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm0-3c-1.5 0-2.8.6-3.7 1.5l1.1 1.1C6.1 8 7 7.5 8 7.5S9.9 8 10.6 8.6l1.1-1.1C10.8 6.6 9.5 6 8 6zm0-3C5.4 3 3.1 4 1.5 5.8l1.1 1.1C4 5.4 5.9 4.5 8 4.5S12 5.4 13.4 6.9l1.1-1.1C12.9 4 10.6 3 8 3z"/></svg>
+            <div class="wa-battery-icon"><div class="wa-battery-body"><div class="wa-battery-fill"></div></div></div>
+          </div>
+        </div>
+        <div class="wa-header">
+          <span class="wa-back">‹</span>
+          <div class="wa-av"><img src="Imgs/testimonial-fernanda.png" alt="Fernanda C." style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+          <div class="wa-ct">
+            <div class="wa-ct-name">Fernanda C.</div>
+            <div class="wa-ct-status">Investidora · Ipanema</div>
+          </div>
+          <div class="wa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-sep">Hoje</div>
+          <div class="wa-bub wa-bub-s">
+            Fernanda, como está a estratégia de portfólio? 📊
+            <div class="wa-t">09:10 ✓✓</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Já tinha um imóvel mas queria aumentar o portfólio. O Christian montou uma estratégia para os próximos anos. 🙌
+            <div class="wa-t">09:14</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            A sensação de ter um caminho claro faz toda a diferença — parei de tomar decisões por impulso!
+            <div class="wa-t">09:17</div>
+          </div>
+        </div>
+        <div class="wa-inp">
+          <div class="wa-inp-f">Mensagem</div>
+          <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="wa-home-bar"><span></span></div>
+      </div>
+
+      <!-- Ricardo A. -->
+      <div class="wa-phone">
+        <div class="wa-statusbar">
+          <span class="wa-statusbar-time">18:38</span>
+          <div class="wa-statusbar-icons">
+            <svg viewBox="0 0 17 12" width="17" height="12" fill="white"><rect x="0" y="9" width="3" height="3" rx="0.5"/><rect x="4.5" y="6" width="3" height="6" rx="0.5"/><rect x="9" y="3" width="3" height="9" rx="0.5"/><rect x="13.5" y="0" width="3" height="12" rx="0.5"/></svg>
+            <svg viewBox="0 0 16 12" width="16" height="12" fill="white"><path d="M8 9a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm0-3c-1.5 0-2.8.6-3.7 1.5l1.1 1.1C6.1 8 7 7.5 8 7.5S9.9 8 10.6 8.6l1.1-1.1C10.8 6.6 9.5 6 8 6zm0-3C5.4 3 3.1 4 1.5 5.8l1.1 1.1C4 5.4 5.9 4.5 8 4.5S12 5.4 13.4 6.9l1.1-1.1C12.9 4 10.6 3 8 3z"/></svg>
+            <div class="wa-battery-icon"><div class="wa-battery-body"><div class="wa-battery-fill"></div></div></div>
+          </div>
+        </div>
+        <div class="wa-header">
+          <span class="wa-back">‹</span>
+          <div class="wa-av"><img src="Imgs/testimonial-ricardo.png" alt="Ricardo A." style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+          <div class="wa-ct">
+            <div class="wa-ct-name">Ricardo A.</div>
+            <div class="wa-ct-status">Consultoria · RJ</div>
+          </div>
+          <div class="wa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-sep">Hoje</div>
+          <div class="wa-bub wa-bub-s">
+            Ricardo! Dormindo com paz agora? 😄
+            <div class="wa-t">18:38 ✓✓</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Tentei comprar um imóvel sozinho anos atrás e me dei mal. Passei três anos com esse trauma. 😔
+            <div class="wa-t">18:41</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            O Christian foi o primeiro que não tentou me empurrar nada — me ajudou a entender o mercado. Durmo com paz. ✌️
+            <div class="wa-t">18:45</div>
+          </div>
+        </div>
+        <div class="wa-inp">
+          <div class="wa-inp-f">Mensagem</div>
+          <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="wa-home-bar"><span></span></div>
+      </div>
+
+      <!-- Ana Paula S. -->
+      <div class="wa-phone">
+        <div class="wa-statusbar">
+          <span class="wa-statusbar-time">11:05</span>
+          <div class="wa-statusbar-icons">
+            <svg viewBox="0 0 17 12" width="17" height="12" fill="white"><rect x="0" y="9" width="3" height="3" rx="0.5"/><rect x="4.5" y="6" width="3" height="6" rx="0.5"/><rect x="9" y="3" width="3" height="9" rx="0.5"/><rect x="13.5" y="0" width="3" height="12" rx="0.5"/></svg>
+            <svg viewBox="0 0 16 12" width="16" height="12" fill="white"><path d="M8 9a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm0-3c-1.5 0-2.8.6-3.7 1.5l1.1 1.1C6.1 8 7 7.5 8 7.5S9.9 8 10.6 8.6l1.1-1.1C10.8 6.6 9.5 6 8 6zm0-3C5.4 3 3.1 4 1.5 5.8l1.1 1.1C4 5.4 5.9 4.5 8 4.5S12 5.4 13.4 6.9l1.1-1.1C12.9 4 10.6 3 8 3z"/></svg>
+            <div class="wa-battery-icon"><div class="wa-battery-body"><div class="wa-battery-fill"></div></div></div>
+          </div>
+        </div>
+        <div class="wa-header">
+          <span class="wa-back">‹</span>
+          <div class="wa-av"><img src="Imgs/testimonial-anapaula.png" alt="Ana Paula S." style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+          <div class="wa-ct">
+            <div class="wa-ct-name">Ana Paula S.</div>
+            <div class="wa-ct-status">online</div>
+          </div>
+          <div class="wa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-sep">Hoje</div>
+          <div class="wa-bub wa-bub-s">
+            Ana Paula! Sua filha já está no apartamento novo? 🏠
+            <div class="wa-t">11:05 ✓✓</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Nunca imaginei que poderia usar o FGTS como entrada. O Christian explicou tudo com uma paciência incrível! 🙏
+            <div class="wa-t">11:12</div>
+          </div>
+          <div class="wa-bub wa-bub-r">
+            Minha filha hoje mora no apartamento que achávamos impossível. A conquista foi nossa — mas o caminho foi dele! 💚
+            <div class="wa-t">11:20</div>
+          </div>
+        </div>
+        <div class="wa-inp">
+          <div class="wa-inp-f">Mensagem</div>
+          <div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="wa-home-bar"><span></span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CONTEXTO — INVESTIDORES
+══════════════════════════════════════ -->
+<section class="section-white">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="section-hdr text-center">
+      <p class="cv-eyebrow eyebrow-gold">Pra quem quer Investir em Imóveis</p>
+      <h2 class="cv-h2 h2-navy">O que trava quem quer investir<br>em imóveis com tranquilidade</h2>
+      <p class="cv-body body-soft">São desafios reais — e é exatamente para isso que minha atuação foi construída.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-hairline">
+
+      <div class="cv-card cv-card-hover">
+        <div class="cv-card-icon" style="margin-bottom:var(--space-5);">
+          <svg class="icon-card icon-stroke stroke-gold" viewBox="0 0 24 24">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <h3 class="cv-h3 h3-navy">Medo de perder o dinheiro</h3>
+        <p class="cv-body-sm body-ink-soft">Você viu isso acontecer com alguém próximo. Essa cicatriz paralisa decisões que poderiam mudar sua vida.</p>
+      </div>
+
+      <div class="cv-card cv-card-hover">
+        <div class="cv-card-icon" style="margin-bottom:var(--space-5);">
+          <svg class="icon-card icon-stroke stroke-gold" viewBox="0 0 24 24">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            <circle cx="12" cy="16" r="1" class="fill-gold"/>
+          </svg>
+        </div>
+        <h3 class="cv-h3 h3-navy">Dinheiro preso, sem saída</h3>
+        <p class="cv-body-sm body-ink-soft">Comprou, não consegue vender nem alugar. A liquidez que ninguém explica antes do contrato.</p>
+      </div>
+
+      <div class="cv-card cv-card-hover">
+        <div class="cv-card-icon" style="margin-bottom:var(--space-5);">
+          <svg class="icon-card icon-stroke stroke-gold" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <h3 class="cv-h3 h3-navy">Complexidade que paralisa</h3>
+        <p class="cv-body-sm body-ink-soft">ITBI, escritura, FGTS, tabela SAC... Ninguém explica em português claro. Você desiste antes de começar.</p>
+      </div>
+
+      <div class="cv-card cv-card-hover">
+        <div class="cv-card-icon" style="margin-bottom:var(--space-5);">
+          <svg class="icon-card icon-stroke stroke-gold" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <h3 class="cv-h3 h3-navy">Trauma de tentativa anterior</h3>
+        <p class="cv-body-sm body-ink-soft">Confiar em quem não tinha seu interesse como prioridade custou caro. A desconfiança agora parece intransponível.</p>
+      </div>
+
+    </div>
+
+    <div class="pullquote">
+      <p class="pullquote__text">
+        "Em vez de tentar vencer seu medo com argumentos genéricos, traduzo a complexidade técnica do mercado imobiliário em <span class="pullquote__accent">clareza, previsibilidade e segurança.</span>"
+      </p>
+      <p class="pullquote__attr">— Christian Vieira</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CONTATO
+══════════════════════════════════════ -->
+<section id="contato" class="section-navy">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <div>
+        <p class="cv-eyebrow eyebrow-gold-light">Contato</p>
+        <h2 class="cv-h2 h2-white">O primeiro passo é uma<br>conversa honesta.</h2>
+        <p class="cv-body body-white-55" style="margin-bottom:var(--space-8);">Conte sua situação, seus objetivos e suas dúvidas. Vou responder com clareza — incluindo quando a resposta for "esse não é o momento certo."</p>
+
+        <div class="contact-info-list">
+          <div class="contact-info-row">
+            <div class="contact-info-icon">
+              <svg class="icon-md icon-stroke stroke-gold-light" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contact-info-label">WhatsApp</p>
+              <p class="contact-info-value">+55 21 99339-9299</p>
+            </div>
+          </div>
+          <div class="contact-info-row">
+            <div class="contact-info-icon">
+              <svg class="icon-md icon-stroke stroke-gold-light" viewBox="0 0 24 24">
+                <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contact-info-label">Instagram</p>
+              <p class="contact-info-value">@christianimoveis</p>
+            </div>
+          </div>
+          <div class="contact-info-row">
+            <div class="contact-info-icon">
+              <svg class="icon-md icon-stroke stroke-gold-light" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contact-info-label">Localização</p>
+              <p class="contact-info-value">Rio de Janeiro, RJ</p>
+            </div>
+          </div>
+          <div class="contact-info-row">
+            <div class="contact-info-icon">
+              <svg class="icon-md icon-stroke stroke-gold-light" viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contact-info-label">E-mail</p>
+              <a href="mailto:contato@corretordeimovelrj.com.br" class="contact-info-value" style="color:#fff;text-decoration:none;">contato@corretordeimovelrj.com.br</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h3 class="cv-h3 contact-form-title">Envie uma mensagem</h3>
+        <p class="cv-body-sm contact-form-sub">Christian responderá em breve.</p>
+
+        <form onsubmit="handleForm(event)" class="contact-form">
+          <div>
+            <label class="cv-form-label">Seu nome</label>
+            <input type="text" placeholder="Como posso te chamar?" required class="cv-input">
+          </div>
+          <div>
+            <label class="cv-form-label">WhatsApp</label>
+            <input type="tel" placeholder="(21) 9 XXXX-XXXX" required class="cv-input">
+          </div>
+          <div>
+            <label class="cv-form-label">Interesse</label>
+            <select class="cv-input cv-select">
+              <option value="" style="background:#0D1B2A;">Selecione uma opção</option>
+              <option value="primeiro"     style="background:#0D1B2A;">Meu primeiro imóvel</option>
+              <option value="investimento" style="background:#0D1B2A;">Investimento / ampliar patrimônio</option>
+              <option value="lancamento"   style="background:#0D1B2A;">Lançamento na planta</option>
+              <option value="consultoria"     style="background:#0D1B2A;">Consultoria imobiliária</option>
+            </select>
+          </div>
+          <button type="submit" class="cv-btn cv-btn-gold contact-form__submit">Enviar mensagem</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+
+    <div class="footer-brand">
+      <div class="footer-logo-badge" style="background:transparent;"><svg viewBox="0 0 36 36" fill="none" width="36" height="36"><polyline points="6,30 18,5 30,30" stroke="#C5973E" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter"/><rect x="16.55" y="3.55" width="2.9" height="2.9" fill="#C5973E" transform="rotate(45 18 5)"/></svg></div>
+      <div>
+        <p class="footer-name">Christian Vieira</p>
+        <p class="footer-sub">IMÓVEIS &amp; CONSULTORIA · RJ · CRECI 45539</p>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="https://instagram.com/christianimoveis" target="_blank" rel="noopener" class="cv-footer-link">Instagram</a>
+      <a href="https://wa.me/5521993399299" target="_blank" rel="noopener" class="cv-footer-link">WhatsApp</a>
+      <a href="#contato" class="cv-footer-link">Contato</a>
+    </div>
+
+    <p class="footer-copy">© 2026 Christian Vieira. Todos os direitos reservados.</p>
+
+  </div>
+</footer>
+
+
+<!-- WhatsApp flutuante -->
+<a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar."
+   target="_blank" rel="noopener" class="wa-float" title="WhatsApp">
+  <svg class="icon-lg fill-white" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+
+<script>
+  /* ── Formulário de contato ── */
+  function handleForm(e) {
+    e.preventDefault();
+    alert('Mensagem recebida! Christian entrará em contato em breve.');
+  }
+
+  /* ── Navbar shadow on scroll ── */
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20 ? 'var(--shadow-raised)' : 'none';
+  }, { passive: true });
+
+  /* ── Hero Slideshow ── */
+  (function () {
+    const slides  = Array.from(document.querySelectorAll('.hero__slide'));
+    const panels  = Array.from(document.querySelectorAll('.hero__text-panel'));
+    const dots    = Array.from(document.querySelectorAll('.hero__dot'));
+    const prevBtn = document.getElementById('hero-prev');
+    const nextBtn = document.getElementById('hero-next');
+
+    let current = 0;
+    let timer;
+
+    function goTo(index) {
+      slides[current].classList.remove('is-active');
+      dots[current]  && dots[current].classList.remove('is-active');
+      panels[current] && panels[current].classList.remove('is-active');
+
+      current = (index + slides.length) % slides.length;
+
+      slides[current].classList.add('is-active');
+      dots[current]  && dots[current].classList.add('is-active');
+      panels[current] && panels[current].classList.add('is-active');
+    }
+
+    function startAuto() { timer = setInterval(() => goTo(current + 1), 10000); }
+    function resetAuto()  { clearInterval(timer); startAuto(); }
+
+    dots.forEach(dot =>
+      dot.addEventListener('click', () => { goTo(+dot.dataset.target); resetAuto(); })
+    );
+
+    prevBtn && prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+    nextBtn && nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+    if (slides.length > 1) startAuto();
+  })();
+
+  /* ── Hamburger menu ── */
+  (function () {
+    const btn    = document.getElementById('nav-hamburger');
+    const menu   = document.getElementById('nav-mobile');
+    if (!btn || !menu) return;
+    function toggle() {
+      const open = menu.classList.toggle('is-open');
+      btn.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open);
+      menu.setAttribute('aria-hidden', !open);
+    }
+    btn.addEventListener('click', toggle);
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.remove('is-open');
+      btn.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', false);
+      menu.setAttribute('aria-hidden', true);
+    }));
+  })();
+
+  /* ── Dropdown desktop — Lançamentos ── */
+  (function () {
+    const dropdown = document.getElementById('nav-dropdown-lancamentos');
+    if (!dropdown) return;
+    const trigger = dropdown.querySelector('.nav-dropdown__trigger');
+
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const open = dropdown.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', open);
+    });
+
+    // fecha ao clicar fora
+    document.addEventListener('click', function () {
+      dropdown.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', false);
+    });
+
+    // fecha ao pressionar Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        dropdown.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', false);
+      }
+    });
+  })();
+
+  /* ── Sub-menu mobile — Lançamentos ── */
+  (function () {
+    const toggle = document.getElementById('nav-mobile-lancamentos');
+    const sub    = document.getElementById('nav-mobile-sub-lancamentos');
+    if (!toggle || !sub) return;
+
+    toggle.addEventListener('click', function () {
+      const open = sub.classList.toggle('is-open');
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open);
+    });
+  })();
+</script>
 
 </body>
 </html>

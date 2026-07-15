@@ -12,3 +12,7 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+blog/images/instagram-*.jpg
+.caption-preview.txt
+caption-preview.txt
+skills/
