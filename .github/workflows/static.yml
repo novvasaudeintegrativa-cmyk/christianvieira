@@ -79,6 +79,14 @@ jobs:
             .aios-core/**
             skills/**
 
+      - name: Forçar upload blog/index.html via curl FTP
+        run: |
+          curl -s --ftp-pasv \
+            -T blog/index.html \
+            "ftp://${{ secrets.FTP_HOST }}/public_html/blog/index.html" \
+            --user "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}"
+          echo "✅ blog/index.html enviado diretamente via curl FTP"
+
       - name: Notificar Google Calendar
         if: success() && env.WEBHOOK_URL != ''
         env:
