@@ -117,6 +117,11 @@ if (si === -1 || ei === -1) {
 }
 
 html = html.slice(0, si + START_MARKER.length) + gridContent + '\n    ' + html.slice(ei);
+
+// Injeta timestamp de build para garantir que o FTP detecte mudança a cada deploy
+const buildTag = `<!-- build:${new Date().toISOString()} -->`;
+html = html.replace(/<!-- build:.*?-->/, '').replace('</head>', `${buildTag}\n</head>`);
+
 fs.writeFileSync(INDEX, html, 'utf8');
 
 console.log(`✅ blog/index.html sincronizado — ${published.length} post(s) publicado(s):`);
