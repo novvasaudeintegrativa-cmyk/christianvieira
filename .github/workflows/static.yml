@@ -31,6 +31,7 @@ jobs:
           node-version: '20'
 
       - name: Sync blog index
+        id: sync
         run: node scripts/sync-blog-index.js
 
       - name: Setup Pages
@@ -58,6 +59,7 @@ jobs:
           node-version: '20'
 
       - name: Sync blog index
+        id: sync
         run: node scripts/sync-blog-index.js
 
       - name: Deploy via FTP para Hostinger
@@ -76,3 +78,12 @@ jobs:
             **/.env*
             .aios-core/**
             skills/**
+
+      - name: Notificar Google Calendar
+        if: success() && env.WEBHOOK_URL != ''
+        env:
+          WEBHOOK_URL: ${{ secrets.GOOGLE_CALENDAR_WEBHOOK }}
+        run: |
+          curl -s -X POST "$WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "{\"title\":\"✅ Blog publicado: ${{ steps.sync.outputs.post_title }}\",\"date\":\"${{ steps.sync.outputs.post_date }}\",\"num\":\"${{ steps.sync.outputs.post_num }}\",\"url\":\"${{ steps.sync.outputs.post_url }}\"}"

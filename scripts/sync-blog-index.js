@@ -121,3 +121,15 @@ fs.writeFileSync(INDEX, html, 'utf8');
 
 console.log(`✅ blog/index.html sincronizado — ${published.length} post(s) publicado(s):`);
 published.forEach(p => console.log(`   • #${pad(p.num)}  ${p.date}  ${p.title}`));
+
+// Exporta variáveis para GitHub Actions
+if (process.env.GITHUB_OUTPUT) {
+  const out = [
+    `post_title=${featured.title}`,
+    `post_date=${featured.date}`,
+    `post_num=${pad(featured.num)}`,
+    `post_count=${published.length}`,
+    `post_url=https://corretordeimovelrj.com.br/blog/posts/${featured.slug}.html`,
+  ].join('\n') + '\n';
+  fs.appendFileSync(process.env.GITHUB_OUTPUT, out, 'utf8');
+}
