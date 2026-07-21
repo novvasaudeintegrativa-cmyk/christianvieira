@@ -62,12 +62,12 @@ jobs:
         id: sync
         run: node scripts/sync-blog-index.js
 
-      - name: Debug conexao SFTP via curl (temporario)
+      - name: Debug upload via curl FTP (temporario)
         run: |
-          echo "teste curl sftp $(date -u +%Y%m%d-%H%M%S)" > /tmp/curltest.txt
-          curl -v --insecure -T /tmp/curltest.txt \
-            "sftp://212.85.6.146:65002/public_html/blog/curltest.txt" \
-            --user "u361926314:${{ secrets.SSH_PASSWORD }}" 2>&1 | tail -60
+          echo "teste curl ftp $(date -u +%Y%m%d-%H%M%S)" > /tmp/curlftptest.txt
+          curl -v --ftp-pasv -T /tmp/curlftptest.txt \
+            "ftp://${{ secrets.FTP_HOST }}/public_html/blog/curlftptest.txt" \
+            --user "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}" 2>&1 | tail -60
 
       - name: Deploy via SFTP para Hostinger
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
