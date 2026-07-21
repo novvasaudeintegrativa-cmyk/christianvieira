@@ -62,23 +62,16 @@ jobs:
         id: sync
         run: node scripts/sync-blog-index.js
 
-      - name: Deploy via FTP para Hostinger
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Deploy via SFTP para Hostinger
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          server-dir: /public_html/
-          port: 21
-          local-dir: ./
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/.env*
-            .aios-core/**
-            skills/**
+          username: u361926314
+          server: 212.85.6.146
+          port: 65002
+          password: ${{ secrets.SSH_PASSWORD }}
+          local_path: './*'
+          remote_path: 'public_html/'
+          rsyncArgs: '--exclude=.git --exclude=node_modules --exclude=.env* --exclude=.aios-core --exclude=skills'
 
       - name: Notificar Google Calendar
         if: success() && env.WEBHOOK_URL != ''
