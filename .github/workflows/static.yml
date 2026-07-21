@@ -71,6 +71,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           local_path: './*'
           remote_path: 'public_html/'
+          sftp_only: true
           rsyncArgs: '--exclude=.git --exclude=node_modules --exclude=.env* --exclude=.aios-core --exclude=skills'
 
       - name: Notificar Google Calendar
