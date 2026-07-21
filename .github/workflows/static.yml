@@ -47,7 +47,13 @@ jobs:
         uses: actions/deploy-pages@v5
 
   # ── 2. Deploy para Hostinger via FTP (site de produção) ─────────────────────
+  # DESATIVADO em 2026-07-21: FTP, FTPS e SFTP reportam sucesso mas os arquivos
+  # nao chegam de fato ao public_html servido pelo site (confirmado com 4
+  # clientes/protocolos diferentes; edicao direta pelo File Manager funciona
+  # instantaneamente). Aparenta ser bug de infraestrutura do lado da
+  # Hostinger — aguardando retorno do suporte antes de reativar.
   deploy-hostinger:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -61,13 +67,6 @@ jobs:
       - name: Sync blog index
         id: sync
         run: node scripts/sync-blog-index.js
-
-      - name: Debug upload via curl FTP (temporario)
-        run: |
-          echo "teste curl ftp $(date -u +%Y%m%d-%H%M%S)" > /tmp/curlftptest.txt
-          curl -v --ftp-pasv -T /tmp/curlftptest.txt \
-            "ftp://${{ secrets.FTP_HOST }}/public_html/blog/curlftptest.txt" \
-            --user "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}" 2>&1 | tail -60
 
       - name: Deploy via SFTP para Hostinger
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
