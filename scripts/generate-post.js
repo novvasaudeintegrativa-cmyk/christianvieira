@@ -44,7 +44,7 @@ async function geminiText(prompt) {
   const url = `${GEMINI_BASE}/models/${MODEL_TEXT}:generateContent?key=${GEMINI_KEY}`;
   const body = JSON.stringify({
     contents: [{ parts: [{ text: prompt }] }],
-    generationConfig: { temperature: 0.7, maxOutputTokens: 4096 }
+    generationConfig: { temperature: 0.7, maxOutputTokens: 8192 }
   });
   const res = await fetch(url, {
     method: 'POST',
@@ -386,7 +386,10 @@ async function main() {
     const clean = rawText.replace(/^```json\s*/,'').replace(/```\s*$/,'').trim();
     content = JSON.parse(clean);
   } catch (e) {
-    console.error('❌  Falha ao parsear JSON do Gemini:\n', rawText.slice(0, 500));
+    console.error('❌  Falha ao parsear JSON do Gemini:', e.message);
+    console.error('   Tamanho do texto:', rawText.length);
+    console.error('   INICIO:\n', rawText.slice(0, 300));
+    console.error('   FIM:\n', rawText.slice(-300));
     process.exit(1);
   }
   console.log(`✅  Conteúdo gerado (${content.reading_time} min de leitura)`);
