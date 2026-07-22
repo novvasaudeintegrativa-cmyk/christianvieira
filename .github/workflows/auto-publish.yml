@@ -32,6 +32,19 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Regenerar imagem post #02 (temporario)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/regenerate-image-temp.js
+
+      - name: Commit imagem regenerada (temporario)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog/images/post-02-casa-ou-apartamento.jpg
+          git commit -m "fix: nova imagem do post #02 (comparacao casa x apartamento)" || echo "sem mudancas"
+          git push
+
       - name: Gerar post
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
