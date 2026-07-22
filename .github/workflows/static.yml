@@ -47,16 +47,16 @@ jobs:
         uses: actions/deploy-pages@v5
 
   # ── 2. Deploy para Hostinger via FTP (site de produção) ─────────────────────
-  # DESATIVADO em 2026-07-22: o caminho do FTP estava errado (a conta ja
-  # comeca dentro de /public_html, entao usar "/public_html/" como server-dir
-  # duplicava o caminho) — isso foi corrigido abaixo (server-dir: "/").
-  # Porem, mesmo com o caminho certo e confirmando via listagem FTP que os
-  # arquivos chegam corretamente e com a data/hora certas, o site ao vivo e o
-  # Gerenciador de Arquivos continuam servindo conteudo antigo. Ou seja, ha uma
-  # dessincronizacao entre o armazenamento que o FTP grava e o que o site
-  # realmente serve — bug do lado da infraestrutura da Hostinger. Aguardando
-  # retorno do suporte antes de reativar.
+  # DESATIVADO em 2026-07-22: o FTP tinha um bug de sincronizacao do lado da
+  # Hostinger (arquivos gravados via FTP nao refletiam no site, confirmado
+  # com o suporte deles). A solucao definitiva foi conectar o repositorio
+  # diretamente via GIT no hPanel (Sites > Avancado > GIT), que faz
+  # deploy por "git pull" real. Por enquanto a implantacao la e manual
+  # (botao "Reimplantar" no hPanel) — falta configurar o webhook de
+  # auto-deploy. Este job de FTP fica desativado, mantido soh como
+  # referencia/fallback.
   deploy-hostinger:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
