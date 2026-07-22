@@ -9,7 +9,7 @@ const MODEL_IMAGEN = 'imagen-4.0-fast-generate-001';
 
 const OUT = path.join(__dirname, '..', 'blog', 'images', 'post-02-casa-ou-apartamento.jpg');
 
-const prompt = 'Split composition side by side comparison: on the left a modern Brazilian house exterior with a small garden, on the right a modern apartment building facade with balconies, Rio de Janeiro style, soft warm afternoon light, clean minimal architecture photography, no people, no text, professional real estate photography, balanced medium-distance shot, not wide-angle, not panoramic';
+const prompt = 'Photo of a small modern single-family house with a front garden and tiled roof, tropical plants, sunny day, residential street in Rio de Janeiro Brazil, warm afternoon light, clean minimal contemporary Brazilian residential architecture, no people, no text, professional real estate photography, medium-distance eye-level shot, not wide-angle, not panoramic, not a skyscraper, not an office building, low-rise 1-2 story house only';
 
 async function main() {
   const url = `${GEMINI_BASE}/models/${MODEL_IMAGEN}:predict?key=${GEMINI_KEY}`;
