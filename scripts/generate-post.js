@@ -22,7 +22,7 @@ const IMGS_DIR  = path.join(ROOT, 'blog', 'images');
 
 const GEMINI_KEY    = process.env.GEMINI_API_KEY;
 const GEMINI_BASE   = 'https://generativelanguage.googleapis.com/v1beta';
-const MODEL_TEXT    = 'gemini-2.0-flash';
+const MODEL_TEXT    = 'gemini-flash-latest';
 const MODEL_IMAGEN  = 'imagen-4.0-fast-generate-001';
 
 // ─── helpers ────────────────────────────────────────────────────────────────
