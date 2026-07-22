@@ -43,12 +43,14 @@ jobs:
           fi
 
       - name: Commit e push (se houver novos arquivos)
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add blog/posts/ blog/images/
           if git diff --staged --quiet; then
             echo "Nenhum arquivo novo — post já existia ou nenhum estava pendente."
+            echo "published=false" >> "$GITHUB_OUTPUT"
           else
             # Sincroniza o blog/index.html e commita junto, para que a
             # implantacao via Git da Hostinger (que faz git pull direto,
@@ -66,4 +68,14 @@ jobs:
             ")
             git commit -m "post: $(date +%Y-%m-%d) — $POST_TITLE"
             git push
+            echo "published=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Notificar Google Calendar (lembrete de Reimplantar na Hostinger)
+        if: steps.commit.outputs.published == 'true' && env.WEBHOOK_URL != ''
+        env:
+          WEBHOOK_URL: ${{ secrets.GOOGLE_CALENDAR_WEBHOOK }}
+        run: |
+          curl -s -X POST "$WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "{\"title\":\"⚠️ Novo post gerado — clique Reimplantar na Hostinger: ${{ steps.commit.outputs.post_title }}\",\"date\":\"${{ steps.commit.outputs.post_date }}\",\"num\":\"${{ steps.commit.outputs.post_num }}\",\"url\":\"${{ steps.commit.outputs.post_url }}\"}"
