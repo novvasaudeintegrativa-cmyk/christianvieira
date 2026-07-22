@@ -50,6 +50,12 @@ jobs:
           if git diff --staged --quiet; then
             echo "Nenhum arquivo novo — post já existia ou nenhum estava pendente."
           else
+            # Sincroniza o blog/index.html e commita junto, para que a
+            # implantacao via Git da Hostinger (que faz git pull direto,
+            # sem rodar build) puxe a versao ja atualizada.
+            node scripts/sync-blog-index.js
+            git add blog/index.html
+
             POST_TITLE=$(node -e "
               const s = require('./blog/posts-schedule.json');
               const today = new Date(); today.setHours(23,59,59,0);
