@@ -26,6 +26,15 @@
       "category": "DICAS",
       "tag_class": "tag--dicas",
       "related": ["erros-comprador-primeiro-imovel", "financiamento-imobiliario-explicado-simples"]
+    },
+    {
+      "num": 3,
+      "date": "2026-07-22",
+      "slug": "financiamento-imobiliario-explicado-simples",
+      "title": "Financiamento imobiliário explicado de forma simples",
+      "category": "FINANCIAMENTO",
+      "tag_class": "tag--financiamento",
+      "related": ["erros-comprador-primeiro-imovel", "casa-ou-apartamento-como-escolher", "quanto-custa-financiar-imovel"]
     }
   ]
 }
