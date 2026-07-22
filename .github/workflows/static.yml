@@ -53,7 +53,6 @@ jobs:
   # instantaneamente). Aparenta ser bug de infraestrutura do lado da
   # Hostinger — aguardando retorno do suporte antes de reativar.
   deploy-hostinger:
-    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -67,6 +66,23 @@ jobs:
       - name: Sync blog index
         id: sync
         run: node scripts/sync-blog-index.js
+
+      - name: Debug FTP upload + listagem (temporario)
+        run: |
+          TS=$(date -u +%Y%m%d-%H%M%S)
+          echo "teste $TS" > /tmp/ftplisttest.txt
+          echo "=== UPLOAD ==="
+          curl -v --ftp-pasv -T /tmp/ftplisttest.txt \
+            "ftp://${{ secrets.FTP_HOST }}/public_html/blog/ftplisttest.txt" \
+            --user "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}" 2>&1 | tail -20
+          echo "=== LISTAGEM VIA FTP LOGO APOS O UPLOAD ==="
+          curl -s --ftp-pasv \
+            "ftp://${{ secrets.FTP_HOST }}/public_html/blog/" \
+            --user "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}"
+          echo "=== TENTATIVA DE BAIXAR O PROPRIO ARQUIVO VIA FTP ==="
+          curl -s --ftp-pasv \
+            "ftp://${{ secrets.FTP_HOST }}/public_html/blog/ftplisttest.txt" \
+            --user "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}"
 
       - name: Deploy via SFTP para Hostinger
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
