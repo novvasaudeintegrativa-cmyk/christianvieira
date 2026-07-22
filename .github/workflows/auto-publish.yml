@@ -32,6 +32,13 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Listar modelos Gemini disponiveis (temporario)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          curl -s "https://generativelanguage.googleapis.com/v1beta/models?key=$GEMINI_API_KEY" \
+            | node -e "let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const j=JSON.parse(d);(j.models||[]).forEach(m=>console.log(m.name, '|', (m.supportedGenerationMethods||[]).join(',')))})"
+
       - name: Gerar post
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
