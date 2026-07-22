@@ -47,12 +47,17 @@ jobs:
         uses: actions/deploy-pages@v5
 
   # ── 2. Deploy para Hostinger via FTP (site de produção) ─────────────────────
-  # DESATIVADO em 2026-07-21: FTP, FTPS e SFTP reportam sucesso mas os arquivos
-  # nao chegam de fato ao public_html servido pelo site (confirmado com 4
-  # clientes/protocolos diferentes; edicao direta pelo File Manager funciona
-  # instantaneamente). Aparenta ser bug de infraestrutura do lado da
-  # Hostinger — aguardando retorno do suporte antes de reativar.
+  # DESATIVADO em 2026-07-22: o caminho do FTP estava errado (a conta ja
+  # comeca dentro de /public_html, entao usar "/public_html/" como server-dir
+  # duplicava o caminho) — isso foi corrigido abaixo (server-dir: "/").
+  # Porem, mesmo com o caminho certo e confirmando via listagem FTP que os
+  # arquivos chegam corretamente e com a data/hora certas, o site ao vivo e o
+  # Gerenciador de Arquivos continuam servindo conteudo antigo. Ou seja, ha uma
+  # dessincronizacao entre o armazenamento que o FTP grava e o que o site
+  # realmente serve — bug do lado da infraestrutura da Hostinger. Aguardando
+  # retorno do suporte antes de reativar.
   deploy-hostinger:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -67,30 +72,23 @@ jobs:
         id: sync
         run: node scripts/sync-blog-index.js
 
-      - name: Debug FTP upload sem prefixo public_html (temporario)
-        run: |
-          TS=$(date -u +%Y%m%d-%H%M%S)
-          echo "teste $TS" > /tmp/ftpfixtest.txt
-          echo "=== UPLOAD (caminho relativo, sem public_html) ==="
-          curl -v --ftp-pasv -T /tmp/ftpfixtest.txt \
-            "ftp://${{ secrets.FTP_HOST }}/blog/ftpfixtest.txt" \
-            --user "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}" 2>&1 | tail -25 || true
-          echo "=== LISTAGEM DE /blog/ ==="
-          curl -s --ftp-pasv \
-            "ftp://${{ secrets.FTP_HOST }}/blog/" \
-            --user "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}" || true
-
-      - name: Deploy via SFTP para Hostinger
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+      - name: Deploy via FTP para Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          username: u361926314
-          server: 212.85.6.146
-          port: 65002
-          password: ${{ secrets.SSH_PASSWORD }}
-          local_path: './*'
-          remote_path: 'public_html/'
-          sftp_only: true
-          rsyncArgs: '--exclude=.git --exclude=node_modules --exclude=.env* --exclude=.aios-core --exclude=skills'
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          server-dir: /
+          port: 21
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.env*
+            .aios-core/**
+            skills/**
 
       - name: Notificar Google Calendar
         if: success() && env.WEBHOOK_URL != ''
