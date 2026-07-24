@@ -220,8 +220,8 @@ async function uploadAttachment(taskId, imgPath, filename) {
 // ─── localiza foto original do post no blog ──────────────────────────────────
 
 function findBlogImage(post) {
-  const prefix = `post-${numPad(post.num)}-`;
-  const found  = fs.readdirSync(IMGS_DIR).find(f => f.startsWith(prefix) && f.endsWith('.jpg'));
+  const exact = `post-${numPad(post.num)}-${post.slug}.jpg`;
+  const found = fs.readdirSync(IMGS_DIR).find(f => f === exact);
   return found ? path.join(IMGS_DIR, found) : null;
 }
 

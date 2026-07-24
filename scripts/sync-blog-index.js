@@ -23,10 +23,10 @@ if (!published.length) {
 function pad(n) { return String(n).padStart(2, '0'); }
 
 function findThumb(post) {
-  const prefix = `post-${pad(post.num)}-`;
+  const exact = `post-${pad(post.num)}-${post.slug}`;
   try {
     const files = fs.readdirSync(IMG_DIR);
-    const match = files.find(f => f.startsWith(prefix) && /\.(jpe?g|png|webp)$/i.test(f));
+    const match = files.find(f => f.replace(/\.(jpe?g|png|webp)$/i, '') === exact && /\.(jpe?g|png|webp)$/i.test(f));
     return match ? `images/${match}` : null;
   } catch { return null; }
 }
