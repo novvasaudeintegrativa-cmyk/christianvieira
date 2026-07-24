@@ -4,6 +4,7 @@ import { BlogAnnouncement, BlogAnnouncementProps, totalDuration } from './BlogAn
 
 const defaultProps: BlogAnnouncementProps = {
   title: 'Financiamento imobiliário explicado de forma simples',
+  highlightWord: 'Financiamento',
   category: 'FINANCIAMENTO',
   date: '22 jul 2026',
   hook: 'Sabia que dá pra economizar até R$ 40 mil escolhendo a tabela certa?',

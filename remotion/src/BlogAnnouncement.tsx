@@ -12,12 +12,15 @@ import {
 
 export type BlogAnnouncementProps = {
   title: string;
+  highlightWord: string; // palavra do titulo a destacar em dourado
   category: string;
   date: string;
   hook: string;
   highlights: string[]; // 2 a 4 destaques curtos
   cta: string;
 };
+
+export const SLIDE_DURATION = 210; // 7s a 30fps — padrao fixo de todo video Remotion com texto
 
 const CATEGORY_COLORS: Record<string, { bg: string; fg: string }> = {
   DICAS: { bg: 'rgba(120,60,160,0.16)', fg: '#c79bf0' },
@@ -47,6 +50,44 @@ const Background: React.FC<{ pulseSeed?: number }> = ({ pulseSeed = 0 }) => {
   );
 };
 
+// ── Logo fixo no topo (padrao de todo video Remotion com texto) ─────────────
+const Logo: React.FC = () => (
+  <div
+    style={{
+      position: 'absolute',
+      top: 70,
+      left: 0,
+      right: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 14,
+    }}
+  >
+    <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+      <polyline
+        points="6,30 18,5 30,30"
+        stroke={GOLD}
+        strokeWidth="2.6"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+      />
+      <rect x="16.55" y="3.55" width="2.9" height="2.9" fill={GOLD} transform="rotate(45 18 5)" />
+    </svg>
+    <span
+      style={{
+        fontFamily: FONT,
+        fontSize: 24,
+        fontWeight: 700,
+        letterSpacing: 3,
+        color: '#fff',
+      }}
+    >
+      CHRISTIAN VIEIRA
+    </span>
+  </div>
+);
+
 const Footer: React.FC = () => (
   <div
     style={{
@@ -68,6 +109,48 @@ const Footer: React.FC = () => (
   </div>
 );
 
+// ícone de "video/reel" — badge de play
+const VideoIcon: React.FC = () => (
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 56,
+      height: 56,
+      borderRadius: '50%',
+      background: 'rgba(212,174,74,0.16)',
+      border: `1.5px solid ${GOLD}`,
+    }}
+  >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill={GOLD}>
+      <path d="M8 5v14l11-7z" />
+    </svg>
+  </div>
+);
+
+// título com a palavra de destaque colorida em dourado
+const TitleWithHighlight: React.FC<{ title: string; highlightWord: string }> = ({
+  title,
+  highlightWord,
+}) => {
+  if (!highlightWord) return <>{title}</>;
+  const parts = title.split(new RegExp(`(${highlightWord})`, 'i'));
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.toLowerCase() === highlightWord.toLowerCase() ? (
+          <span key={i} style={{ color: GOLD }}>
+            {part}
+          </span>
+        ) : (
+          <React.Fragment key={i}>{part}</React.Fragment>
+        )
+      )}
+    </>
+  );
+};
+
 // util: entrada com spring (fade + slide up)
 function useEnter(delay: number, damping = 200) {
   const frame = useCurrentFrame();
@@ -88,6 +171,7 @@ const SlideIntro: React.FC<{ category: string; date: string }> = ({ category, da
   return (
     <AbsoluteFill>
       <Background />
+      <Logo />
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
           <span
@@ -125,29 +209,33 @@ const SlideIntro: React.FC<{ category: string; date: string }> = ({ category, da
   );
 };
 
-// ── Slide 2: titulo ────────────────────────────────────────────────────────
-const SlideTitle: React.FC<{ title: string }> = ({ title }) => {
-  const e = useEnter(2, 18);
+// ── Slide 2: titulo — estatico e visivel ja no frame 0, com icone de video ──
+const SlideTitle: React.FC<{ title: string; highlightWord: string }> = ({
+  title,
+  highlightWord,
+}) => {
   return (
     <AbsoluteFill>
       <Background pulseSeed={20} />
+      <Logo />
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', padding: '0 100px' }}>
-        <h1
-          style={{
-            margin: 0,
-            fontSize: 78,
-            fontWeight: 800,
-            lineHeight: 1.12,
-            letterSpacing: -1.5,
-            color: '#fff',
-            textAlign: 'center',
-            fontFamily: FONT,
-            opacity: e.opacity,
-            transform: `translateY(${e.y}px)`,
-          }}
-        >
-          {title}
-        </h1>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 40 }}>
+          <VideoIcon />
+          <h1
+            style={{
+              margin: 0,
+              fontSize: 78,
+              fontWeight: 800,
+              lineHeight: 1.12,
+              letterSpacing: -1.5,
+              color: '#fff',
+              textAlign: 'center',
+              fontFamily: FONT,
+            }}
+          >
+            <TitleWithHighlight title={title} highlightWord={highlightWord} />
+          </h1>
+        </div>
       </AbsoluteFill>
       <Footer />
     </AbsoluteFill>
@@ -160,6 +248,7 @@ const SlideHook: React.FC<{ hook: string }> = ({ hook }) => {
   return (
     <AbsoluteFill>
       <Background pulseSeed={40} />
+      <Logo />
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', padding: '0 110px' }}>
         <p
           style={{
@@ -193,6 +282,7 @@ const SlideHighlight: React.FC<{ text: string; index: number; total: number }> =
   return (
     <AbsoluteFill>
       <Background pulseSeed={60 + index * 15} />
+      <Logo />
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', padding: '0 100px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 36 }}>
           <span
@@ -232,13 +322,13 @@ const SlideHighlight: React.FC<{ text: string; index: number; total: number }> =
 // ── Slide final: CTA ────────────────────────────────────────────────────────
 const SlideCTA: React.FC<{ cta: string }> = ({ cta }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
   const e = useEnter(2, 12);
   const pulse = 1 + Math.sin(frame / 8) * 0.03;
   const badge = useEnter(30);
   return (
     <AbsoluteFill>
       <Background pulseSeed={140} />
+      <Logo />
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 40 }}>
           <div
@@ -287,37 +377,32 @@ const SlideCTA: React.FC<{ cta: string }> = ({ cta }) => {
 
 export const BlogAnnouncement: React.FC<BlogAnnouncementProps> = ({
   title,
+  highlightWord,
   category,
   date,
   hook,
   highlights,
   cta,
 }) => {
-  const INTRO = 45;
-  const TITLE = 55;
-  const HOOK = 55;
-  const HL = 55; // por destaque
-  const CTA = 70;
-
   return (
     <AbsoluteFill style={{ fontFamily: FONT }}>
       <Audio src={staticFile('audio/RealState.mp3')} volume={0.35} />
       <Series>
-        <Series.Sequence durationInFrames={INTRO}>
+        <Series.Sequence durationInFrames={SLIDE_DURATION}>
           <SlideIntro category={category} date={date} />
         </Series.Sequence>
-        <Series.Sequence durationInFrames={TITLE}>
-          <SlideTitle title={title} />
+        <Series.Sequence durationInFrames={SLIDE_DURATION}>
+          <SlideTitle title={title} highlightWord={highlightWord} />
         </Series.Sequence>
-        <Series.Sequence durationInFrames={HOOK}>
+        <Series.Sequence durationInFrames={SLIDE_DURATION}>
           <SlideHook hook={hook} />
         </Series.Sequence>
         {highlights.map((text, i) => (
-          <Series.Sequence durationInFrames={HL} key={i}>
+          <Series.Sequence durationInFrames={SLIDE_DURATION} key={i}>
             <SlideHighlight text={text} index={i} total={highlights.length} />
           </Series.Sequence>
         ))}
-        <Series.Sequence durationInFrames={CTA}>
+        <Series.Sequence durationInFrames={SLIDE_DURATION}>
           <SlideCTA cta={cta} />
         </Series.Sequence>
       </Series>
@@ -326,5 +411,5 @@ export const BlogAnnouncement: React.FC<BlogAnnouncementProps> = ({
 };
 
 export function totalDuration(highlightsCount: number) {
-  return 45 + 55 + 55 + highlightsCount * 55 + 70;
+  return SLIDE_DURATION * (3 + highlightsCount + 1);
 }
