@@ -55,16 +55,16 @@ const Logo: React.FC = () => (
   <div
     style={{
       position: 'absolute',
-      top: 70,
+      top: 95,
       left: 0,
       right: 0,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      gap: 14,
+      gap: 18,
     }}
   >
-    <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+    <svg width="38" height="38" viewBox="0 0 36 36" fill="none">
       <polyline
         points="6,30 18,5 30,30"
         stroke={GOLD}
@@ -77,7 +77,7 @@ const Logo: React.FC = () => (
     <span
       style={{
         fontFamily: FONT,
-        fontSize: 24,
+        fontSize: 30,
         fontWeight: 700,
         letterSpacing: 3,
         color: '#fff',
@@ -163,17 +163,20 @@ function useEnter(delay: number, damping = 200) {
   };
 }
 
-// ── Slide 1: eyebrow + categoria ──────────────────────────────────────────
-const SlideIntro: React.FC<{ category: string; date: string }> = ({ category, date }) => {
+// ── Slide 1: eyebrow + categoria + icone de video + headline — tudo estatico ja no frame 0 ──
+const SlideIntro: React.FC<{
+  category: string;
+  date: string;
+  title: string;
+  highlightWord: string;
+}> = ({ category, date, title, highlightWord }) => {
   const cat = CATEGORY_COLORS[category] ?? CATEGORY_COLORS.DICAS;
-  const e1 = useEnter(2);
-  const e2 = useEnter(14);
   return (
     <AbsoluteFill>
       <Background />
       <Logo />
-      <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
+      <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', padding: '0 100px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32 }}>
           <span
             style={{
               fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
@@ -181,8 +184,6 @@ const SlideIntro: React.FC<{ category: string; date: string }> = ({ category, da
               fontWeight: 700,
               letterSpacing: 6,
               color: GOLD,
-              opacity: e1.opacity,
-              transform: `translateY(${e1.y}px)`,
             }}
           >
             NOVO NO BLOG
@@ -197,30 +198,13 @@ const SlideIntro: React.FC<{ category: string; date: string }> = ({ category, da
               borderRadius: 10,
               background: cat.bg,
               color: cat.fg,
-              opacity: e2.opacity,
-              transform: `translateY(${e2.y}px)`,
             }}
           >
             {category} · {date}
           </span>
-        </div>
-      </AbsoluteFill>
-    </AbsoluteFill>
-  );
-};
-
-// ── Slide 2: titulo — estatico e visivel ja no frame 0, com icone de video ──
-const SlideTitle: React.FC<{ title: string; highlightWord: string }> = ({
-  title,
-  highlightWord,
-}) => {
-  return (
-    <AbsoluteFill>
-      <Background pulseSeed={20} />
-      <Logo />
-      <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', padding: '0 100px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 40 }}>
-          <VideoIcon />
+          <div style={{ marginTop: 8 }}>
+            <VideoIcon />
+          </div>
           <h1
             style={{
               margin: 0,
@@ -389,10 +373,7 @@ export const BlogAnnouncement: React.FC<BlogAnnouncementProps> = ({
       <Audio src={staticFile('audio/RealState.mp3')} volume={0.35} />
       <Series>
         <Series.Sequence durationInFrames={SLIDE_DURATION}>
-          <SlideIntro category={category} date={date} />
-        </Series.Sequence>
-        <Series.Sequence durationInFrames={SLIDE_DURATION}>
-          <SlideTitle title={title} highlightWord={highlightWord} />
+          <SlideIntro category={category} date={date} title={title} highlightWord={highlightWord} />
         </Series.Sequence>
         <Series.Sequence durationInFrames={SLIDE_DURATION}>
           <SlideHook hook={hook} />
@@ -411,5 +392,5 @@ export const BlogAnnouncement: React.FC<BlogAnnouncementProps> = ({
 };
 
 export function totalDuration(highlightsCount: number) {
-  return SLIDE_DURATION * (3 + highlightsCount + 1);
+  return SLIDE_DURATION * (2 + highlightsCount + 1);
 }
