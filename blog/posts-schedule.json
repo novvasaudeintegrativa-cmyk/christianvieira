@@ -35,6 +35,15 @@
       "category": "FINANCIAMENTO",
       "tag_class": "tag--financiamento",
       "related": ["erros-comprador-primeiro-imovel", "casa-ou-apartamento-como-escolher", "quanto-custa-financiar-imovel"]
+    },
+    {
+      "num": 4,
+      "date": "2026-07-25",
+      "slug": "quanto-custa-financiar-imovel",
+      "title": "Quanto custa financiar um imóvel? Tudo que você precisa saber",
+      "category": "FINANCIAMENTO",
+      "tag_class": "tag--financiamento",
+      "related": ["financiamento-imobiliario-explicado-simples", "erros-comprador-primeiro-imovel", "casa-ou-apartamento-como-escolher"]
     }
   ]
 }
