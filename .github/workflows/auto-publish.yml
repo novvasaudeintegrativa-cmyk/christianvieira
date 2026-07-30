@@ -1,9 +1,10 @@
 name: Auto-publicar post do blog
 
 on:
-  # Toda terça às 11:00 UTC (08:00 BRT) — garante publicação no horário do calendário
+  # Toda terça e quinta às 11:00 UTC (08:00 BRT) — 2x/semana, garante publicação no horário do calendário
   schedule:
     - cron: '0 11 * * 2'
+    - cron: '0 11 * * 4'
 
   # Disparo manual pela aba "Actions" do GitHub (útil para publicar posts atrasados)
   workflow_dispatch:

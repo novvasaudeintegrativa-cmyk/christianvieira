@@ -58,7 +58,7 @@ REGRAS OBRIGATÓRIAS — siga exatamente:
    - último parágrafo: CTA — convite a conversar com o Christian.
 2. Emojis: use 3 ou 4 no total, de forma natural no texto.
 3. Após o último parágrafo, coloque uma linha com CTA de contato:
-   💬 Fale com o Christian Vieira: https://wa.me/5521993399299
+   🔗 Link na bio: corretordeimovelrj.com.br
 4. Linha em branco, depois de 8 a 10 hashtags relevantes em uma única linha.
 5. Tom consultivo, próximo e direto — como Christian fala com clientes face a face.
 6. Português brasileiro. Retorne SOMENTE o texto da legenda, sem títulos nem explicações.`;

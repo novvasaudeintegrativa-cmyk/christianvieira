@@ -165,8 +165,8 @@ REGRAS OBRIGATÓRIAS — siga exatamente:
    - 2º parágrafo: aprofunda com dica prática ou dado relevante (2-3 frases).
    - 3º parágrafo: CTA — convite a ler o artigo completo.
 2. Emojis: use pelo menos 1 emoji por parágrafo, de forma natural no texto (não apenas no fim).
-3. Após o 3º parágrafo, coloque o link em linha própria:
-   ${url}
+3. Após o 3º parágrafo, coloque o CTA em linha própria (Instagram não permite link clicável na legenda, então sempre direciona para a bio):
+   🔗 Link na bio: corretordeimovelrj.com.br
 4. Linha em branco, depois a fonte de referência exatamente assim:
    📚 Fonte: ${fonte}
 5. Linha em branco, depois de 8 a 10 hashtags relevantes em uma única linha.
@@ -179,7 +179,7 @@ ESTRUTURA EXATA DE SAÍDA:
 [2º parágrafo com emoji(s)]
 
 [3º parágrafo CTA com emoji(s)]
-${url}
+🔗 Link na bio: corretordeimovelrj.com.br
 
 📚 Fonte: ${fonte}
 

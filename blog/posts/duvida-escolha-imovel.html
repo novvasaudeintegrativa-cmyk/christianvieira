@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dúvida na escolha do imóvel | Blog Christian Vieira</title>
+  <meta name="description" content="Está em dúvida na escolha do imóvel no Rio de Janeiro? Descubra como comparar opções e tomar a decisão certa com segurança e clareza.">
+
+  <link rel="stylesheet" href="../../design-system.css">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'gold':'var(--color-gold)','gold-light':'var(--color-gold-light)','navy':'var(--color-navy)','stone':'var(--color-stone)','ink':'var(--color-ink)','ink-soft':'var(--color-ink-soft)'},fontFamily:{sans:['Plus Jakarta Sans','Arial','sans-serif'],mono:['ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','monospace']}}}}</script>
+  <style>
+    .post-hero{background:var(--color-navy);}
+    .post-hero__inner{display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center;max-width:1200px;margin:0 auto;padding:72px clamp(1rem,5vw,2rem) 56px;}
+    .post-hero__content{min-width:0;}
+    .post-hero__image{border-radius:14px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.5);aspect-ratio:16/10;}
+    .post-hero__image img{width:100%;height:100%;object-fit:cover;display:block;}
+    @media(max-width:900px){.post-hero__inner{grid-template-columns:1fr;gap:28px;}.post-hero__image{order:-1;}}
+    .post-hero__back{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.45);text-decoration:none;margin-bottom:28px;transition:color .2s}
+    .post-hero__back:hover{color:var(--color-gold-light)}
+    .post-hero__meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+    .post-tag{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:4px;background:rgba(184,150,46,.15);color:var(--color-gold-light)}
+    .post-hero__date{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.4)}
+    .post-hero__title{font-size:clamp(28px,4.5vw,52px);font-weight:800;letter-spacing:-.04em;color:#fff;line-height:1.1;margin-bottom:20px;}
+    .post-hero__excerpt{font-size:17px;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:28px}
+    .post-hero__author{display:flex;align-items:center;gap:12px}
+    .post-hero__avatar{width:40px;height:40px;background:var(--color-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+    .post-hero__author-name{font-size:14px;font-weight:700;color:#fff}
+    .post-hero__author-role{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+    .post-layout{display:grid;grid-template-columns:1fr 320px;gap:48px;max-width:1100px;margin:0 auto;padding:56px clamp(1rem,5vw,2rem) 80px}
+    @media(max-width:860px){.post-layout{grid-template-columns:1fr}.post-sidebar{order:-1}}
+    .post-body{font-size:17px;line-height:1.75;color:var(--color-ink-soft)}
+    .post-body h2{font-size:clamp(22px,2.5vw,28px);font-weight:700;letter-spacing:-.03em;color:var(--color-ink);margin:40px 0 16px;line-height:1.2}
+    .post-body h3{font-size:19px;font-weight:700;color:var(--color-ink);margin:32px 0 12px}
+    .post-body p{margin-bottom:20px}
+    .post-body strong{font-weight:700;color:var(--color-ink)}
+    .post-body ul{padding-left:20px;margin-bottom:20px}
+    .post-body ul li{margin-bottom:8px}
+    .post-body ol{padding-left:20px;margin-bottom:20px}
+    .post-body ol li{margin-bottom:12px}
+    .post-body blockquote{border-left:3px solid var(--color-gold);padding:16px 20px;margin:28px 0;background:var(--color-stone);border-radius:0 8px 8px 0;font-style:italic;font-size:18px;color:var(--color-ink)}
+    .post-body .highlight-box{background:rgba(13,27,42,.04);border:1px solid var(--color-border);border-radius:10px;padding:24px;margin:28px 0}
+    .post-body .highlight-box h4{font-size:13px;font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;color:var(--color-gold);margin-bottom:12px}
+    .post-sidebar{position:sticky;top:80px;align-self:start;display:flex;flex-direction:column;gap:24px}
+    .sidebar-card{background:var(--color-stone);border:1px solid var(--color-border);border-radius:10px;padding:24px}
+    .sidebar-card__label{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--color-gold);margin-bottom:12px;display:block}
+    .sidebar-card__title{font-size:16px;font-weight:700;color:var(--color-ink);margin-bottom:8px}
+    .sidebar-card__body{font-size:14px;color:var(--color-ink-soft);line-height:1.6;margin-bottom:16px}
+    .related-post{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--color-border);text-decoration:none}
+    .related-post:last-child{border-bottom:none;padding-bottom:0}
+    .related-post__icon{width:40px;height:40px;background:var(--color-navy);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .related-post__title{font-size:13px;font-weight:600;color:var(--color-ink);line-height:1.4;transition:color .2s}
+    .related-post:hover .related-post__title{color:var(--color-gold)}
+    .related-post__date{font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);margin-top:3px}
+  </style>
+</head>
+<body style="background:var(--color-stone);">
+
+<nav id="navbar" class="sticky top-0 z-50">
+  <div class="nav-inner max-w-7xl mx-auto h-16 flex items-center justify-between gap-4">
+    <a href="../../index.html" class="flex items-center gap-3 shrink-0">
+      <div class="nav-logo-badge w-9 h-9 flex items-center justify-center" style="background:transparent;"><svg viewBox="0 0 36 36" fill="none" width="36" height="36"><polyline points="6,30 18,5 30,30" stroke="#C5973E" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter"/><rect x="16.55" y="3.55" width="2.9" height="2.9" fill="#C5973E" transform="rotate(45 18 5)"/></svg></div>
+      <div><p class="nav-logo-name">Christian Vieira</p><p class="nav-logo-sub">Imóveis &amp; Consultoria</p><p class="nav-logo-creci">CRECI 45539</p></div>
+    </a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="../../index.html" class="cv-nav-link">Início</a>
+      <div class="nav-dropdown" id="nav-dd">
+        <button class="nav-dropdown__trigger" aria-expanded="false">Lançamentos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown__panel" role="menu">
+          <a href="../../lancamentos/ArcosdoPorto/index.html" class="nav-dropdown__item">Arcos do Porto</a>
+          <a href="../../lancamentos/CartollaII/index.html" class="nav-dropdown__item">Residencial Cartola II</a>
+          <a href="../../lancamentos/MetropolitanDream/index.html" class="nav-dropdown__item">Metropolitan Dream</a>
+          <a href="../../lancamentos/OrlaRecreioReserva/index.html" class="nav-dropdown__item">Orla Recreio Reserva</a>
+          <a href="../../lancamentos/ConnectSquare/index.html" class="nav-dropdown__item">Connect Square</a>
+        </div>
+      </div>
+      <a href="../../index.html#consultoria" class="cv-nav-link">Consultoria</a>
+      <a href="../index.html" class="cv-nav-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+      <a href="../../index.html#contato" class="cv-nav-link">Contato</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="../../index.html#contato" class="cv-btn cv-btn-primary whitespace-nowrap hidden sm:inline-flex">Fale com o Christian</a>
+      <button class="nav-hamburger lg:hidden" id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false"><span class="nav-hamburger__label">MENU</span><div class="nav-hamburger__bars"><span></span><span></span><span></span></div></button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+    <a href="../../index.html" class="nav-mobile-link">Início</a>
+    <a href="../index.html" class="nav-mobile-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+    <a href="../../index.html#contato" class="nav-mobile-link">Contato</a>
+    <a href="../../index.html#contato" class="nav-mobile-cta">Fale com o Christian</a>
+  </div>
+</nav>
+
+<div class="post-hero">
+<div class="post-hero__inner">
+<div class="post-hero__content">
+  <a href="../index.html" class="post-hero__back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Voltar ao Blog</a>
+  <div class="post-hero__meta">
+    <span class="post-tag">DICAS</span>
+    <span class="post-hero__date">30 de julho de 2026 · 6 min de leitura</span>
+  </div>
+  <h1 class="post-hero__title">Dúvida na escolha do imóvel</h1>
+  <p class="post-hero__excerpt">Escolher um imóvel no Rio de Janeiro pode gerar indecisão. Aprenda a comparar opções e tomar a melhor decisão para o seu momento de vida.</p>
+  <div class="post-hero__author">
+    <div class="post-hero__avatar">CV</div>
+    <div><p class="post-hero__author-name">Christian Vieira</p><p class="post-hero__author-role">CORRETOR E MENTOR IMOBILIÁRIO · CRECI 45539</p></div>
+  </div>
+</div>
+<div class="post-hero__image">
+  <img src="../images/post-05-duvida-escolha-imovel.jpg" alt="Dúvida na escolha do imóvel">
+</div>
+</div>
+</div>
+
+<div style="background:var(--color-stone);">
+  <div class="post-layout">
+    <article class="post-body">
+
+      <p>Comprar um imóvel no Rio de Janeiro é uma das decisões financeiras mais importantes da sua vida. Seja o primeiro apartamento na Tijuca ou a tão sonhada casa no Recreio dos Bandeirantes, a ansiedade é inevitável. Diante de tantas opções, visitas e valores, é normal travar na hora de escolher.</p><p>A dúvida surge quando o coração pede uma coisa e a razão aponta para outra. Você olha um apartamento em Botafogo com excelente localização, mas antigo. Em seguida, visita um condomínio clube na Barra da Tijuca, perfeito por dentro, mas distante do seu trabalho. E agora? Qual decisão tomar para não se arrepender no futuro?</p><p>Em mais de 10 anos atuando como corretor e mentor no mercado carioca, já ajudei centenas de compradores a superarem esse impasse. O segredo não é encontrar o imóvel perfeito, porque ele não existe. O segredo é encontrar o imóvel certo para o seu momento atual de vida. Vamos entender como fazer isso de forma prática e objetiva.</p>
+
+      <h2>Localização versus espaço: qual deve ser a sua prioridade?</h2>
+      <p>Essa é a dúvida mais comum no mercado imobiliário do Rio de Janeiro. De um lado, bairros tradicionais da <strong>Zona Sul</strong> ou da <strong>Zona Norte</strong>, como Flamengo e Tijuca, oferecem comércio farto, transporte público abundante e proximidade do centro urbano. No entanto, pelo mesmo orçamento, a metragem costuma ser menor e a vaga de garagem nem sempre é garantida.</p><p>Do outro lado, regiões da <strong>Zona Oeste</strong>, como o Recreio dos Bandeirantes e a Barra da Tijuca, entregam apartamentos mais amplos, plantas modernas, varandas gourmet e lazer completo no condomínio. A contrapartida é a dependência maior do carro ou de vias expressas como a Linha Amarela e o BRT.</p><p>Para resolver esse dilema, pergunte-se: o que causa mais impacto no seu estresse diário? Passar uma hora a mais no trânsito todos os dias ou morar em um espaço onde a família não se acomoda com conforto? Se a sua rotina exige mobilidade diária rápida para o centro da cidade, priorize a localização. Se você trabalha em home office ou busca qualidade de vida nos finais de semana para as crianças, o espaço e a infraestrutura do condomínio devem pesar mais.</p>
+
+      <h2>Imóvel antigo para reformar ou lançamento pronto para morar?</h2>
+      <p>Muitos compradores ficam indecisos entre comprar um apartamento antigo com planta generosa ou um lançamento moderno, mesmo que menor. Ambas as escolhas têm vantagens claras, mas exigem planejamentos financeiros completamente diferentes.</p><p>Imóveis antigos, frequentes em Copacabana, Méier ou Grajaú, costumam ter quartos espaçosos e pé-direito alto. No entanto, o custo invisível está na necessidade de trocar instalações hidráulicas, elétricas e nas taxas de condomínio, que tendem a ser elevadas devido à manutenção constante de prédios com poucos moradores e sem áreas de lazer.</p><p>Por outro lado, condomínios recentes entregam praticidade, eficiência energética e segurança reforçada. Porém, as plantas costumam ter cômodos mais enxutos. Antes de fechar negócio em um imóvel antigo com a ideia de reformar aos poucos, faça um orçamento real com um profissional. O custo de uma reforma integral no Rio de Janeiro pode representar uma fatia considerável do valor final do imóvel e transformar a oportunidade em dor de cabeça.</p>
+
+      <blockquote>A dúvida não surge por excesso de opções, mas pela falta de critérios claros. Quando você estabelece o que é inegociável, a escolha do imóvel certo torna-se natural e sem sofrimento.</blockquote>
+
+      <h2>Analise o custo fixo: o perigo do condomínio e do IPTU</h2>
+      <p>Um erro clássico na hora de escolher entre dois ou mais imóveis é olhar apenas o preço de venda anunciado. O valor da parcela do financiamento é apenas parte da conta. Os custos fixos mensais podem desequilibrar o seu orçamento familiar se não forem analisados com cuidado.</p><p>No Rio de Janeiro, a variação de taxas de condomínio é enorme. Um prédio simples sem portaria 24 horas na Zona Norte pode ter um custo baixo, enquanto um condomínio com infraestrutura hoteleira na Barra da Tijuca ou no Recreio pode apresentar um valor mensal elevado. Além disso, o IPTU varia drasticamente entre as zonas da cidade.</p><ul><li><strong>Calcule o custo total mensal:</strong> junte a parcela da compra, a taxa de condomínio e a fração mensal do IPTU.</li><li><strong>Fundo de reserva e obras:</strong> verifique se o condomínio possui chamadas extraordinárias para reformas estruturais aprovadas em assembleia.</li><li><strong>Perspectiva de valorização:</strong> imóveis em bairros com investimentos em infraestrutura tendem a amortizar melhor o custo fixo ao longo dos anos.</li></ul><p>Ao colocar os números na ponta do lápis, muitas opções que pareciam baratas na compra se mostram mais custosas no longo prazo.</p>
+
+      <h2>Faça o teste da rotina real antes de tomar a decisão</h2>
+      <p>Você visitou o imóvel no sábado à tarde, achou a rua silenciosa, o trânsito livre e a iluminação perfeita. Mas como é aquela rua na terça-feira de manhã ou em uma noite de chuva forte? A indecisão costuma evaporar quando você testa a realidade do local fora dos momentos de visita.</p><p>Antes de assinar a proposta ou dar um sinal, visite a região em horários variados. Experimente fazer o trajeto do imóvel até o seu trabalho no horário de pico da manhã. Observe o fluxo de carros nas vias principais do bairro, como a Avenida das Américas no Recreio ou a Conde de Bonfim na Tijuca.</p><p>Converse com moradores da rua e com o porteiro do prédio. Pergunte sobre o barulho noturno, a feira livre no dia de semana, a segurança da rua e a convivência no condomínio. Essas informações informais revelam detalhes essenciais que fotos e anúncios na internet jamais vão mostrar.</p>
+
+      <h2>O método da eliminação: como dar o passo final com segurança</h2>
+      <p>Se você tem três ou quatro imóveis na lista e não consegue escolher, pare de procurar novas opções na internet. Ver mais anúncios só vai aumentar a confusão mental. O caminho para tomar a decisão é o método de eliminação progressiva.</p><p>Monte uma tabela simples com no máximo cinco critérios inegociáveis para a sua família (exemplo: número de vagas, proximidade do metrô ou BRT, varanda, aceitar pet, valor máximo de condomínio). Atribua uma pontuação objetiva para cada imóvel em relação a esses critérios.</p><ul><li><strong>Elimine o pior:</strong> corte imediatamente o imóvel com a pontuação mais baixa, mesmo que ele tenha uma característica isolada muito atraente.</li><li><strong>Analise a liquidez:</strong> se precisar vender o imóvel no futuro, qual deles terá uma procura mais rápida no mercado carioca?</li><li><strong>Segurança jurídica:</strong> verifique se a documentação do imóvel e dos vendedores está 100% regularizada. Imóvel com pendência cartorária deve ser descartado.</li></ul><p>Lembre-se de que nenhum imóvel atenderá a 100% dos seus desejos. Uma escolha consciente e madura foca em atender às suas necessidades prioritárias, aceitando pequenas concessões sem remorso.</p>
+
+      <div class="highlight-box">
+        <h4>PRONTO PARA TOMAR A DECISÃO CERTA?</h4>
+        <p style="font-size:15px;color:var(--color-ink-soft);margin-bottom:16px;line-height:1.6;">Não passe por essa etapa sozinho. Agende uma consultoria direcionada para analisar suas opções com quem entende o mercado carioca de verdade.</p>
+        <a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Li%20seu%20artigo%20sobre%20d%C3%BAvida%20na%20escolha%20do%20im%C3%B3vel%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o." target="_blank" rel="noopener" class="cv-btn cv-btn-gold" style="display:inline-flex;">Falar com o Christian</a>
+      </div>
+
+    </article>
+
+    <aside class="post-sidebar">
+      <div class="sidebar-card" style="background:var(--color-navy);border-color:rgba(184,150,46,0.15);">
+        <span class="sidebar-card__label" style="color:var(--color-gold-light);">FALE COM O ESPECIALISTA</span>
+        <p class="sidebar-card__title" style="color:#fff;">Precisa de orientação imobiliária?</p>
+        <p class="sidebar-card__body" style="color:rgba(255,255,255,0.5);">Christian Vieira analisa seu perfil e indica o melhor caminho para comprar, investir ou vender no Rio.</p>
+        <a href="https://wa.me/5521993399299" target="_blank" rel="noopener" class="cv-btn cv-btn-gold" style="display:flex;width:100%;justify-content:center;">WhatsApp</a>
+      </div>
+      <div class="sidebar-card">
+        <span class="sidebar-card__label">POSTS RELACIONADOS</span>
+        
+        <a href="medo-financiamento.html" class="related-post">
+          <div class="related-post__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(184,150,46,0.6)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><p class="related-post__title">Medo do financiamento</p><p class="related-post__date">4 agosto 2026</p></div>
+        </a>
+        <a href="quanto-custa-financiar-imovel.html" class="related-post">
+          <div class="related-post__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(184,150,46,0.6)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><p class="related-post__title">Quanto custa financiar um imóvel? Tudo que você precisa saber</p><p class="related-post__date">25 julho 2026</p></div>
+        </a>
+      </div>
+      <div class="sidebar-card">
+        <span class="sidebar-card__label">LANÇAMENTOS</span>
+        <p class="sidebar-card__body">Conheça os empreendimentos disponíveis com Christian Vieira no Rio de Janeiro.</p>
+        <a href="../../index.html#lancamentos" class="cv-btn cv-btn-charcoal" style="display:flex;justify-content:center;font-size:11px;">Ver lançamentos</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer style="background:#060810;border-top:1px solid rgba(184,150,46,0.1);padding:32px clamp(1rem,4vw,2rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+  <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;background:var(--color-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;font-weight:700;color:#fff;">CV</div><div><p style="font-size:12px;font-weight:600;color:#fff;">Christian Vieira</p><p style="font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:0.08em;color:var(--color-gold);margin-top:1px;">IMÓVEIS &amp; CONSULTORIA · RJ · CRECI 45539</p></div></div>
+  <p style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);">© 2026 Christian Vieira. Todos os direitos reservados.</p>
+</footer>
+<a href="https://wa.me/5521993399299" target="_blank" rel="noopener" style="position:fixed;bottom:24px;right:24px;z-index:50;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);text-decoration:none;transition:transform 300ms;" title="WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+<script>(function(){const ham=document.getElementById('nav-hamburger');const mob=document.getElementById('nav-mobile');if(ham&&mob){ham.addEventListener('click',()=>{const o=mob.classList.toggle('is-open');ham.classList.toggle('is-open',o);ham.setAttribute('aria-expanded',o);mob.setAttribute('aria-hidden',!o)});}document.querySelectorAll('.nav-dropdown').forEach(dd=>{const t=dd.querySelector('.nav-dropdown__trigger');if(!t)return;t.addEventListener('click',e=>{e.stopPropagation();dd.classList.toggle('is-open');t.setAttribute('aria-expanded',dd.classList.contains('is-open'))});document.addEventListener('click',()=>{dd.classList.remove('is-open');t.setAttribute('aria-expanded',false)})})})();</script>
+</body>
+</html>

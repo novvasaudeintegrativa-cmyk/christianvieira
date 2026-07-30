@@ -24,7 +24,7 @@ Tudo estático, visível desde o frame 0 (sem animação de entrada) — mesmo p
 ## Legenda (Instagram)
 
 Gerada via Gemini, seguindo o mesmo padrão das legendas do blog:
-3-4 parágrafos, 3-4 emojis, CTA final "💬 Fale com o Christian Vieira: [link]",
+3-4 parágrafos, 3-4 emojis, CTA final "🔗 Link na bio: corretordeimovelrj.com.br",
 fonte quando aplicável, 8-10 hashtags.
 
 ## ClickUp
@@ -42,15 +42,15 @@ gera headlines curtas e mais legíveis que citar a frase inteira da seção.
 
 | # | Origem (seção / card) | Headline | Status |
 |---|---|---|---|
-| 01 | Quem procura Christian Vieira → card 1 | Dúvida na escolha do imóvel | Gerado 2026-07-25, aguardando aprovação |
+| 01 | Quem procura Christian Vieira → card 1 | Dúvida na escolha do imóvel | Agendado para 2026-07-30 às 10h30 (CTA corrigido — link na bio) |
 | 02 | Quem procura Christian Vieira → card 2 | Medo do financiamento | Pendente |
 | 03 | Quem procura Christian Vieira → card 3 | Processo confuso da compra | Pendente |
 | 04 | Quem procura Christian Vieira → card 4 | Insegurança na decisão | Pendente |
 | 05+ | Próxima seção do site, a definir | — | Pendente |
 
-**Programação:** a série começou em 2026-07-25 às 10h30. Cada Feed é
-gerado e enviado ao ClickUp para aprovação antes de agendar a publicação
-real no Instagram.
+**Programação:** a série foi gerada em 2026-07-25. Post #01 reagendado para
+publicação em 2026-07-30 às 10h30. Cada Feed é gerado e enviado ao ClickUp
+para aprovação antes de agendar a publicação real no Instagram.
 
 ## Fluxo de trabalho
 
