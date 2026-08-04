@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medo do financiamento | Blog Christian Vieira</title>
+  <meta name="description" content="Perca o medo do financiamento imobiliário no Rio de Janeiro. Christian Vieira explica como comprar seu 1º imóvel com segurança e sem surpresas.">
+
+  <link rel="stylesheet" href="../../design-system.css">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'gold':'var(--color-gold)','gold-light':'var(--color-gold-light)','navy':'var(--color-navy)','stone':'var(--color-stone)','ink':'var(--color-ink)','ink-soft':'var(--color-ink-soft)'},fontFamily:{sans:['Plus Jakarta Sans','Arial','sans-serif'],mono:['ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','monospace']}}}}</script>
+  <style>
+    .post-hero{background:var(--color-navy);}
+    .post-hero__inner{display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center;max-width:1200px;margin:0 auto;padding:72px clamp(1rem,5vw,2rem) 56px;}
+    .post-hero__content{min-width:0;}
+    .post-hero__image{border-radius:14px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.5);aspect-ratio:16/10;}
+    .post-hero__image img{width:100%;height:100%;object-fit:cover;display:block;}
+    @media(max-width:900px){.post-hero__inner{grid-template-columns:1fr;gap:28px;}.post-hero__image{order:-1;}}
+    .post-hero__back{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.45);text-decoration:none;margin-bottom:28px;transition:color .2s}
+    .post-hero__back:hover{color:var(--color-gold-light)}
+    .post-hero__meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+    .post-tag{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:4px;background:rgba(184,150,46,.15);color:var(--color-gold-light)}
+    .post-hero__date{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.4)}
+    .post-hero__title{font-size:clamp(28px,4.5vw,52px);font-weight:800;letter-spacing:-.04em;color:#fff;line-height:1.1;margin-bottom:20px;}
+    .post-hero__excerpt{font-size:17px;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:28px}
+    .post-hero__author{display:flex;align-items:center;gap:12px}
+    .post-hero__avatar{width:40px;height:40px;background:var(--color-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+    .post-hero__author-name{font-size:14px;font-weight:700;color:#fff}
+    .post-hero__author-role{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+    .post-layout{display:grid;grid-template-columns:1fr 320px;gap:48px;max-width:1100px;margin:0 auto;padding:56px clamp(1rem,5vw,2rem) 80px}
+    @media(max-width:860px){.post-layout{grid-template-columns:1fr}.post-sidebar{order:-1}}
+    .post-body{font-size:17px;line-height:1.75;color:var(--color-ink-soft)}
+    .post-body h2{font-size:clamp(22px,2.5vw,28px);font-weight:700;letter-spacing:-.03em;color:var(--color-ink);margin:40px 0 16px;line-height:1.2}
+    .post-body h3{font-size:19px;font-weight:700;color:var(--color-ink);margin:32px 0 12px}
+    .post-body p{margin-bottom:20px}
+    .post-body strong{font-weight:700;color:var(--color-ink)}
+    .post-body ul{padding-left:20px;margin-bottom:20px}
+    .post-body ul li{margin-bottom:8px}
+    .post-body ol{padding-left:20px;margin-bottom:20px}
+    .post-body ol li{margin-bottom:12px}
+    .post-body blockquote{border-left:3px solid var(--color-gold);padding:16px 20px;margin:28px 0;background:var(--color-stone);border-radius:0 8px 8px 0;font-style:italic;font-size:18px;color:var(--color-ink)}
+    .post-body .highlight-box{background:rgba(13,27,42,.04);border:1px solid var(--color-border);border-radius:10px;padding:24px;margin:28px 0}
+    .post-body .highlight-box h4{font-size:13px;font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;color:var(--color-gold);margin-bottom:12px}
+    .post-sidebar{position:sticky;top:80px;align-self:start;display:flex;flex-direction:column;gap:24px}
+    .sidebar-card{background:var(--color-stone);border:1px solid var(--color-border);border-radius:10px;padding:24px}
+    .sidebar-card__label{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--color-gold);margin-bottom:12px;display:block}
+    .sidebar-card__title{font-size:16px;font-weight:700;color:var(--color-ink);margin-bottom:8px}
+    .sidebar-card__body{font-size:14px;color:var(--color-ink-soft);line-height:1.6;margin-bottom:16px}
+    .related-post{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--color-border);text-decoration:none}
+    .related-post:last-child{border-bottom:none;padding-bottom:0}
+    .related-post__icon{width:40px;height:40px;background:var(--color-navy);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .related-post__title{font-size:13px;font-weight:600;color:var(--color-ink);line-height:1.4;transition:color .2s}
+    .related-post:hover .related-post__title{color:var(--color-gold)}
+    .related-post__date{font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);margin-top:3px}
+  </style>
+</head>
+<body style="background:var(--color-stone);">
+
+<nav id="navbar" class="sticky top-0 z-50">
+  <div class="nav-inner max-w-7xl mx-auto h-16 flex items-center justify-between gap-4">
+    <a href="../../index.html" class="flex items-center gap-3 shrink-0">
+      <div class="nav-logo-badge w-9 h-9 flex items-center justify-center" style="background:transparent;"><svg viewBox="0 0 36 36" fill="none" width="36" height="36"><polyline points="6,30 18,5 30,30" stroke="#C5973E" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter"/><rect x="16.55" y="3.55" width="2.9" height="2.9" fill="#C5973E" transform="rotate(45 18 5)"/></svg></div>
+      <div><p class="nav-logo-name">Christian Vieira</p><p class="nav-logo-sub">Imóveis &amp; Consultoria</p><p class="nav-logo-creci">CRECI 45539</p></div>
+    </a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="../../index.html" class="cv-nav-link">Início</a>
+      <div class="nav-dropdown" id="nav-dd">
+        <button class="nav-dropdown__trigger" aria-expanded="false">Lançamentos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown__panel" role="menu">
+          <a href="../../lancamentos/ArcosdoPorto/index.html" class="nav-dropdown__item">Arcos do Porto</a>
+          <a href="../../lancamentos/CartollaII/index.html" class="nav-dropdown__item">Residencial Cartola II</a>
+          <a href="../../lancamentos/MetropolitanDream/index.html" class="nav-dropdown__item">Metropolitan Dream</a>
+          <a href="../../lancamentos/OrlaRecreioReserva/index.html" class="nav-dropdown__item">Orla Recreio Reserva</a>
+          <a href="../../lancamentos/ConnectSquare/index.html" class="nav-dropdown__item">Connect Square</a>
+        </div>
+      </div>
+      <a href="../../index.html#consultoria" class="cv-nav-link">Consultoria</a>
+      <a href="../index.html" class="cv-nav-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+      <a href="../../index.html#contato" class="cv-nav-link">Contato</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="../../index.html#contato" class="cv-btn cv-btn-primary whitespace-nowrap hidden sm:inline-flex">Fale com o Christian</a>
+      <button class="nav-hamburger lg:hidden" id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false"><span class="nav-hamburger__label">MENU</span><div class="nav-hamburger__bars"><span></span><span></span><span></span></div></button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+    <a href="../../index.html" class="nav-mobile-link">Início</a>
+    <a href="../index.html" class="nav-mobile-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+    <a href="../../index.html#contato" class="nav-mobile-link">Contato</a>
+    <a href="../../index.html#contato" class="nav-mobile-cta">Fale com o Christian</a>
+  </div>
+</nav>
+
+<div class="post-hero">
+<div class="post-hero__inner">
+<div class="post-hero__content">
+  <a href="../index.html" class="post-hero__back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Voltar ao Blog</a>
+  <div class="post-hero__meta">
+    <span class="post-tag">FINANCIAMENTO</span>
+    <span class="post-hero__date">4 de agosto de 2026 · 5 min de leitura</span>
+  </div>
+  <h1 class="post-hero__title">Medo do financiamento</h1>
+  <p class="post-hero__excerpt">Financiamento não é uma prisão de 30 anos, é uma ferramenta de conquista. Entenda como perder o medo e planejar a compra do seu imóvel no Rio de Janeiro.</p>
+  <div class="post-hero__author">
+    <div class="post-hero__avatar">CV</div>
+    <div><p class="post-hero__author-name">Christian Vieira</p><p class="post-hero__author-role">CORRETOR E MENTOR IMOBILIÁRIO · CRECI 45539</p></div>
+  </div>
+</div>
+<div class="post-hero__image">
+  <img src="../images/post-06-medo-financiamento.jpg" alt="Medo do financiamento">
+</div>
+</div>
+</div>
+
+<div style="background:var(--color-stone);">
+  <div class="post-layout">
+    <article class="post-body">
+
+      <p>Comprar o primeiro imóvel no Rio de Janeiro é o sonho de quase todo mundo. Seja um apartamento na Tijuca, um conjugado em Botafogo ou uma casa no Recreio dos Bandeirantes. Mas existe uma pedra gigante no meio desse caminho: o medo do financiamento.</p><p>Assinar um contrato de 30 anos assusta qualquer pessoa. A ideia de ficar preso a uma dívida de longo prazo, com receio de oscilações na renda ou desemprego, faz muita gente adiar a conquista ano após ano. O resultado disso? Anos pagando aluguel e enriquecendo terceiros.</p><p>Eu sou Christian Vieira, corretor e mentor imobiliário com mais de 10 anos de atuação no mercado carioca (CRECI 45539). Ao longo da minha carreira, ajudei centenas de famílias a saírem do aluguel e conquistarem as chaves do próprio imóvel. Posso te garantir uma coisa: o medo do financiamento vem quase sempre da falta de informação clara. Quando você entende como as engrenagens funcionam, o receio dá lugar à estratégia.</p>
+
+      <h2>Por que o financiamento imobiliário gera tanto receio?</h2>
+      <p>O ser humano tem um receio natural do desconhecido. Quando se fala em 360 meses de parcelas, a mente projeta imediatamente os piores cenários possíveis: crises econômicas, perda do emprego ou emergências de saúde. Esse cuidado com o futuro é perfeitamente normal e saudável. Mostra que você respeita a sua vida financeira.</p><p>O problema surge quando o cuidado se transforma em paralisia. No Rio de Janeiro, a realidade do aluguel é dura. Bairros como Copacabana, Tijuca, Barra da Tijuca e Recreio têm reajustes anuais constantes que pesam no bolso. Enquanto você hesita em financiar por medo, continua pagando a parcela do imóvel do seu locador sem construir nenhum patrimônio próprio.</p><p>O financiamento habitacional não é uma armadilha. Ele é o único instrumento financeiro viável para a grande maioria dos brasileiros adquirir um bem de alto valor sem precisar ter todo o dinheiro à vista. A chave da tranquilidade está no <strong>planejamento prévio</strong> e no uso correto das regras do sistema bancário.</p>
+
+      <h2>Aluguel vs. Financiamento: a conta prática no Rio de Janeiro</h2>
+      <p>Vamos colocar os números na mesa com base na realidade carioca. Imagine que você paga R$ 2.500 de aluguel em um apartamento no Méier, em Jacarepaguá ou no Campo Grande. Em apenas cinco anos, você terá entregado R$ 150.000 para o proprietário. Esse valor sumiu da sua vida para sempre, sem gerar um centavo de retorno.</p><p>No financiamento imobiliário, a dinâmica é completamente diferente. A parcela inicial pode ser similar ou ligeiramente superior ao valor do aluguel na mesma região, mas possui vantagens decisivas:</p><ul><li><strong>Amortização mensal:</strong> Cada parcela paga reduz diretamente o saldo devedor original da dívida.</li><li><strong>Parcelas decrescentes (Tabela SAC):</strong> No sistema de amortização constante, utilizado na maioria dos contratos, a parcela começa mais alta e diminui progressivamente ao longo dos anos.</li><li><strong>Valorização do bem:</strong> Enquanto o aluguel sobe todos os anos, o imóvel financiado valoriza no mercado do Rio de Janeiro, aumentando o seu patrimônio líquido.</li></ul><p>Ficar no aluguel a vida toda é assumir o risco de reajustes perpétuos. Financiar com critério é ter data para terminar e garantia de patrimônio da sua família.</p>
+
+      <blockquote>Financiamento imobiliário não é uma sentença de 30 anos. É uma ferramenta de transição. Com amortização estratégica, você quita a sua dívida na metade do tempo previsto.</blockquote>
+
+      <h2>Mecanismos de segurança que protegem o seu contrato</h2>
+      <p>Um dos maiores mitos sobre o financiamento é a ideia de que o banco vai tomar a sua casa se você passar por um momento difícil no mês seguinte. O sistema financeiro habitacional brasileiro possui diversas regras de proteção antes de qualquer medida extrema.</p><p>Todo contrato de crédito imobiliário obriga a contratação de dois seguros embutidos na prestação:</p><ul><li><strong>MIP (Morte e Invalidez Permanente):</strong> Em caso de falecimento ou invalidez permanente do comprador, o seguro quita a dívida integralmente ou na proporção da renda declarada no contrato.</li><li><strong>DFI (Danos Físicos ao Imóvel):</strong> Cobre prejuízos causados à estrutura do imóvel decorrentes de sinistros da natureza, como tempestades ou incêndios.</li></ul><p>Além disso, o comprador conta com a ferramenta do <strong>FGTS</strong>. O saldo do seu Fundo de Garantia pode ser utilizado a cada dois anos para amortizar o saldo devedor ou para abater até 80% do valor da parcela por um período de até 12 meses consecutivos. Trata-se de um colchão de segurança valioso para momentos de transição de carreira ou oscilações de renda.</p>
+
+      <h2>Os 4 passos fundamentais para financiar com total segurança</h2>
+      <p>Para eliminar o medo e assumir o controle da compra do seu imóvel no Rio de Janeiro, basta aplicar um método estruturado antes de assinar qualquer documento:</p><p><strong>1. Faça uma análise prévia de crédito:</strong> Não comece procurando imóveis pela internet antes de saber o seu teto financeiro. A aprovação de crédito bancário é gratuita, não gera obrigação de compra e mostra exatamente quanto o banco pode te emprestar com base na sua renda atual.</p><p><strong>2. Monte uma reserva de emergência:</strong> Mantenha guardado o equivalente a 3 a 6 meses do seu custo de vida básico. Saber que essa reserva existe elimina a ansiedade em relação às parcelas mensais.</p><p><strong>3. Respeite o limite de comprometimento:</strong> Os bancos aceitam comprometer até 30% da sua renda bruta familiar. No entanto, orientamos sempre buscar uma parcela que caiba com folga no seu orçamento, permitindo que você continue mantendo seu padrão de vida e momentos de lazer.</p><p><strong>4. Faça amortizações extraordinárias:</strong> Praticamente ninguém passa 30 anos pagando um financiamento. Sempre que receber o 13º salário, férias, bônus do trabalho ou rentabilidade de investimentos, faça amortizações no saldo devedor focando na redução do prazo. Isso reduz drasticamente a incidência de juros ao longo dos anos.</p>
+
+      <h2>A importância da assessoria imobiliária especializada no mercado carioca</h2>
+      <p>O mercado imobiliário do Rio de Janeiro exige atenção a detalhes técnicos e jurídicos. Análise de certidões cartorárias, documentação do imóvel no RGI, cálculo de taxas como ITBI e custos de escritura exigem acompanhamento técnico.</p><p>Ter ao seu lado um corretor experiente e devidamente credenciado no CRECI evita surpresas desagradáveis no meio do processo. O profissional correto auxilia na busca do imóvel ideal na Zona Sul, Zona Oeste ou Zona Norte, além de indicar as melhores taxas de juros disponíveis entre os bancos parceiros.</p><p>O medo desvanece quando há clareza. Com informação transparente, planejamento financeiro e suporte técnico adequado, o financiamento deixa de ser uma ameaça e torna-se a ponte direta para o seu imóvel próprio no Rio de Janeiro.</p>
+
+      <div class="highlight-box">
+        <h4>SUPERE O MEDO E SAIA DO ALUGUEL NO RIO DE JANEIRO</h4>
+        <p style="font-size:15px;color:var(--color-ink-soft);margin-bottom:16px;line-height:1.6;">Fale agora com Christian Vieira e receba uma análise de crédito personalizada e gratuita para encontrar o imóvel ideal dentro do seu orçamento.</p>
+        <a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Li%20seu%20artigo%20sobre%20medo%20do%20financiamento%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o." target="_blank" rel="noopener" class="cv-btn cv-btn-gold" style="display:inline-flex;">Falar com o Christian</a>
+      </div>
+
+    </article>
+
+    <aside class="post-sidebar">
+      <div class="sidebar-card" style="background:var(--color-navy);border-color:rgba(184,150,46,0.15);">
+        <span class="sidebar-card__label" style="color:var(--color-gold-light);">FALE COM O ESPECIALISTA</span>
+        <p class="sidebar-card__title" style="color:#fff;">Precisa de orientação imobiliária?</p>
+        <p class="sidebar-card__body" style="color:rgba(255,255,255,0.5);">Christian Vieira analisa seu perfil e indica o melhor caminho para comprar, investir ou vender no Rio.</p>
+        <a href="https://wa.me/5521993399299" target="_blank" rel="noopener" class="cv-btn cv-btn-gold" style="display:flex;width:100%;justify-content:center;">WhatsApp</a>
+      </div>
+      <div class="sidebar-card">
+        <span class="sidebar-card__label">POSTS RELACIONADOS</span>
+        
+        <a href="duvida-escolha-imovel.html" class="related-post">
+          <div class="related-post__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(184,150,46,0.6)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div><p class="related-post__title">Dúvida na escolha do imóvel</p><p class="related-post__date">30 julho 2026</p></div>
+        </a>
+        <a href="processo-confuso-compra.html" class="related-post">
+          <div class="related-post__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(184,150,46,0.6)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div><p class="related-post__title">Processo confuso da compra</p><p class="related-post__date">6 agosto 2026</p></div>
+        </a>
+      </div>
+      <div class="sidebar-card">
+        <span class="sidebar-card__label">LANÇAMENTOS</span>
+        <p class="sidebar-card__body">Conheça os empreendimentos disponíveis com Christian Vieira no Rio de Janeiro.</p>
+        <a href="../../index.html#lancamentos" class="cv-btn cv-btn-charcoal" style="display:flex;justify-content:center;font-size:11px;">Ver lançamentos</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer style="background:#060810;border-top:1px solid rgba(184,150,46,0.1);padding:32px clamp(1rem,4vw,2rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+  <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;background:var(--color-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;font-weight:700;color:#fff;">CV</div><div><p style="font-size:12px;font-weight:600;color:#fff;">Christian Vieira</p><p style="font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:0.08em;color:var(--color-gold);margin-top:1px;">IMÓVEIS &amp; CONSULTORIA · RJ · CRECI 45539</p></div></div>
+  <p style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);">© 2026 Christian Vieira. Todos os direitos reservados.</p>
+</footer>
+<a href="https://wa.me/5521993399299" target="_blank" rel="noopener" style="position:fixed;bottom:24px;right:24px;z-index:50;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);text-decoration:none;transition:transform 300ms;" title="WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+<script>(function(){const ham=document.getElementById('nav-hamburger');const mob=document.getElementById('nav-mobile');if(ham&&mob){ham.addEventListener('click',()=>{const o=mob.classList.toggle('is-open');ham.classList.toggle('is-open',o);ham.setAttribute('aria-expanded',o);mob.setAttribute('aria-hidden',!o)});}document.querySelectorAll('.nav-dropdown').forEach(dd=>{const t=dd.querySelector('.nav-dropdown__trigger');if(!t)return;t.addEventListener('click',e=>{e.stopPropagation();dd.classList.toggle('is-open');t.setAttribute('aria-expanded',dd.classList.contains('is-open'))});document.addEventListener('click',()=>{dd.classList.remove('is-open');t.setAttribute('aria-expanded',false)})})})();</script>
+</body>
+</html>

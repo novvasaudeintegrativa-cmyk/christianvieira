@@ -2,6 +2,7 @@ import React from 'react';
 import { Composition } from 'remotion';
 import { BlogAnnouncement, BlogAnnouncementProps, totalDuration } from './BlogAnnouncement';
 import { FeedChristian, FeedChristianProps, FEED_DURATION } from './FeedChristian';
+import { FeedCarrossel, FeedCarrosselProps, carrosselDuration } from './FeedCarrossel';
 
 const defaultProps: BlogAnnouncementProps = {
   title: 'Quanto custa financiar um imóvel?',
@@ -21,6 +22,15 @@ const defaultProps: BlogAnnouncementProps = {
 const feedDefaultProps: FeedChristianProps = {
   headline: 'Dúvida na escolha do imóvel',
   subheadline: 'Qual bairro, tipo de imóvel e valor ideal para sua realidade.',
+};
+
+// Carrossel #05 — post do blog "Duvida na escolha do imovel" (2026-07-30)
+const carrosselDefaultProps: FeedCarrosselProps = {
+  slides: [
+    'Dúvida na escolha do imóvel?',
+    'Qual bairro, tipo de imóvel\ne valor ideal pra você?',
+    'Vamos decidir isso juntos.',
+  ],
 };
 
 export const RemotionRoot: React.FC = () => {
@@ -43,6 +53,15 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1440}
         defaultProps={feedDefaultProps}
+      />
+      <Composition
+        id="FeedCarrossel"
+        component={FeedCarrossel}
+        durationInFrames={carrosselDuration(carrosselDefaultProps.slides.length)}
+        fps={30}
+        width={1080}
+        height={1440}
+        defaultProps={carrosselDefaultProps}
       />
     </>
   );

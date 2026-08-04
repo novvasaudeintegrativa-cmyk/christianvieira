@@ -58,7 +58,12 @@
     .post-item__date { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--ink-muted); }
     .post-item__num { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: #fff; background: var(--navy); padding: 2px 7px; border-radius: 3px; display: inline-block; margin-bottom: 2px; }
     .post-item__title { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); line-height: 1.35; }
-    .post-item__tag { display: inline-flex; }
+    .post-item__links { display: flex; gap: 14px; margin-top: 4px; }
+    .post-item__links a { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: var(--gold); text-decoration: none; }
+    .post-item__links a:hover { color: var(--gold-light); text-decoration: underline; }
+    .post-item__btn { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; padding: 6px 12px; border-radius: 6px; text-decoration: none; width: fit-content; margin-top: 4px; background: var(--gold); color: #fff; transition: background .2s; }
+    .post-item__btn:hover { background: var(--gold-light); }
+    .post-item__btn.is-pending { background: var(--border); color: var(--ink-muted); cursor: default; }
     .tag { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; padding: 2px 7px; border-radius: 3px; }
     .tag--dicas       { background: rgba(120,60,160,0.1); color: #5a2a8a; }
     .tag--financiamento { background: rgba(13,27,42,0.08); color: var(--navy); }
@@ -124,31 +129,42 @@
         <span class="post-item__date">8 de julho de 2026</span>
         <span class="post-item__num">#01</span>
         <p class="post-item__title">Como comprar o primeiro imóvel sem cometer erros</p>
-        <span class="post-item__tag"><span class="tag tag--dicas">DICAS</span></span>
+        <div class="post-item__links">
+          <a href="posts/erros-comprador-primeiro-imovel.html" target="_blank">Ver post →</a>
+        </div>
       </div>
       <div class="post-item">
         <span class="post-item__date">15 de julho de 2026</span>
         <span class="post-item__num">#02</span>
         <p class="post-item__title">Casa ou apartamento? Como escolher o certo para você</p>
-        <span class="post-item__tag"><span class="tag tag--dicas">DICAS</span></span>
+        <div class="post-item__links">
+          <a href="posts/casa-ou-apartamento-como-escolher.html" target="_blank">Ver post →</a>
+        </div>
       </div>
       <div class="post-item">
         <span class="post-item__date">22 de julho de 2026</span>
         <span class="post-item__num">#03</span>
         <p class="post-item__title">Financiamento imobiliário explicado de forma simples</p>
-        <span class="post-item__tag"><span class="tag tag--financiamento">FINANCIAMENTO</span></span>
+        <div class="post-item__links">
+          <a href="posts/financiamento-imobiliario-explicado-simples.html" target="_blank">Ver post →</a>
+        </div>
       </div>
       <div class="post-item">
         <span class="post-item__date">25 de julho de 2026</span>
         <span class="post-item__num">#04</span>
         <p class="post-item__title">Quanto custa financiar um imóvel? Tudo que você precisa saber</p>
-        <span class="post-item__tag"><span class="tag tag--financiamento">FINANCIAMENTO</span></span>
+        <div class="post-item__links">
+          <a href="posts/quanto-custa-financiar-imovel.html" target="_blank">Ver post →</a>
+        </div>
       </div>
       <div class="post-item">
         <span class="post-item__date">30 de julho de 2026</span>
         <span class="post-item__num">#05</span>
         <p class="post-item__title">Dúvida na escolha do imóvel</p>
-        <span class="post-item__tag"><span class="tag tag--dicas">DICAS</span></span>
+        <div class="post-item__links">
+          <a href="posts/duvida-escolha-imovel.html" target="_blank">Ver post →</a>
+          <a href="https://app.clickup.com/t/86ajtd2ba" target="_blank">ClickUp →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -158,56 +174,55 @@
     <div class="month-card__header">
       <span class="month-num">AGO</span>
       <span class="month-name">Agosto 2026</span>
-      <span class="month-theme tag tag--mercado">SEÇÕES DO SITE</span>
     </div>
     <div class="month-posts">
       <div class="post-item">
         <span class="post-item__date">4 de agosto de 2026</span>
         <span class="post-item__num">#06</span>
         <p class="post-item__title">Medo do financiamento</p>
-        <span class="post-item__tag"><span class="tag tag--financiamento">FINANCIAMENTO</span></span>
+        <span class="post-item__btn is-pending">Post ClickUp (Em Breve)</span>
       </div>
       <div class="post-item">
         <span class="post-item__date">6 de agosto de 2026</span>
         <span class="post-item__num">#07</span>
         <p class="post-item__title">Processo confuso da compra</p>
-        <span class="post-item__tag"><span class="tag tag--dicas">DICAS</span></span>
+        <span class="post-item__btn is-pending">Post ClickUp (Em Breve)</span>
       </div>
       <div class="post-item">
         <span class="post-item__date">11 de agosto de 2026</span>
         <span class="post-item__num">#08</span>
         <p class="post-item__title">Insegurança na decisão</p>
-        <span class="post-item__tag"><span class="tag tag--dicas">DICAS</span></span>
+        <span class="post-item__btn is-pending">Post ClickUp (Em Breve)</span>
       </div>
       <div class="post-item">
         <span class="post-item__date">13 de agosto de 2026</span>
         <span class="post-item__num">#09</span>
         <p class="post-item__title">Não sou só um corretor. Sou um aliado estratégico para o seu patrimônio</p>
-        <span class="post-item__tag"><span class="tag tag--dicas">DICAS</span></span>
+        <span class="post-item__btn is-pending">Post ClickUp (Em Breve)</span>
       </div>
       <div class="post-item">
         <span class="post-item__date">18 de agosto de 2026</span>
         <span class="post-item__num">#10</span>
         <p class="post-item__title">Soluções para cada momento da sua jornada imobiliária</p>
-        <span class="post-item__tag"><span class="tag tag--dicas">DICAS</span></span>
+        <span class="post-item__btn is-pending">Post ClickUp (Em Breve)</span>
       </div>
       <div class="post-item">
         <span class="post-item__date">20 de agosto de 2026</span>
         <span class="post-item__num">#11</span>
         <p class="post-item__title">Os detalhes que a maioria dos compradores descobre tarde demais</p>
-        <span class="post-item__tag"><span class="tag tag--dicas">DICAS</span></span>
+        <span class="post-item__btn is-pending">Post ClickUp (Em Breve)</span>
       </div>
       <div class="post-item">
         <span class="post-item__date">25 de agosto de 2026</span>
         <span class="post-item__num">#12</span>
         <p class="post-item__title">Do diagnóstico ao patrimônio: cada etapa com clareza e intenção</p>
-        <span class="post-item__tag"><span class="tag tag--dicas">DICAS</span></span>
+        <span class="post-item__btn is-pending">Post ClickUp (Em Breve)</span>
       </div>
       <div class="post-item">
         <span class="post-item__date">27 de agosto de 2026</span>
         <span class="post-item__num">#13</span>
         <p class="post-item__title">De onde você está para onde você pode chegar</p>
-        <span class="post-item__tag"><span class="tag tag--dicas">DICAS</span></span>
+        <span class="post-item__btn is-pending">Post ClickUp (Em Breve)</span>
       </div>
     </div>
   </div>

@@ -33,19 +33,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Regenerar imagem post #02 (temporario)
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: node scripts/regenerate-image-temp.js
-
-      - name: Commit imagem regenerada (temporario)
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add blog/images/post-02-casa-ou-apartamento.jpg
-          git commit -m "fix: nova imagem do post #02 (comparacao casa x apartamento)" || echo "sem mudancas"
-          git push
-
       - name: Gerar post
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -56,22 +43,22 @@ jobs:
             node scripts/generate-post.js
           fi
 
-      - name: Commit e push (se houver novos arquivos)
+      - name: Commit e push (se houver mudancas)
         id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add blog/posts/ blog/images/
+
+          # Sempre sincroniza o indice — necessario mesmo quando o post ja
+          # foi gerado com antecedencia (o HTML/imagem ja existem, mas so
+          # entram no blog/index.html quando a data chega).
+          node scripts/sync-blog-index.js
+
+          git add blog/posts/ blog/images/ blog/index.html
           if git diff --staged --quiet; then
-            echo "Nenhum arquivo novo — post já existia ou nenhum estava pendente."
+            echo "Nenhuma mudanca — post ja publicado ou nenhum estava pendente."
             echo "published=false" >> "$GITHUB_OUTPUT"
           else
-            # Sincroniza o blog/index.html e commita junto, para que a
-            # implantacao via Git da Hostinger (que faz git pull direto,
-            # sem rodar build) puxe a versao ja atualizada.
-            node scripts/sync-blog-index.js
-            git add blog/index.html
-
             POST_TITLE=$(node -e "
               const s = require('./blog/posts-schedule.json');
               const today = new Date(); today.setHours(23,59,59,0);
