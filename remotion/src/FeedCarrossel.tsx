@@ -5,9 +5,7 @@ import {
   Audio,
   staticFile,
   useCurrentFrame,
-  useVideoConfig,
   interpolate,
-  spring,
 } from 'remotion';
 
 export type FeedCarrosselProps = {
@@ -129,19 +127,7 @@ const CtaLinkNaBio: React.FC = () => (
   </div>
 );
 
-function useEnter(delay: number, damping = 200) {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const local = Math.max(frame - delay, 0);
-  const v = spring({ frame: local, fps, config: { damping } });
-  return {
-    opacity: interpolate(v, [0, 1], [0, 1]),
-    y: interpolate(v, [0, 1], [36, 0]),
-  };
-}
-
 const CarrosselSlide: React.FC<{ text: string; index: number; total: number }> = ({ text, index, total }) => {
-  const e = useEnter(2);
   const isLast = index === total - 1;
   return (
     <AbsoluteFill style={{ fontFamily: FONT }}>
@@ -158,8 +144,6 @@ const CarrosselSlide: React.FC<{ text: string; index: number; total: number }> =
             color: '#fff',
             textAlign: 'center',
             fontFamily: FONT,
-            opacity: e.opacity,
-            transform: `translateY(${e.y}px)`,
           }}
         >
           {text}
