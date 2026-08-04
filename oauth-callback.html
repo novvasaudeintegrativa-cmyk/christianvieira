@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autorização Instagram — Código recebido</title>
+  <style>
+    body{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0D1B2A;color:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:24px;}
+    .box{max-width:640px;width:100%;background:#111f30;border:1px solid rgba(184,150,46,0.3);border-radius:12px;padding:32px;}
+    h1{font-size:18px;color:#D4AE4A;margin:0 0 16px;}
+    .code{background:#060B14;border-radius:8px;padding:16px;word-break:break-all;font-size:14px;color:#fff;margin:16px 0;user-select:all;}
+    .empty{color:rgba(255,255,255,0.5);font-style:italic;}
+    button{background:#B8962E;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;}
+    button:hover{background:#D4AE4A;}
+    p{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Código de autorização do Instagram</h1>
+    <div id="output" class="code empty">Nenhum código encontrado na URL.</div>
+    <button onclick="copyCode()">Copiar código</button>
+    <p>Copie o código acima e cole na conversa com o Claude para continuar o processo de geração do token de longa duração.</p>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    let code = params.get('code');
+    // O Instagram às vezes manda o code com um sufixo "#_" depois do hash
+    if (code) code = code.replace(/#_$/, '');
+    const el = document.getElementById('output');
+    if (code) {
+      el.textContent = code;
+      el.classList.remove('empty');
+    }
+    function copyCode() {
+      if (!code) return;
+      navigator.clipboard.writeText(code);
+      alert('Código copiado!');
+    }
+  </script>
+</body>
+</html>
