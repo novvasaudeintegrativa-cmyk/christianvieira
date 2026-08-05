@@ -19,6 +19,7 @@ const path = require('path');
 const ROOT     = path.join(__dirname, '..');
 const SCHEDULE = path.join(ROOT, 'blog', 'posts-schedule.json');
 const IMGS_DIR = path.join(ROOT, 'blog', 'images');
+const FEEDS_DIR = path.join(ROOT, 'Instagram', 'Feeds');
 
 // ─── carrega .env.local ──────────────────────────────────────────────────────
 (function loadEnv() {
@@ -402,9 +403,12 @@ async function processPost(post, dryRun) {
     return;
   }
 
-  // 2. Card Instagram 1080×1440
-  const cardFilename = `instagram-card-${numPad(post.num)}-${post.slug}.jpg`;
-  const cardPath     = path.join(IMGS_DIR, cardFilename);
+  // 2. Card Instagram 1080×1440 — salvo em Instagram/Feeds/ (sempre versionado no git,
+  //    pra automações futuras usarem essa pasta como fonte da verdade)
+  fs.mkdirSync(FEEDS_DIR, { recursive: true });
+  const cardFilename = `${post.slug}.jpg`;
+  const cardPath     = path.join(FEEDS_DIR, cardFilename);
+  const captionPath  = path.join(FEEDS_DIR, `${post.slug}.txt`);
 
   const blogImg = findBlogImage(post);
   if (blogImg) {
@@ -419,7 +423,9 @@ async function processPost(post, dryRun) {
     await createInstagramCard(post, tmpPath, cardPath);
     fs.unlinkSync(tmpPath);
   }
-  console.log(`   💾 Card salvo: blog/images/${cardFilename}`);
+  fs.writeFileSync(captionPath, caption, 'utf8');
+  console.log(`   💾 Card salvo: Instagram/Feeds/${cardFilename}`);
+  console.log(`   💾 Legenda salva: Instagram/Feeds/${post.slug}.txt`);
 
   // 3. Task no ClickUp
   console.log('\n   📋 Criando task no ClickUp...');
