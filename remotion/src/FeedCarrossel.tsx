@@ -46,7 +46,7 @@ const LogoWithCreci: React.FC = () => (
   <div
     style={{
       position: 'absolute',
-      top: 90,
+      top: 110,
       left: 0,
       right: 0,
       display: 'flex',
