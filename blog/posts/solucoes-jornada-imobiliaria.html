@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soluções para cada momento da sua jornada imobiliária | Blog Christian Vieira</title>
+  <meta name="description" content="Guia prático para comprar imóvel no Rio de Janeiro. Conheça as soluções certas para cada etapa da sua jornada, do planejamento ao registro das chaves.">
+
+  <link rel="stylesheet" href="../../design-system.css">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'gold':'var(--color-gold)','gold-light':'var(--color-gold-light)','navy':'var(--color-navy)','stone':'var(--color-stone)','ink':'var(--color-ink)','ink-soft':'var(--color-ink-soft)'},fontFamily:{sans:['Plus Jakarta Sans','Arial','sans-serif'],mono:['ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','monospace']}}}}</script>
+  <style>
+    .post-hero{background:var(--color-navy);}
+    .post-hero__inner{display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center;max-width:1200px;margin:0 auto;padding:72px clamp(1rem,5vw,2rem) 56px;}
+    .post-hero__content{min-width:0;}
+    .post-hero__image{border-radius:14px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.5);aspect-ratio:16/10;}
+    .post-hero__image img{width:100%;height:100%;object-fit:cover;display:block;}
+    @media(max-width:900px){.post-hero__inner{grid-template-columns:1fr;gap:28px;}.post-hero__image{order:-1;}}
+    .post-hero__back{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.45);text-decoration:none;margin-bottom:28px;transition:color .2s}
+    .post-hero__back:hover{color:var(--color-gold-light)}
+    .post-hero__meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+    .post-tag{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:4px;background:rgba(184,150,46,.15);color:var(--color-gold-light)}
+    .post-hero__date{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.4)}
+    .post-hero__title{font-size:clamp(28px,4.5vw,52px);font-weight:800;letter-spacing:-.04em;color:#fff;line-height:1.1;margin-bottom:20px;}
+    .post-hero__excerpt{font-size:17px;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:28px}
+    .post-hero__author{display:flex;align-items:center;gap:12px}
+    .post-hero__avatar{width:40px;height:40px;background:var(--color-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+    .post-hero__author-name{font-size:14px;font-weight:700;color:#fff}
+    .post-hero__author-role{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+    .post-layout{display:grid;grid-template-columns:1fr 320px;gap:48px;max-width:1100px;margin:0 auto;padding:56px clamp(1rem,5vw,2rem) 80px}
+    @media(max-width:860px){.post-layout{grid-template-columns:1fr}.post-sidebar{order:-1}}
+    .post-body{font-size:17px;line-height:1.75;color:var(--color-ink-soft)}
+    .post-body h2{font-size:clamp(22px,2.5vw,28px);font-weight:700;letter-spacing:-.03em;color:var(--color-ink);margin:40px 0 16px;line-height:1.2}
+    .post-body h3{font-size:19px;font-weight:700;color:var(--color-ink);margin:32px 0 12px}
+    .post-body p{margin-bottom:20px}
+    .post-body strong{font-weight:700;color:var(--color-ink)}
+    .post-body ul{padding-left:20px;margin-bottom:20px}
+    .post-body ul li{margin-bottom:8px}
+    .post-body ol{padding-left:20px;margin-bottom:20px}
+    .post-body ol li{margin-bottom:12px}
+    .post-body blockquote{border-left:3px solid var(--color-gold);padding:16px 20px;margin:28px 0;background:var(--color-stone);border-radius:0 8px 8px 0;font-style:italic;font-size:18px;color:var(--color-ink)}
+    .post-body .highlight-box{background:rgba(13,27,42,.04);border:1px solid var(--color-border);border-radius:10px;padding:24px;margin:28px 0}
+    .post-body .highlight-box h4{font-size:13px;font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;color:var(--color-gold);margin-bottom:12px}
+    .post-sidebar{position:sticky;top:80px;align-self:start;display:flex;flex-direction:column;gap:24px}
+    .sidebar-card{background:var(--color-stone);border:1px solid var(--color-border);border-radius:10px;padding:24px}
+    .sidebar-card__label{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--color-gold);margin-bottom:12px;display:block}
+    .sidebar-card__title{font-size:16px;font-weight:700;color:var(--color-ink);margin-bottom:8px}
+    .sidebar-card__body{font-size:14px;color:var(--color-ink-soft);line-height:1.6;margin-bottom:16px}
+    .related-post{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--color-border);text-decoration:none}
+    .related-post:last-child{border-bottom:none;padding-bottom:0}
+    .related-post__icon{width:40px;height:40px;background:var(--color-navy);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .related-post__title{font-size:13px;font-weight:600;color:var(--color-ink);line-height:1.4;transition:color .2s}
+    .related-post:hover .related-post__title{color:var(--color-gold)}
+    .related-post__date{font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);margin-top:3px}
+  </style>
+</head>
+<body style="background:var(--color-stone);">
+
+<nav id="navbar" class="sticky top-0 z-50">
+  <div class="nav-inner max-w-7xl mx-auto h-16 flex items-center justify-between gap-4">
+    <a href="../../index.html" class="flex items-center gap-3 shrink-0">
+      <div class="nav-logo-badge w-9 h-9 flex items-center justify-center" style="background:transparent;"><svg viewBox="0 0 36 36" fill="none" width="36" height="36"><polyline points="6,30 18,5 30,30" stroke="#C5973E" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter"/><rect x="16.55" y="3.55" width="2.9" height="2.9" fill="#C5973E" transform="rotate(45 18 5)"/></svg></div>
+      <div><p class="nav-logo-name">Christian Vieira</p><p class="nav-logo-sub">Imóveis &amp; Consultoria</p><p class="nav-logo-creci">CRECI 45539</p></div>
+    </a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="../../index.html" class="cv-nav-link">Início</a>
+      <div class="nav-dropdown" id="nav-dd">
+        <button class="nav-dropdown__trigger" aria-expanded="false">Lançamentos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown__panel" role="menu">
+          <a href="../../lancamentos/ArcosdoPorto/index.html" class="nav-dropdown__item">Arcos do Porto</a>
+          <a href="../../lancamentos/CartollaII/index.html" class="nav-dropdown__item">Residencial Cartola II</a>
+          <a href="../../lancamentos/MetropolitanDream/index.html" class="nav-dropdown__item">Metropolitan Dream</a>
+          <a href="../../lancamentos/OrlaRecreioReserva/index.html" class="nav-dropdown__item">Orla Recreio Reserva</a>
+          <a href="../../lancamentos/ConnectSquare/index.html" class="nav-dropdown__item">Connect Square</a>
+        </div>
+      </div>
+      <a href="../../index.html#consultoria" class="cv-nav-link">Consultoria</a>
+      <a href="../index.html" class="cv-nav-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+      <a href="../../index.html#contato" class="cv-nav-link">Contato</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="../../index.html#contato" class="cv-btn cv-btn-primary whitespace-nowrap hidden sm:inline-flex">Fale com o Christian</a>
+      <button class="nav-hamburger lg:hidden" id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false"><span class="nav-hamburger__label">MENU</span><div class="nav-hamburger__bars"><span></span><span></span><span></span></div></button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+    <a href="../../index.html" class="nav-mobile-link">Início</a>
+    <a href="../index.html" class="nav-mobile-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+    <a href="../../index.html#contato" class="nav-mobile-link">Contato</a>
+    <a href="../../index.html#contato" class="nav-mobile-cta">Fale com o Christian</a>
+  </div>
+</nav>
+
+<div class="post-hero">
+<div class="post-hero__inner">
+<div class="post-hero__content">
+  <a href="../index.html" class="post-hero__back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Voltar ao Blog</a>
+  <div class="post-hero__meta">
+    <span class="post-tag">DICAS</span>
+    <span class="post-hero__date">18 de agosto de 2026 · 6 min de leitura</span>
+  </div>
+  <h1 class="post-hero__title">Soluções para cada momento da sua jornada imobiliária</h1>
+  <p class="post-hero__excerpt">Descubra como planejar, escolher e comprar seu imóvel no Rio de Janeiro com segurança em cada fase da sua jornada imobiliária.</p>
+  <div class="post-hero__author">
+    <div class="post-hero__avatar">CV</div>
+    <div><p class="post-hero__author-name">Christian Vieira</p><p class="post-hero__author-role">CORRETOR E MENTOR IMOBILIÁRIO · CRECI 45539</p></div>
+  </div>
+</div>
+<div class="post-hero__image">
+  <img src="../images/post-10-solucoes-jornada-imobiliaria.jpg" alt="Soluções para cada momento da sua jornada imobiliária">
+</div>
+</div>
+</div>
+
+<div style="background:var(--color-stone);">
+  <div class="post-layout">
+    <article class="post-body">
+
+      <p>Comprar um imóvel no Rio de Janeiro não é apenas escolher fotos bonitas em um portal da internet. É uma decisão patrimonial e familiar profunda, dividida em etapas muito claras. Cada uma dessas fases exige cuidados específicos, documentos certos e estratégias financeiras bem alinhadas para evitar dores de cabeça.</p><p>Quem está saindo do aluguel na Tijuca vive uma realidade completamente diferente de quem busca um apartamento maior no Recreio dos Bandeirantes ou investe em um studio compacto em Botafogo. Tratar todas essas situações da mesma forma é o erro mais comum do mercado tradicional.</p><p>Ao longo de mais de 10 anos atuando como corretor e mentor imobiliário (CRECI 45539), desenvolvi um método focado em diagnosticar o momento exato do cliente. A seguir, você vai entender as principais etapas dessa jornada e as soluções práticas para avançar com segurança e tranquilidade no mercado carioca.</p>
+
+      <h2>Fase 1: Diagnóstico financeiro e capacidade real de compra</h2>
+      <p>O primeiro passo de qualquer compra bem-sucedida acontece antes mesmo de visitar o primeiro apartamento. Muitos compradores perdem semanas procurando imóveis de 800 mil reais quando a capacidade real de financiamento aprova 600 mil reais, ou vice-versa.</p><p>Nesta fase inicial, a solução necessária é a <strong>estruturação orçamentária completa</strong>. Isso envolve:</p><ul><li><strong>Simulação de crédito bancário:</strong> comparar taxas efetivas entre bancos públicos e privados para encontrar a melhor linha de crédito imobiliário.</li><li><strong>Cálculo dos custos adicionais:</strong> reservar de 4% a 7% do valor da transação para despesas com ITBI da Prefeitura do Rio de Janeiro, escritura pública e taxas cartorárias de Registro Geral de Imóveis (RGI).</li><li><strong>Uso inteligente do FGTS:</strong> verificar se as regras de enquadramento do fundo de garantia atendem ao seu caso específico para amortização ou entrada.</li></ul><p>Sem esse alinhamento prévio, você corre o risco de pagar sinal em um imóvel e depois ter o crédito reprovado pelo banco, gerando desgaste e possíveis multas contratuais.</p>
+
+      <h2>Fase 2: Definição de perfil e escolha estratégica do bairro</h2>
+      <p>O Rio de Janeiro possui microclimas imobiliários com dinâmicas urbanas totalmente distintas. Escolher o bairro errado custa horas no trânsito diário e desvalorização da sua qualidade de vida.</p><p>Para quem busca praticidade, transporte rápido pelo metrô e vida cultural a pé, bairros da Zona Sul como <strong>Botafogo, Flamengo e Copacabana</strong> ou a tradição residencial da <strong>Tijuca</strong> na Zona Norte são opções sólidas. Nesses locais, a metragem costuma ser mais compacta, exigindo atenção especial à ventilação, incidência de sol e estado das instalações elétricas e hidráulicas do prédio.</p><p>Já quem prioriza condomínios com infraestrutura completa de lazer, vagas de garagem garantidas e plantas amplas encontra excelentes oportunidades na <strong>Barra da Tijuca e Recreio dos Bandeirantes</strong>. A solução nessa etapa é mapear a rotina da sua família nos próximos cinco anos, equilibrando logística de trabalho, escolas e momentos de descanso.</p>
+
+      <blockquote>Comprar imóvel no Rio de Janeiro não é questão de sorte. É método, análise documental rigorosa e clareza sobre o que cabe no seu orçamento sem comprometer a sua paz.</blockquote>
+
+      <h2>Fase 3: Curadoria ativa e segurança documental (Due Diligence)</h2>
+      <p>A visita ao imóvel deve ser técnica, e não apenas visual. Uma pintura nova pode esconder infiltrações graves, e uma fachada bonita não garante que a documentação do vendedor esteja limpa.</p><p>A solução determinante nesta fase é a <strong>due diligence imobiliária preventiva</strong>. Antes de redigir qualquer proposta formal, é obrigatório levantar um dossiê com certidões essenciais:</p><ul><li>Certidão de Ônus Reais atualizada junto ao Cartório de Registro de Imóveis competente no Rio.</li><li>Certidão de quitação fiscal e enfitêutica na Prefeitura do Rio (IPTU e taxa de incêndio).</li><li>Declaração de inexistência de débitos condominiais assinada pelo síndico ou administradora.</li><li>Certidões cíveis, criminais, trabalhistas e de protestos em nome de todos os proprietários vendedores.</li></ul><p>Essa blindagem jurídica evita surpresas com execuções fiscais, inventários mal concluídos ou penhoras judiciais que possam anular a compra no futuro.</p>
+
+      <h2>Fase 4: Negociação de proposta e fechamento de contrato</h2>
+      <p>Fazer uma proposta não significa apenas ofertar um valor menor. Envolve estruturar um fluxo de pagamento transparente que proteja o comprador e dê segurança ao vendedor.</p><p>Uma negociação profissional analisa o tempo em que o imóvel está no mercado, a necessidade de liquidez do proprietário e o valor real do metro quadrado praticado na mesma rua. A assessoria imobiliária especializada atua como um filtro emocional, evitando conflitos diretos e ajustando cláusulas resolutivas no contrato de promessa de compra e venda.</p><p>Dessa forma, caso haja qualquer inconsistência na documentação ou negativa bancária involuntária, o seu sinal de entrada fica juridicamente protegido contra retenções indevidas.</p>
+
+      <h2>Fase 5: Escritura, recolhimento de ITBI e registro definitivo</h2>
+      <p>Muitos acreditam que a jornada termina quando o contrato é assinado, mas a propriedade só é transmitida de fato após o registro final. No Brasil, e especialmente no Rio, vigora a máxima: <em>quem não registra não é dono</em>.</p><p>Nesta última etapa, a solução consiste em conduzir os trâmites burocráticos sem atrasos: emissão das guias de ITBI carioca, agendamento da lavratura da escritura pública no Cartório de Notas e o encaminhamento do título ao Cartório de Registro de Imóveis (RGI) da circunscrição correta.</p><p>Com a certidão de ônus emitida em seu nome, a posse definitiva é consolidada, permitindo que você planeje eventuais reformas, mudanças e aproveite o novo lar com total respaldo patrimonial.</p>
+
+      <div class="highlight-box">
+        <h4>PRONTO PARA AVANÇAR NO SEU IMÓVEL COM SEGURANÇA?</h4>
+        <p style="font-size:15px;color:var(--color-ink-soft);margin-bottom:16px;line-height:1.6;">Fale diretamente comigo para receber um diagnóstico personalizado e conduzir sua compra no Rio de Janeiro sem riscos.</p>
+        <a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Li%20seu%20artigo%20sobre%20solu%C3%A7%C3%B5es%20para%20cada%20momento%20da%20jornada%20imobili%C3%A1ria%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o." target="_blank" rel="noopener" class="cv-btn cv-btn-gold" style="display:inline-flex;">Falar com o Christian</a>
+      </div>
+
+    </article>
+
+    <aside class="post-sidebar">
+      <div class="sidebar-card" style="background:var(--color-navy);border-color:rgba(184,150,46,0.15);">
+        <span class="sidebar-card__label" style="color:var(--color-gold-light);">FALE COM O ESPECIALISTA</span>
+        <p class="sidebar-card__title" style="color:#fff;">Precisa de orientação imobiliária?</p>
+        <p class="sidebar-card__body" style="color:rgba(255,255,255,0.5);">Christian Vieira analisa seu perfil e indica o melhor caminho para comprar, investir ou vender no Rio.</p>
+        <a href="https://wa.me/5521993399299" target="_blank" rel="noopener" class="cv-btn cv-btn-gold" style="display:flex;width:100%;justify-content:center;">WhatsApp</a>
+      </div>
+      <div class="sidebar-card">
+        <span class="sidebar-card__label">POSTS RELACIONADOS</span>
+        
+        <a href="sou-aliado-estrategico-patrimonio.html" class="related-post">
+          <div class="related-post__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(184,150,46,0.6)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div><p class="related-post__title">Não sou só um corretor. Sou um aliado estratégico para o seu patrimônio</p><p class="related-post__date">13 agosto 2026</p></div>
+        </a>
+        <a href="detalhes-compradores-descobrem-tarde.html" class="related-post">
+          <div class="related-post__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(184,150,46,0.6)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div><p class="related-post__title">Os detalhes que a maioria dos compradores descobre tarde demais</p><p class="related-post__date">20 agosto 2026</p></div>
+        </a>
+      </div>
+      <div class="sidebar-card">
+        <span class="sidebar-card__label">LANÇAMENTOS</span>
+        <p class="sidebar-card__body">Conheça os empreendimentos disponíveis com Christian Vieira no Rio de Janeiro.</p>
+        <a href="../../index.html#lancamentos" class="cv-btn cv-btn-charcoal" style="display:flex;justify-content:center;font-size:11px;">Ver lançamentos</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer style="background:#060810;border-top:1px solid rgba(184,150,46,0.1);padding:32px clamp(1rem,4vw,2rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+  <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;background:var(--color-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;font-weight:700;color:#fff;">CV</div><div><p style="font-size:12px;font-weight:600;color:#fff;">Christian Vieira</p><p style="font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:0.08em;color:var(--color-gold);margin-top:1px;">IMÓVEIS &amp; CONSULTORIA · RJ · CRECI 45539</p></div></div>
+  <p style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);">© 2026 Christian Vieira. Todos os direitos reservados.</p>
+</footer>
+<a href="https://wa.me/5521993399299" target="_blank" rel="noopener" style="position:fixed;bottom:24px;right:24px;z-index:50;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);text-decoration:none;transition:transform 300ms;" title="WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+<script>(function(){const ham=document.getElementById('nav-hamburger');const mob=document.getElementById('nav-mobile');if(ham&&mob){ham.addEventListener('click',()=>{const o=mob.classList.toggle('is-open');ham.classList.toggle('is-open',o);ham.setAttribute('aria-expanded',o);mob.setAttribute('aria-hidden',!o)});}document.querySelectorAll('.nav-dropdown').forEach(dd=>{const t=dd.querySelector('.nav-dropdown__trigger');if(!t)return;t.addEventListener('click',e=>{e.stopPropagation();dd.classList.toggle('is-open');t.setAttribute('aria-expanded',dd.classList.contains('is-open'))});document.addEventListener('click',()=>{dd.classList.remove('is-open');t.setAttribute('aria-expanded',false)})})})();</script>
+</body>
+</html>
