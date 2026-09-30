@@ -397,7 +397,11 @@ async function main() {
   // 2. Gerar imagem
   console.log('\n⏳  Gerando imagem via Gemini Imagen...');
   let imageOk = false;
-  try {
+  const existingImg = path.join(IMGS_DIR, imageName(post));
+  if (fs.existsSync(existingImg)) {
+    console.log(`✅  Imagem de capa já existe, mantendo: blog/images/${imageName(post)}`);
+    imageOk = true;
+  } else try {
     const b64 = await geminiImagen(imagePrompt(post));
     const imgPath = path.join(IMGS_DIR, imageName(post));
     fs.writeFileSync(imgPath, Buffer.from(b64, 'base64'));

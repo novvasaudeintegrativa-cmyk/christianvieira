@@ -5,7 +5,7 @@
     "whatsapp": "5521993399299",
     "site": "../../index.html",
     "blog_index": "../index.html",
-    "frequency": "2x por semana — terça e quinta",
+    "frequency": "3x por semana — terça, quinta e sábado",
     "note": "Temas definidos mês a mês. Adicionar novos posts ao array quando confirmados."
   },
   "posts": [
@@ -125,6 +125,96 @@
       "category": "DICAS",
       "tag_class": "tag--dicas",
       "related": ["diagnostico-ao-patrimonio-metodo", "sou-aliado-estrategico-patrimonio"]
+    },
+    {
+      "num": 14,
+      "date": "2026-10-01",
+      "slug": "quanto-esta-deixando-na-mesa-ao-comprar-imovel",
+      "title": "Quanto você está deixando na mesa ao comprar seu imóvel?",
+      "category": "DICAS",
+      "tag_class": "tag--dicas",
+      "related": ["quanto-custa-financiar-imovel", "financiamento-imobiliario-explicado-simples"]
+    },
+    {
+      "num": 15,
+      "date": "2026-10-06",
+      "slug": "comprar-sem-estrategia-custa-caro",
+      "title": "Comprar sem estratégia custa caro. Comprar com Christian, não",
+      "category": "DICAS",
+      "tag_class": "tag--dicas",
+      "related": ["inseguranca-na-decisao", "sou-aliado-estrategico-patrimonio"]
+    },
+    {
+      "num": 16,
+      "date": "2026-10-08",
+      "slug": "o-que-ninguem-te-conta-sobre-economizar",
+      "title": "O que ninguém te conta sobre economizar na compra do imóvel",
+      "category": "DICAS",
+      "tag_class": "tag--dicas",
+      "related": ["detalhes-compradores-descobrem-tarde", "erros-comprador-primeiro-imovel"]
+    },
+    {
+      "num": 17,
+      "date": "2026-10-10",
+      "slug": "antes-de-assinar-aprenda-a-pagar-menos",
+      "title": "Antes de assinar, aprenda a pagar menos",
+      "category": "DICAS",
+      "tag_class": "tag--dicas",
+      "related": ["processo-confuso-compra", "medo-financiamento"]
+    },
+    {
+      "num": 18,
+      "date": "2026-10-13",
+      "slug": "imovel-pode-custar-menos-do-que-voce-imagina",
+      "title": "Seu imóvel pode custar menos do que você imagina. Eu te mostro como",
+      "category": "DICAS",
+      "tag_class": "tag--dicas",
+      "related": ["duvida-escolha-imovel", "quanto-custa-financiar-imovel"]
+    },
+    {
+      "num": 19,
+      "date": "2026-10-15",
+      "slug": "entrada-itbi-cartorio-juros-onde-economizar",
+      "title": "Entrada, ITBI, cartório, juros: onde você pode economizar de verdade",
+      "category": "FINANCIAMENTO",
+      "tag_class": "tag--financiamento",
+      "related": ["quanto-custa-financiar-imovel", "medo-financiamento", "financiamento-imobiliario-explicado-simples"]
+    },
+    {
+      "num": 20,
+      "date": "2026-10-17",
+      "slug": "nao-e-sorte-e-metodo-comprar-gastando-menos",
+      "title": "Não é sorte, é método: como comprar seu imóvel gastando menos",
+      "category": "DICAS",
+      "tag_class": "tag--dicas",
+      "related": ["diagnostico-ao-patrimonio-metodo", "solucoes-jornada-imobiliaria"]
+    },
+    {
+      "num": 21,
+      "date": "2026-10-20",
+      "slug": "dez-anos-mercado-carioca-nao-pagar-mais",
+      "title": "+10 anos no mercado carioca para você não pagar mais do que precisa",
+      "category": "DICAS",
+      "tag_class": "tag--dicas",
+      "related": ["sou-aliado-estrategico-patrimonio", "detalhes-compradores-descobrem-tarde"]
+    },
+    {
+      "num": 22,
+      "date": "2026-10-22",
+      "slug": "vai-comprar-um-imovel-saiba-isto-antes",
+      "title": "Você vai comprar um imóvel? Então precisa saber disto antes",
+      "category": "DICAS",
+      "tag_class": "tag--dicas",
+      "related": ["erros-comprador-primeiro-imovel", "duvida-escolha-imovel"]
+    },
+    {
+      "num": 23,
+      "date": "2026-10-24",
+      "slug": "consultoria-imobiliaria-que-se-paga",
+      "title": "Consultoria imobiliária que se paga: aprenda a economizar antes de comprar",
+      "category": "DICAS",
+      "tag_class": "tag--dicas",
+      "related": ["solucoes-jornada-imobiliaria", "de-onde-voce-esta-para-onde-pode-chegar"]
     }
   ]
 }
