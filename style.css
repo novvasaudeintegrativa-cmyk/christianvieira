@@ -626,6 +626,9 @@
 }
 
 /* Variação Cartola: linha 1 menor + nome em cursiva */
+/* Nome longo de uma palavra só (ex.: Pixinguinha) */
+.hero__panel-title--long { font-size: clamp(40px, 5.2vw, 88px); }
+
 .hero__panel-title--cartola {
   font-size: clamp(40px, 5.5vw, 88px);
   line-height: 0.9;
