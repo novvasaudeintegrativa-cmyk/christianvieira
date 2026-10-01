@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quanto você está deixando na mesa ao comprar seu imóvel? | Blog Christian Vieira</title>
+  <meta name="description" content="Descubra quanto dinheiro você pode estar deixando na mesa ao comprar um imóvel no Rio de Janeiro. Evite erros caros no financiamento, ITBI e negociação.">
+
+  <link rel="stylesheet" href="../../design-system.css">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'gold':'var(--color-gold)','gold-light':'var(--color-gold-light)','navy':'var(--color-navy)','stone':'var(--color-stone)','ink':'var(--color-ink)','ink-soft':'var(--color-ink-soft)'},fontFamily:{sans:['Plus Jakarta Sans','Arial','sans-serif'],mono:['ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','monospace']}}}}</script>
+  <style>
+    .post-hero{background:var(--color-navy);}
+    .post-hero__inner{display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center;max-width:1200px;margin:0 auto;padding:72px clamp(1rem,5vw,2rem) 56px;}
+    .post-hero__content{min-width:0;}
+    .post-hero__image{border-radius:14px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.5);aspect-ratio:16/10;}
+    .post-hero__image img{width:100%;height:100%;object-fit:cover;display:block;}
+    @media(max-width:900px){.post-hero__inner{grid-template-columns:1fr;gap:28px;}.post-hero__image{order:-1;}}
+    .post-hero__back{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.45);text-decoration:none;margin-bottom:28px;transition:color .2s}
+    .post-hero__back:hover{color:var(--color-gold-light)}
+    .post-hero__meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+    .post-tag{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:4px;background:rgba(184,150,46,.15);color:var(--color-gold-light)}
+    .post-hero__date{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.4)}
+    .post-hero__title{font-size:clamp(28px,4.5vw,52px);font-weight:800;letter-spacing:-.04em;color:#fff;line-height:1.1;margin-bottom:20px;}
+    .post-hero__excerpt{font-size:17px;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:28px}
+    .post-hero__author{display:flex;align-items:center;gap:12px}
+    .post-hero__avatar{width:40px;height:40px;background:var(--color-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+    .post-hero__author-name{font-size:14px;font-weight:700;color:#fff}
+    .post-hero__author-role{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+    .post-layout{display:grid;grid-template-columns:1fr 320px;gap:48px;max-width:1100px;margin:0 auto;padding:56px clamp(1rem,5vw,2rem) 80px}
+    @media(max-width:860px){.post-layout{grid-template-columns:1fr}.post-sidebar{order:-1}}
+    .post-body{font-size:17px;line-height:1.75;color:var(--color-ink-soft)}
+    .post-body h2{font-size:clamp(22px,2.5vw,28px);font-weight:700;letter-spacing:-.03em;color:var(--color-ink);margin:40px 0 16px;line-height:1.2}
+    .post-body h3{font-size:19px;font-weight:700;color:var(--color-ink);margin:32px 0 12px}
+    .post-body p{margin-bottom:20px}
+    .post-body strong{font-weight:700;color:var(--color-ink)}
+    .post-body ul{padding-left:20px;margin-bottom:20px}
+    .post-body ul li{margin-bottom:8px}
+    .post-body ol{padding-left:20px;margin-bottom:20px}
+    .post-body ol li{margin-bottom:12px}
+    .post-body blockquote{border-left:3px solid var(--color-gold);padding:16px 20px;margin:28px 0;background:var(--color-stone);border-radius:0 8px 8px 0;font-style:italic;font-size:18px;color:var(--color-ink)}
+    .post-body .highlight-box{background:rgba(13,27,42,.04);border:1px solid var(--color-border);border-radius:10px;padding:24px;margin:28px 0}
+    .post-body .highlight-box h4{font-size:13px;font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;color:var(--color-gold);margin-bottom:12px}
+    .post-sidebar{position:sticky;top:80px;align-self:start;display:flex;flex-direction:column;gap:24px}
+    .sidebar-card{background:var(--color-stone);border:1px solid var(--color-border);border-radius:10px;padding:24px}
+    .sidebar-card__label{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--color-gold);margin-bottom:12px;display:block}
+    .sidebar-card__title{font-size:16px;font-weight:700;color:var(--color-ink);margin-bottom:8px}
+    .sidebar-card__body{font-size:14px;color:var(--color-ink-soft);line-height:1.6;margin-bottom:16px}
+    .related-post{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--color-border);text-decoration:none}
+    .related-post:last-child{border-bottom:none;padding-bottom:0}
+    .related-post__icon{width:40px;height:40px;background:var(--color-navy);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .related-post__title{font-size:13px;font-weight:600;color:var(--color-ink);line-height:1.4;transition:color .2s}
+    .related-post:hover .related-post__title{color:var(--color-gold)}
+    .related-post__date{font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);margin-top:3px}
+  </style>
+</head>
+<body style="background:var(--color-stone);">
+
+<nav id="navbar" class="sticky top-0 z-50">
+  <div class="nav-inner max-w-7xl mx-auto h-16 flex items-center justify-between gap-4">
+    <a href="../../index.html" class="flex items-center gap-3 shrink-0">
+      <div class="nav-logo-badge w-9 h-9 flex items-center justify-center" style="background:transparent;"><svg viewBox="0 0 36 36" fill="none" width="36" height="36"><polyline points="6,30 18,5 30,30" stroke="#C5973E" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter"/><rect x="16.55" y="3.55" width="2.9" height="2.9" fill="#C5973E" transform="rotate(45 18 5)"/></svg></div>
+      <div><p class="nav-logo-name">Christian Vieira</p><p class="nav-logo-sub">Imóveis &amp; Consultoria</p><p class="nav-logo-creci">CRECI 45539</p></div>
+    </a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="../../index.html" class="cv-nav-link">Início</a>
+      <div class="nav-dropdown" id="nav-dd">
+        <button class="nav-dropdown__trigger" aria-expanded="false">Lançamentos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown__panel" role="menu">
+          <a href="../../lancamentos/ArcosdoPorto/index.html" class="nav-dropdown__item">Arcos do Porto</a>
+          <a href="../../lancamentos/CartollaII/index.html" class="nav-dropdown__item">Residencial Cartola II</a>
+          <a href="../../lancamentos/MetropolitanDream/index.html" class="nav-dropdown__item">Metropolitan Dream</a>
+          <a href="../../lancamentos/OrlaRecreioReserva/index.html" class="nav-dropdown__item">Orla Recreio Reserva</a>
+          <a href="../../lancamentos/ConnectSquare/index.html" class="nav-dropdown__item">Connect Square</a>
+        </div>
+      </div>
+      <a href="../../index.html#consultoria" class="cv-nav-link">Consultoria</a>
+      <a href="../index.html" class="cv-nav-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+      <a href="../../index.html#contato" class="cv-nav-link">Contato</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="../../index.html#contato" class="cv-btn cv-btn-primary whitespace-nowrap hidden sm:inline-flex">Fale com o Christian</a>
+      <button class="nav-hamburger lg:hidden" id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false"><span class="nav-hamburger__label">MENU</span><div class="nav-hamburger__bars"><span></span><span></span><span></span></div></button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+    <a href="../../index.html" class="nav-mobile-link">Início</a>
+    <a href="../index.html" class="nav-mobile-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+    <a href="../../index.html#contato" class="nav-mobile-link">Contato</a>
+    <a href="../../index.html#contato" class="nav-mobile-cta">Fale com o Christian</a>
+  </div>
+</nav>
+
+<div class="post-hero">
+<div class="post-hero__inner">
+<div class="post-hero__content">
+  <a href="../index.html" class="post-hero__back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Voltar ao Blog</a>
+  <div class="post-hero__meta">
+    <span class="post-tag">DICAS</span>
+    <span class="post-hero__date">1 de outubro de 2026 · 6 min de leitura</span>
+  </div>
+  <h1 class="post-hero__title">Quanto você está deixando na mesa ao comprar seu imóvel?</h1>
+  <p class="post-hero__excerpt">Comprar um imóvel sem estratégia custa caro. Entenda onde a maioria dos compradores perde milhares de reais no Rio de Janeiro sem perceber.</p>
+  <div class="post-hero__author">
+    <div class="post-hero__avatar">CV</div>
+    <div><p class="post-hero__author-name">Christian Vieira</p><p class="post-hero__author-role">CORRETOR E MENTOR IMOBILIÁRIO · CRECI 45539</p></div>
+  </div>
+</div>
+<div class="post-hero__image">
+  <img src="../images/post-14-quanto-esta-deixando-na-mesa-ao-comprar-imovel.jpg" alt="Quanto você está deixando na mesa ao comprar seu imóvel?">
+</div>
+</div>
+</div>
+
+<div style="background:var(--color-stone);">
+  <div class="post-layout">
+    <article class="post-body">
+
+      <p>A compra de um imóvel é, para a maioria dos brasileiros, a maior transação financeira da vida. Mesmo assim, vejo diariamente pessoas preparadas, inteligentes e com bom poder aquisitivo cometendo erros básicos. O resultado? Deixam dezenas de milhares de reais na mesa do vendedor, do banco ou do cartório.</p><p>Quando falo em <strong>deixar dinheiro na mesa</strong>, não me refiro apenas a esquecer de pedir um desconto no valor do anúncio. Estou falando de assinar contratos bancários com taxas desfavoráveis, pagar tributos além do necessário, ignorar passivos de condomínio e aceitar avaliações irreais de mercado.</p><p>No mercado imobiliário do Rio de Janeiro, da Zona Sul ao Recreio dos Bandeirantes, cada detalhe negligenciado se converte em prejuízo direto no seu bolso. Se você está planejando comprar seu primeiro imóvel ou mudar de padrão, precisa entender exatamente onde o seu dinheiro pode estar escorrendo.</p>
+
+      <h2>1. O preço anunciado nunca é o preço de fechamento</h2>
+      <p>O primeiro grande ralo de dinheiro começa no portal imobiliário. Grande parte dos compradores toma o valor anunciado na internet como verdade absoluta de mercado. Esse é um erro primário.</p><p>No Rio de Janeiro, a diferença entre o preço anunciado e o valor real da escritura costuma variar entre <strong>5% e 15%</strong>. Em bairros com alta rotatividade como Botafogo, Flamengo ou Tijuca, proprietários costumam colocar uma margem de gordura proposital para absorver negociações. Em regiões com grande oferta de lançamentos, como a Barra da Tijuca e o Recreio, a margem de manobra pode ser ainda mais expressiva dependendo da urgência da construtora ou do proprietário.</p><p>Quem não tem acesso a dados reais de transações fechadas na mesma rua ou no mesmo condomínio entra na negociação desarmado. Quando você faz uma proposta sem embasamento técnico comparativo, você aceita o ponto de partida do vendedor. Em um imóvel de R$ 700 mil, aceitar um desconto tímido de R$ 10 mil quando a média técnica da região justificaria fechar por R$ 640 mil significa deixar <strong>R$ 50 mil na mesa</strong> logo no primeiro dia de conversa.</p>
+
+      <h2>2. Financiamento: décimos de juros que custam um carro zero</h2>
+      <p>Se você vai financiar o imóvel, preste muita atenção neste ponto: o custo total do seu imóvel não é o valor que está no contrato de compra e venda, mas a soma de todas as parcelas ao longo dos anos.</p><p>Muitos compradores aceitam a primeira proposta do banco onde já possuem conta corrente por mera comodidade. Essa preguiça custa uma fortuna. Uma diferença de apenas <strong>0,5% ao ano na taxa nominal de juros</strong> parece inofensiva no papel, mas ao longo de um financiamento de 30 anos pelo Sistema Financeiro de Habitação (SFH), essa pequena variação representa facilmente R$ 40 mil, R$ 60 mil ou mais de R$ 80 mil pagos em juros adicionais.</p><p>Além da taxa básica, você precisa vigiar outros três elementos críticos do crédito imobiliário:</p><ul><li><strong>Venda casada disfarçada:</strong> seguros de vida e residencial embutidos com prêmios muito acima dos praticados por seguradoras independentes no mercado.</li><li><strong>Sistema de amortização:</strong> escolher a tabela Price por ter uma parcela inicial menor, sem calcular que a tabela SAC reduz o saldo devedor e os juros totais muito mais rápido.</li><li><strong>Custo Efetivo Total (CET):</strong> comparar apenas a taxa de juros e esquecer de checar as tarifas administrativas mensais cobradas pela instituição financeira.</li></ul>
+
+      <blockquote>Comprar imóvel sem análise técnica é assinar um cheque em branco. O desconto que você deixa de negociar na entrada vira juros multiplicados por trinta anos no seu bolso.</blockquote>
+
+      <h2>3. O desconto por lei que quase ninguém solicita no cartório</h2>
+      <p>Você sabia que a legislação brasileira garante desconto nas custas cartorárias para quem compra o primeiro imóvel? A <strong>Lei Federal nº 6.015/1973 (Lei de Registros Públicos)</strong>, em seu artigo 290, estabelece um desconto de <strong>50% nos emolumentos de registro e escritura</strong> para imóveis financiados pelo SFH destinados exclusivamente à moradia própria, desde que seja a primeira aquisição do comprador.</p><p>No Rio de Janeiro, os custos de cartório são calculados por faixas de valor e costumam assustar quem compra pela primeira vez. Estamos falando de economizar de R$ 2 mil a mais de R$ 6 mil em taxas oficiais apenas apresentando a declaração correta no momento da lavratura e do registro.</p><p>O problema é simples: os cartórios não têm a obrigação de adivinhar que se trata do seu primeiro imóvel. Se você não solicitar expressamente e comprovar os requisitos legais, a cobrança será feita pelo valor integral. Dinheiro deixado na mesa por pura falta de orientação especializada.</p>
+
+      <h2>4. ITBI carioca e a armadilha do valor venal de referência</h2>
+      <p>O Imposto sobre a Transmissão de Bens Imóveis (ITBI) no município do Rio de Janeiro tem alíquota de <strong>3%</strong>. Em um imóvel de R$ 800 mil, o imposto devido é de R$ 24 mil. Esse é um valor expressivo que entra no orçamento de fechamento.</p><p>No entanto, a Prefeitura do Rio frequentemente arbitra um "valor venal de referência" para o cálculo do imposto que é superior ao valor real da compra. O Supremo Tribunal Federal (STF), através do Tema 1113, já pacificou o entendimento de que a base de cálculo do ITBI deve ser o <strong>valor real da transação declarada</strong> pelas partes, cabendo ao município instaurar processo administrativo próprio se discordar do montante.</p><p>O comprador desavisado recebe a guia com base inflada, paga sem questionar e perde milhares de reais que poderiam ter sido contestados formalmente antes do recolhimento ou recuperados por via administrativa. Defender cada centavo da sua operação faz parte de uma compra imobiliária inteligente.</p>
+
+      <h2>5. O passivo invisível: condomínio, reformas e documentação irregular</h2>
+      <p>Outro erro clássico de quem compra sozinho é avaliar o apartamento com olhos de decorador e ignorar a saúde estrutural e jurídica do edifício. Esse descuido custa caríssimo logo nos primeiros meses após a mudança.</p><p>Em prédios mais antigos da Zona Sul e da Zona Norte (como Tijuca, Grajaú e Vila Isabel), é indispensável verificar as atas das últimas assembleias de condomínio. Existe previsão de cota extra para troca de coluna de esgoto? A fachada precisará de recuperação urgente? A impermeabilização do terraço está vencida? Uma cota extra inesperada de R$ 800 por mês durante dois anos destrói qualquer planejamento financeiro familiar.</p><p>Na documentação, certidões fiscais e forenses emitidas com antecedência evitam que você herde dívidas de IPTU, taxas de incêndio em atraso ou, pior ainda, penhoras decorrentes de ações trabalhistas contra os antigos proprietários. Comprar imóvel exige diligência prévia (due diligence) completa. O barato na assessoria quase sempre sai caríssimo na execução.</p>
+
+      <h2>6. Como colocar o dinheiro de volta no seu bolso</h2>
+      <p>Evitar esses prejuízos não depende de sorte, mas de método. Uma compra imobiliária segura e financeiramente vantajosa exige três pilares fundamentais:</p><ul><li><strong>Estudo de mercado comparativo real:</strong> saber exatamente quanto custa o metro quadrado útil e praticado na quadra onde você deseja morar.</li><li><strong>Engenharia de crédito personalizada:</strong> simular operações em múltiplos bancos, comparar CET e usar portabilidade quando oportuno.</li><li><strong>Assessoria jurídica e negocial focada em você:</strong> ter ao seu lado um profissional experiente que negocia a seu favor, audita a documentação e faz valer seus direitos tributários e cartorários.</li></ul><p>O mercado imobiliário do Rio de Janeiro premia quem tem preparo técnico e penaliza duramente quem age com precipitação. Na próxima visita ou na próxima proposta, pare e avalie friamente: você está fazendo o melhor negócio possível ou está deixando o seu patrimônio na mesa?</p>
+
+      <div class="highlight-box">
+        <h4>NÃO DEIXE DINHEIRO NA MESA NA COMPRA DO SEU IMÓVEL</h4>
+        <p style="font-size:15px;color:var(--color-ink-soft);margin-bottom:16px;line-height:1.6;">Quer comprar seu imóvel no Rio com segurança e pelo valor justo? Fale diretamente comigo e tenha uma mentoria personalizada para fechar o melhor negócio.</p>
+        <a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Li%20seu%20artigo%20sobre%20quanto%20voc%C3%AA%20est%C3%A1%20deixando%20na%20mesa%20ao%20comprar%20seu%20im%C3%B3vel%3F%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o." target="_blank" rel="noopener" class="cv-btn cv-btn-gold" style="display:inline-flex;">Falar com o Christian</a>
+      </div>
+
+    </article>
+
+    <aside class="post-sidebar">
+      <div class="sidebar-card" style="background:var(--color-navy);border-color:rgba(184,150,46,0.15);">
+        <span class="sidebar-card__label" style="color:var(--color-gold-light);">FALE COM O ESPECIALISTA</span>
+        <p class="sidebar-card__title" style="color:#fff;">Precisa de orientação imobiliária?</p>
+        <p class="sidebar-card__body" style="color:rgba(255,255,255,0.5);">Christian Vieira analisa seu perfil e indica o melhor caminho para comprar, investir ou vender no Rio.</p>
+        <a href="https://wa.me/5521993399299" target="_blank" rel="noopener" class="cv-btn cv-btn-gold" style="display:flex;width:100%;justify-content:center;">WhatsApp</a>
+      </div>
+      <div class="sidebar-card">
+        <span class="sidebar-card__label">POSTS RELACIONADOS</span>
+        
+        <a href="quanto-custa-financiar-imovel.html" class="related-post">
+          <div class="related-post__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(184,150,46,0.6)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><p class="related-post__title">Quanto custa financiar um imóvel? Tudo que você precisa saber</p><p class="related-post__date">25 julho 2026</p></div>
+        </a>
+        <a href="financiamento-imobiliario-explicado-simples.html" class="related-post">
+          <div class="related-post__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(184,150,46,0.6)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><p class="related-post__title">Financiamento imobiliário explicado de forma simples</p><p class="related-post__date">22 julho 2026</p></div>
+        </a>
+      </div>
+      <div class="sidebar-card">
+        <span class="sidebar-card__label">LANÇAMENTOS</span>
+        <p class="sidebar-card__body">Conheça os empreendimentos disponíveis com Christian Vieira no Rio de Janeiro.</p>
+        <a href="../../index.html#lancamentos" class="cv-btn cv-btn-charcoal" style="display:flex;justify-content:center;font-size:11px;">Ver lançamentos</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer style="background:#060810;border-top:1px solid rgba(184,150,46,0.1);padding:32px clamp(1rem,4vw,2rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+  <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;background:var(--color-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;font-weight:700;color:#fff;">CV</div><div><p style="font-size:12px;font-weight:600;color:#fff;">Christian Vieira</p><p style="font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:0.08em;color:var(--color-gold);margin-top:1px;">IMÓVEIS &amp; CONSULTORIA · RJ · CRECI 45539</p></div></div>
+  <p style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);">© 2026 Christian Vieira. Todos os direitos reservados.</p>
+</footer>
+<a href="https://wa.me/5521993399299" target="_blank" rel="noopener" style="position:fixed;bottom:24px;right:24px;z-index:50;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);text-decoration:none;transition:transform 300ms;" title="WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+<script>(function(){const ham=document.getElementById('nav-hamburger');const mob=document.getElementById('nav-mobile');if(ham&&mob){ham.addEventListener('click',()=>{const o=mob.classList.toggle('is-open');ham.classList.toggle('is-open',o);ham.setAttribute('aria-expanded',o);mob.setAttribute('aria-hidden',!o)});}document.querySelectorAll('.nav-dropdown').forEach(dd=>{const t=dd.querySelector('.nav-dropdown__trigger');if(!t)return;t.addEventListener('click',e=>{e.stopPropagation();dd.classList.toggle('is-open');t.setAttribute('aria-expanded',dd.classList.contains('is-open'))});document.addEventListener('click',()=>{dd.classList.remove('is-open');t.setAttribute('aria-expanded',false)})})})();</script>
+</body>
+</html>
