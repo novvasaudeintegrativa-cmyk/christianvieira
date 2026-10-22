@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Você vai comprar um imóvel? Então precisa saber disto antes | Blog Christian Vieira</title>
+  <meta name="description" content="Vai comprar imóvel no Rio de Janeiro? Descubra custos extras, cuidados com documentos e dicas práticas de um corretor com mais de 10 anos de mercado.">
+
+  <link rel="stylesheet" href="../../design-system.css">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'gold':'var(--color-gold)','gold-light':'var(--color-gold-light)','navy':'var(--color-navy)','stone':'var(--color-stone)','ink':'var(--color-ink)','ink-soft':'var(--color-ink-soft)'},fontFamily:{sans:['Plus Jakarta Sans','Arial','sans-serif'],mono:['ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','monospace']}}}}</script>
+  <style>
+    .post-hero{background:var(--color-navy);}
+    .post-hero__inner{display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center;max-width:1200px;margin:0 auto;padding:72px clamp(1rem,5vw,2rem) 56px;}
+    .post-hero__content{min-width:0;}
+    .post-hero__image{border-radius:14px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.5);aspect-ratio:16/10;}
+    .post-hero__image img{width:100%;height:100%;object-fit:cover;display:block;}
+    @media(max-width:900px){.post-hero__inner{grid-template-columns:1fr;gap:28px;}.post-hero__image{order:-1;}}
+    .post-hero__back{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.45);text-decoration:none;margin-bottom:28px;transition:color .2s}
+    .post-hero__back:hover{color:var(--color-gold-light)}
+    .post-hero__meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+    .post-tag{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:4px;background:rgba(184,150,46,.15);color:var(--color-gold-light)}
+    .post-hero__date{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.4)}
+    .post-hero__title{font-size:clamp(28px,4.5vw,52px);font-weight:800;letter-spacing:-.04em;color:#fff;line-height:1.1;margin-bottom:20px;}
+    .post-hero__excerpt{font-size:17px;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:28px}
+    .post-hero__author{display:flex;align-items:center;gap:12px}
+    .post-hero__avatar{width:40px;height:40px;background:var(--color-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+    .post-hero__author-name{font-size:14px;font-weight:700;color:#fff}
+    .post-hero__author-role{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+    .post-layout{display:grid;grid-template-columns:1fr 320px;gap:48px;max-width:1100px;margin:0 auto;padding:56px clamp(1rem,5vw,2rem) 80px}
+    @media(max-width:860px){.post-layout{grid-template-columns:1fr}.post-sidebar{order:-1}}
+    .post-body{font-size:17px;line-height:1.75;color:var(--color-ink-soft)}
+    .post-body h2{font-size:clamp(22px,2.5vw,28px);font-weight:700;letter-spacing:-.03em;color:var(--color-ink);margin:40px 0 16px;line-height:1.2}
+    .post-body h3{font-size:19px;font-weight:700;color:var(--color-ink);margin:32px 0 12px}
+    .post-body p{margin-bottom:20px}
+    .post-body strong{font-weight:700;color:var(--color-ink)}
+    .post-body ul{padding-left:20px;margin-bottom:20px}
+    .post-body ul li{margin-bottom:8px}
+    .post-body ol{padding-left:20px;margin-bottom:20px}
+    .post-body ol li{margin-bottom:12px}
+    .post-body blockquote{border-left:3px solid var(--color-gold);padding:16px 20px;margin:28px 0;background:var(--color-stone);border-radius:0 8px 8px 0;font-style:italic;font-size:18px;color:var(--color-ink)}
+    .post-body .highlight-box{background:rgba(13,27,42,.04);border:1px solid var(--color-border);border-radius:10px;padding:24px;margin:28px 0}
+    .post-body .highlight-box h4{font-size:13px;font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;color:var(--color-gold);margin-bottom:12px}
+    .post-sidebar{position:sticky;top:80px;align-self:start;display:flex;flex-direction:column;gap:24px}
+    .sidebar-card{background:var(--color-stone);border:1px solid var(--color-border);border-radius:10px;padding:24px}
+    .sidebar-card__label{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--color-gold);margin-bottom:12px;display:block}
+    .sidebar-card__title{font-size:16px;font-weight:700;color:var(--color-ink);margin-bottom:8px}
+    .sidebar-card__body{font-size:14px;color:var(--color-ink-soft);line-height:1.6;margin-bottom:16px}
+    .related-post{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--color-border);text-decoration:none}
+    .related-post:last-child{border-bottom:none;padding-bottom:0}
+    .related-post__icon{width:40px;height:40px;background:var(--color-navy);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .related-post__title{font-size:13px;font-weight:600;color:var(--color-ink);line-height:1.4;transition:color .2s}
+    .related-post:hover .related-post__title{color:var(--color-gold)}
+    .related-post__date{font-family:var(--font-mono);font-size:10px;color:var(--color-ink-muted);margin-top:3px}
+  </style>
+</head>
+<body style="background:var(--color-stone);">
+
+<nav id="navbar" class="sticky top-0 z-50">
+  <div class="nav-inner max-w-7xl mx-auto h-16 flex items-center justify-between gap-4">
+    <a href="../../index.html" class="flex items-center gap-3 shrink-0">
+      <div class="nav-logo-badge w-9 h-9 flex items-center justify-center" style="background:transparent;"><svg viewBox="0 0 36 36" fill="none" width="36" height="36"><polyline points="6,30 18,5 30,30" stroke="#C5973E" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter"/><rect x="16.55" y="3.55" width="2.9" height="2.9" fill="#C5973E" transform="rotate(45 18 5)"/></svg></div>
+      <div><p class="nav-logo-name">Christian Vieira</p><p class="nav-logo-sub">Imóveis &amp; Consultoria</p><p class="nav-logo-creci">CRECI 45539</p></div>
+    </a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="../../index.html" class="cv-nav-link">Início</a>
+      <div class="nav-dropdown" id="nav-dd">
+        <button class="nav-dropdown__trigger" aria-expanded="false">Lançamentos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown__panel" role="menu">
+          <a href="../../lancamentos/ArcosdoPorto/index.html" class="nav-dropdown__item">Arcos do Porto</a>
+          <a href="../../lancamentos/CartollaII/index.html" class="nav-dropdown__item">Residencial Cartola II</a>
+          <a href="../../lancamentos/MetropolitanDream/index.html" class="nav-dropdown__item">Metropolitan Dream</a>
+          <a href="../../lancamentos/OrlaRecreioReserva/index.html" class="nav-dropdown__item">Orla Recreio Reserva</a>
+          <a href="../../lancamentos/ConnectSquare/index.html" class="nav-dropdown__item">Connect Square</a>
+        </div>
+      </div>
+      <a href="../../index.html#consultoria" class="cv-nav-link">Consultoria</a>
+      <a href="../index.html" class="cv-nav-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+      <a href="../../index.html#contato" class="cv-nav-link">Contato</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="../../index.html#contato" class="cv-btn cv-btn-primary whitespace-nowrap hidden sm:inline-flex">Fale com o Christian</a>
+      <button class="nav-hamburger lg:hidden" id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false"><span class="nav-hamburger__label">MENU</span><div class="nav-hamburger__bars"><span></span><span></span><span></span></div></button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+    <a href="../../index.html" class="nav-mobile-link">Início</a>
+    <a href="../index.html" class="nav-mobile-link" style="color:var(--color-gold);font-weight:700;">Blog</a>
+    <a href="../../index.html#contato" class="nav-mobile-link">Contato</a>
+    <a href="../../index.html#contato" class="nav-mobile-cta">Fale com o Christian</a>
+  </div>
+</nav>
+
+<div class="post-hero">
+<div class="post-hero__inner">
+<div class="post-hero__content">
+  <a href="../index.html" class="post-hero__back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Voltar ao Blog</a>
+  <div class="post-hero__meta">
+    <span class="post-tag">DICAS</span>
+    <span class="post-hero__date">22 de outubro de 2026 · 6 min de leitura</span>
+  </div>
+  <h1 class="post-hero__title">Você vai comprar um imóvel? Então precisa saber disto antes</h1>
+  <p class="post-hero__excerpt">Comprar um imóvel exige mais do que aprovar o crédito. Veja o guia prático do corretor Christian Vieira para não errar na compra do seu imóvel no Rio.</p>
+  <div class="post-hero__author">
+    <div class="post-hero__avatar">CV</div>
+    <div><p class="post-hero__author-name">Christian Vieira</p><p class="post-hero__author-role">CORRETOR E MENTOR IMOBILIÁRIO · CRECI 45539</p></div>
+  </div>
+</div>
+<div class="post-hero__image">
+  <img src="../images/post-22-vai-comprar-um-imovel-saiba-isto-antes.jpg" alt="Você vai comprar um imóvel? Então precisa saber disto antes">
+</div>
+</div>
+</div>
+
+<div style="background:var(--color-stone);">
+  <div class="post-layout">
+    <article class="post-body">
+
+      <p>Comprar um imóvel no Rio de Janeiro é o grande objetivo de vida de milhares de famílias. No entanto, essa conquista pode se transformar em um pesadelo se você entrar no processo sem o preparo necessário. Ao longo de mais de uma década atuando como corretor e mentor imobiliário no mercado carioca, já presenciei pessoas perderem economias de anos inteiros por pura desinformação.</p><p>Muitos compradores se apaixonam pela vista, pela varanda gourmet ou pela planta do apartamento e esquecem que a compra de um bem desse porte é, antes de tudo, uma operação jurídica e financeira de alta complexidade. A empolgação é natural, mas a pressa é a pior conselheira na hora de assinar uma promessa de compra e venda.</p><p>Não importa se você está buscando um apartamento na planta no Recreio dos Bandeirantes, um dois quartos clássico na Tijuca ou um imóvel pronto em Botafogo. Antes de transferir qualquer centavo de sinal ou assumir um financiamento de três décadas, existem pontos inegociáveis que você precisa dominar para proteger seu patrimônio.</p>
+
+      <h2>1. O preço do anúncio não é o custo total da compra</h2>
+      <p>O maior erro de quem vai comprar o primeiro imóvel é calcular apenas o valor da entrada e as parcelas do financiamento. Na prática, você precisa ter em mãos uma reserva financeira extra para cobrir os <strong>custos de transferência e regularização</strong> do imóvel.</p><p>No Rio de Janeiro, esses gastos adicionais costumam representar entre 4% e 7% do valor total da transação. Se você comprar um apartamento de R$ 500 mil, precisará de pelo menos R$ 25 mil a R$ 35 mil extras só para despesas burocráticas. Veja os principais custos:</p><ul><li><strong>ITBI (Imposto sobre Transmissão de Bens Imóveis):</strong> tributo municipal obrigatório cobrado pela Prefeitura do Rio, que incide diretamente sobre o valor venal ou da transação.</li><li><strong>Escritura Pública:</strong> lavrada no Cartório de Notas quando a compra é feita à vista. No caso de financiamento bancário, o contrato do banco tem força de escritura pública, mas a taxa de avaliação do banco também tem custo.</li><li><strong>Registro Geral de Imóveis (RGI):</strong> a taxa do cartório de registro para efetivamente transferir a propriedade para o seu nome. Lembre-se sempre: quem não registra não é dono.</li><li><strong>Certidões cartorárias e despachante:</strong> despesas para emissão de certidões negativas de vendedores e do próprio imóvel.</li></ul><p>Sem essa reserva separada com antecedência, você corre o risco de travar o processo com o banco ou com o cartório no momento mais crítico da operação.</p>
+
+      <h2>2. Análise documental vem sempre antes do pagamento do sinal</h2>
+      <p>Jamais faça qualquer transferência bancária antes de uma <strong>auditoria preventiva completa</strong> (due diligence). No mercado carioca, é comum encontrar imóveis com pendências antigas de inventário, penhoras judiciais não baixadas, dívidas acumuladas de condomínio ou IPTU em atraso.</p><p>O documento número um que você deve exigir é a <strong>Certidão de Ônus Reais atualizada</strong>, emitida pelo cartório de RGI competente da região. Ela é a certidão de nascimento e o histórico de saúde do imóvel. Nela você descobre se o apartamento está hipotecado, alienado ou se há alguma indisponibilidade averbada.</p><p>Além do imóvel, você precisa investigar a vida dos vendedores. É fundamental levantar certidões negativas da Justiça Federal, Justiça Estadual (distribuidores cíveis e criminais), Justiça do Trabalho e certidões fiscais de tributos federais e municipais. Se o vendedor responder a processos trabalhistas ou execuções fiscais graves, a venda do imóvel pode ser anulada no futuro por fraude à execução, e você pode perder o apartamento mesmo tendo pago de boa-fé.</p>
+
+      <blockquote>No mercado imobiliário, a empolgação custa caro. Você não compra tijolo e vista para o mar; você compra primeiro a segurança jurídica do contrato.</blockquote>
+
+      <h2>3. As particularidades geográficas e estruturais do Rio de Janeiro</h2>
+      <p>Avaliar um imóvel no Rio de Janeiro exige entender a dinâmica dos nossos bairros. O que funciona na Barra da Tijuca não se aplica diretamente ao Méier ou a Copacabana. Ignorar fatores locais comuns da nossa cidade gera arrependimento rápido após a mudança.</p><p>Fique muito atento a estes fatores determinantes:</p><ul><li><strong>Orientação solar:</strong> no Rio de Janeiro, o sol da tarde (poente) é implacável no verão. Um apartamento poente sem ventilação cruzada exige uso constante de ar-condicionado, elevando substancialmente a conta de luz. Sempre que possível, priorize o sol da manhã.</li><li><strong>Custo real de condomínio:</strong> prédios tradicionais da Zona Sul ou do Maracanã, construídos nas décadas de 60 e 70, costumam ter poucas unidades por andar e plantas amplas, o que encarece muito a cota condominial e exige manutenções periódicas de fachada e tubulação. Já no Recreio ou na Barra, condomínios com ampla infraestrutura diluem custos em mais moradores, mas contam com fundos de reserva pesados.</li><li><strong>Logística e transporte:</strong> avalie o trajeto real nos horários de pico. Cinco quilômetros na Linha Amarela, na Avenida Brasil ou na Autoestrada Lagoa-Barra podem significar uma hora a mais preso no trânsito todos os dias.</li></ul>
+
+      <h2>4. Simulação bancária não é aprovação de crédito definitiva</h2>
+      <p>Fazer uma simulação rápida pela internet e receber um comprovante preliminar não significa que o seu financiamento está garantido. A simulação inicial é apenas uma estimativa genérica com base nas informações que você mesmo digitou na ferramenta.</p><p>A <strong>aprovação de crédito formal</strong> exige o envio de holerites, declaração de Imposto de Renda com recibo de entrega, extratos bancários e verificação de score nos órgãos de proteção ao crédito (SPC e Serasa). Qualquer discrepância entre a renda autodeclarada e a renda formal comprovada pode reduzir drasticamente o valor liberado pelo banco.</p><p>Outro ponto crítico é a capacidade financeira recomendada. Os bancos costumam limitar a parcela a 30% da renda familiar bruta. Contudo, do ponto de vista do seu orçamento doméstico, o ideal é não comprometer mais do que 20% a 25%. Afinal, além da prestação do banco, você terá despesas fixas com condomínio, IPTU anual, taxa de incêndio (Funesbom) e a manutenção natural do imóvel.</p>
+
+      <h2>5. O raio-x do condomínio e a vistoria física detalhada</h2>
+      <p>Antes de fechar negócio, peça as atas das últimas três assembleias gerais do condomínio. Esse hábito simples evita surpresas financeiras desagradáveis. É nas atas que constam deliberações sobre <strong>obras emergenciais de fachada</strong>, reformas de telhado, substituição de elevadores ou processos trabalhistas contra o condomínio movidos por ex-funcionários.</p><p>Se houver uma cota extra pesada aprovada para os próximos dois anos, esse custo precisa entrar no seu planejamento ou servir de argumento para negociar um desconto no valor de venda.</p><p>Na vistoria física do apartamento, esqueça a pintura nova e concentre sua atenção naquilo que fica oculto:</p><ul><li>Abra todas as torneiras e chuveiros ao mesmo tempo para testar a pressão da água e o escoamento dos ralos.</li><li>Verifique o quadro de disjuntores para saber se a fiação é moderna e compatível com aparelhos de ar-condicionado Split.</li><li>Procure por marcas de mofo no rodapé e no teto dos banheiros, indícios claros de infiltração crônica.</li><li>Converse com o porteiro e com vizinhos próximos. Ninguém conhece melhor a rotina, os barulhos e a segurança do prédio do que as pessoas que já vivem nele diariamente.</li></ul>
+
+      <div class="highlight-box">
+        <h4>QUER COMPRAR COM TOTAL SEGURANÇA NO RIO?</h4>
+        <p style="font-size:15px;color:var(--color-ink-soft);margin-bottom:16px;line-height:1.6;">Conte com a minha experiência para encontrar o imóvel certo, analisar toda a documentação e negociar as melhores condições para você.</p>
+        <a href="https://wa.me/5521993399299?text=Ol%C3%A1%2C%20Christian!%20Li%20seu%20artigo%20sobre%20voc%C3%AA%20vai%20comprar%20um%20im%C3%B3vel%3F%20ent%C3%A3o%20precisa%20saber%20disto%20antes%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o." target="_blank" rel="noopener" class="cv-btn cv-btn-gold" style="display:inline-flex;">Falar com o Christian</a>
+      </div>
+
+    </article>
+
+    <aside class="post-sidebar">
+      <div class="sidebar-card" style="background:var(--color-navy);border-color:rgba(184,150,46,0.15);">
+        <span class="sidebar-card__label" style="color:var(--color-gold-light);">FALE COM O ESPECIALISTA</span>
+        <p class="sidebar-card__title" style="color:#fff;">Precisa de orientação imobiliária?</p>
+        <p class="sidebar-card__body" style="color:rgba(255,255,255,0.5);">Christian Vieira analisa seu perfil e indica o melhor caminho para comprar, investir ou vender no Rio.</p>
+        <a href="https://wa.me/5521993399299" target="_blank" rel="noopener" class="cv-btn cv-btn-gold" style="display:flex;width:100%;justify-content:center;">WhatsApp</a>
+      </div>
+      <div class="sidebar-card">
+        <span class="sidebar-card__label">POSTS RELACIONADOS</span>
+        
+        <a href="erros-comprador-primeiro-imovel.html" class="related-post">
+          <div class="related-post__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(184,150,46,0.6)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div><p class="related-post__title">Como comprar o primeiro imóvel sem cometer erros</p><p class="related-post__date">8 julho 2026</p></div>
+        </a>
+        <a href="duvida-escolha-imovel.html" class="related-post">
+          <div class="related-post__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(184,150,46,0.6)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div><p class="related-post__title">Dúvida na escolha do imóvel</p><p class="related-post__date">30 julho 2026</p></div>
+        </a>
+      </div>
+      <div class="sidebar-card">
+        <span class="sidebar-card__label">LANÇAMENTOS</span>
+        <p class="sidebar-card__body">Conheça os empreendimentos disponíveis com Christian Vieira no Rio de Janeiro.</p>
+        <a href="../../index.html#lancamentos" class="cv-btn cv-btn-charcoal" style="display:flex;justify-content:center;font-size:11px;">Ver lançamentos</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer style="background:#060810;border-top:1px solid rgba(184,150,46,0.1);padding:32px clamp(1rem,4vw,2rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+  <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;background:var(--color-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;font-weight:700;color:#fff;">CV</div><div><p style="font-size:12px;font-weight:600;color:#fff;">Christian Vieira</p><p style="font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:0.08em;color:var(--color-gold);margin-top:1px;">IMÓVEIS &amp; CONSULTORIA · RJ · CRECI 45539</p></div></div>
+  <p style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);">© 2026 Christian Vieira. Todos os direitos reservados.</p>
+</footer>
+<a href="https://wa.me/5521993399299" target="_blank" rel="noopener" style="position:fixed;bottom:24px;right:24px;z-index:50;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);text-decoration:none;transition:transform 300ms;" title="WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+<script>(function(){const ham=document.getElementById('nav-hamburger');const mob=document.getElementById('nav-mobile');if(ham&&mob){ham.addEventListener('click',()=>{const o=mob.classList.toggle('is-open');ham.classList.toggle('is-open',o);ham.setAttribute('aria-expanded',o);mob.setAttribute('aria-hidden',!o)});}document.querySelectorAll('.nav-dropdown').forEach(dd=>{const t=dd.querySelector('.nav-dropdown__trigger');if(!t)return;t.addEventListener('click',e=>{e.stopPropagation();dd.classList.toggle('is-open');t.setAttribute('aria-expanded',dd.classList.contains('is-open'))});document.addEventListener('click',()=>{dd.classList.remove('is-open');t.setAttribute('aria-expanded',false)})})})();</script>
+</body>
+</html>
